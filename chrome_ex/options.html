@@ -1,0 +1,55 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<link type="text/css" rel="stylesheet" href="style.css" /> 
+<script>
+
+function loadOptions() 
+{	
+	var id = localStorage["id"];
+	var password =localStorage["password"];
+	if (id == undefined && password == undefined )
+	{
+		id="";
+		password="";
+	}
+	
+	var idIndex=document.getElementById("id");
+	var passwordIndex = document.getElementById("password");
+	idIndex.value=id;
+	passwordIndex.value=password;	
+}
+
+function saveOptions() {
+	var idIndex=document.getElementById("id");
+	var passwordIndex = document.getElementById("password");
+	var newId = idIndex.value;
+	var newPassword = passwordIndex.value;
+		
+	if(localStorage["id"] != newId || localStorage["password"] != newPassword)
+    {
+		localStorage["id"] = newId;
+		localStorage["password"] = newPassword;
+        chrome.extension.getBackgroundPage().getBookmarks();	
+	}
+}
+
+function eraseOptions() {
+	localStorage.removeItem("id");
+	localStorage.removeItem("password");
+	chrome.extension.getBackgroundPage().getBookmarks();
+	location.reload();
+}
+</script>
+</head>
+<body onload="loadOptions();">
+ID:<input type="text" name="id" id="id">
+<br>
+PASSWORD:<input type="password" name="password" id="password">
+<br>
+<button onclick="saveOptions();">SAVE</button>
+<button onclick="eraseOptions();">DELETE</button>
+<br>
+<div id="status"></div>
+</body> 
+</html>

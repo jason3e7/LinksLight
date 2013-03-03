@@ -1,0 +1,150 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<script type="text/javascript" src="jquery.min.js"></script> 
+<script type="text/javascript">
+
+var id ;
+var password ;
+var bookmarkXML;
+var current;
+
+localStorage["conn"]=false;
+
+function getBookmarks()
+{
+
+	chrome.bookmarks.getChildren('1',function(bms) {	
+	//alert(bms.length);
+	for (i = 0; i < bms.length; i++) {
+		chrome.bookmarks.remove(bms[i].id);
+		//alert(bms[i].id);
+	}
+	});
+	
+	id = localStorage["id"];
+	password =localStorage["password"];
+    console.log("http://localhost/linkslight/index.php?id="+id+"&password="+password);
+	//alert("http://jason3e7.no-ip.org/linkslight/index.php?id="+id+"&password="+password);
+	//$.get("test.html", function(data){
+    //$.get("http://jason3e7.no-ip.org/linkslight/index.php?id="+id+"&password="+password, function(data){
+	$.get("http://localhost/linkslight/out.php?id="+id+"&password="+password, function(data){
+	
+		//alert("Data Loaded: " + data);
+		bookmarkXML=data;
+		//alert("Data Loaded: " + $(bookmarkXML).find("bookmark").text());
+		//while($(bookmarkXML).find("bookmarks").text())
+		
+		
+		
+		$(bookmarkXML).find('bookmark').each(function()
+        { 
+			//alert("GOOD");
+			var $book = $(this);
+			//alert($book.get);
+			//alert($(this).children("title").attr("data")) //取得子節點中的src資料
+			
+			chrome.bookmarks.create({'parentId': '1',
+			'title': $(this).children("title").attr("data"),
+			'url': $(this).children("url").attr("data")});
+			
+			
+            //errorCode="";
+            //current={};
+            //current.condition=$(weatherXML).find("current_conditions condition").attr("data");
+            //current.temp_c=$(weatherXML).find("current_conditions temp_c").attr("data")+"℃";
+            //current.temp_f=$(weatherXML).find("current_conditions temp_f").attr("data")+"℉";
+            //current.humidity=$(weatherXML).find("current_conditions humidity").attr("data");
+            //current.wind_condition=$(weatherXML).find("current_conditions wind_condition").attr("data");
+            //current.icon="http://img0.gmodules.com"+$(weatherXML).find("current_conditions icon").attr("data");
+            //console.log(current);
+        });
+		
+		if(data!="")
+        {
+			//alert("Data not null ");
+            chrome.browserAction.setIcon({path:"images/icon_16.png"});
+			chrome.browserAction.setTitle({"title":"Connect"});
+			localStorage["conn"]=true; 
+        }
+        else
+        {
+			//alert("Data null ");
+			chrome.browserAction.setIcon({path:"images/loading.png"});
+			chrome.browserAction.setTitle({"title":"Disconnect"});
+			localStorage["conn"]=false; 
+        }
+    });
+	
+}
+
+
+
+function onBrowserActionClicked() {
+
+	//delete
+	/*
+	chrome.bookmarks.getChildren('1',function(bms) {	
+		//alert(bms.length);
+		for (i = 0; i < bms.length; i++) {
+			chrome.bookmarks.remove(bms[i].id);
+			//alert(bms[i].id);
+		}
+	});
+	*/
+	
+	//chrome.bookmarks.remove('1');
+	//chrome.bookmarks.create({'parentId': '1',
+	//					'title': 'Extensions doc',
+     //                    'url': 'http://code.google.com/chrome/extensions'});
+	//alert(localStorage["conn"]);
+	if (localStorage["conn"] != 'true') 
+	{
+		localStorage["conn"]=true;
+		chrome.browserAction.setTitle({"title":"Connect"});
+		getBookmarks();
+    }
+	else
+	{
+		localStorage["conn"]=false;
+		chrome.browserAction.setTitle({"title":"Disconnect"});
+		chrome.browserAction.setIcon({path: 'images/loading.png'});
+	}
+};        
+   
+chrome.browserAction.onClicked.addListener(onBrowserActionClicked);
+
+
+
+chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab)     
+{
+
+	var oldurl =localStorage["url"];
+	//alert(tab.url);
+    if(tab.url!=oldurl)
+	{
+		localStorage["url"]=tab.url;
+		$.get("http://localhost/linkslight/add.php?id="+id+"&password="+password+"&url="+tab.url);
+		//alert("http://jason3e7.no-ip.org/linkslight/add.php?id="+id+"&password="+password+"&url="+tab.url);
+		//alert(tab.url);
+	}
+    
+});
+
+function startRequest()
+{
+   getBookmarks(); 
+}
+
+function scheduleRequest() {
+	var reqeustInterval = 1000 * 60 * 5;
+	console.log("Scheduling request...");
+	window.setTimeout(startRequest, reqeustInterval);
+}
+startRequest();
+scheduleRequest();
+
+
+</script>
+</head>
+</html>
