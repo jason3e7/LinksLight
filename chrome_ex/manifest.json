@@ -1,6 +1,6 @@
 {
   "name": "LinksLight",
-  "version": "0.2",
+  "version": "0.3",
   "description": "Bookmarks Management",
   "icons": {
 	    "16": "images/icon_16.png",
@@ -18,5 +18,6 @@
   "browser_action": {
 	  "default_icon": "images/loading.png",
       "default_title": "Disconnect"
-  }	
+  }
+	
 }

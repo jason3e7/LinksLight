@@ -23,21 +23,24 @@
 		$result = mysql_query($sql);
 		while($row = mysql_fetch_array($result)){
 			echo "<bookmark id=\"".$row['id']."\" parentId=\"".$row['parentId']."\" title=\"".$row['title']."\" url=\"".$row['url']."\" />";
-			folderTree($row['id']);
 			echo "</bookmark>\n";
+			folderTree($row['id']);
     	}
 		echo "</bookmarks>";
 	}
 	function folderTree($bkid) 
 	{
 		global $username;		
-		$sql_ft = "SELECT * FROM bookmark where user='".$username."' and parentId='".$bkid."' order by point DESC ;";	
+		$sql_ft = "SELECT * FROM bookmark where user='".$username."' and parentId='".$bkid."' order by point DESC ;";
+		//print $sql_ft;
 		$result_ft = mysql_query($sql_ft);
 		while($row_ft = mysql_fetch_array($result_ft))
 		{
 			echo "<bookmark id=\"".$row_ft['id']."\" parentId=\"".$row_ft['parentId']."\" title=\"".$row_ft['title']."\" url=\"".$row_ft['url']."\" />";
-			folderTree($row_ft['id']);
 			echo "</bookmark>\n";
+			folderTree($row_ft['id']);
     	}
 	}
 ?>
+
+

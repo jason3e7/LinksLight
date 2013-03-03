@@ -15,7 +15,86 @@ function loadOptions() {
 	}
 	document.getElementById("id").value=id;
 	document.getElementById("password").value=password;
+	
+	
+	//alert(localStorage["autoConnect"]);
+	if(localStorage["autoConnect"]!='false')
+	{
+		//$('input[name=AutoConnect]').attr('checked', true);
+		$('#autoConnect').attr('checked',true);
+	}
+	if(localStorage["sort"]!='false')
+	{
+		//$('input[name=AutoConnect]').attr('checked', true);
+		$('#sort').attr('checked',true);
+	}
+
+	if(localStorage["light"]!='false')
+	{
+		//$('input[name=AutoConnect]').attr('checked', true);
+		$('#light').attr('checked',true);
+	}
+
+	if(localStorage["search"]!='false')
+	{
+		//$('input[name=AutoConnect]').attr('checked', true);
+		$('#search').attr('checked',true);
+	}
+	loadCheckbox();
 }
+
+
+function loadCheckbox()
+{	
+	
+	$('#autoConnect').change(function()
+	{
+		if (this.checked) 
+		{
+			localStorage["autoConnect"]=true;
+		}
+		else
+		{
+			localStorage["autoConnect"]=false;
+		}
+	});
+	$('#sort').change(function()
+	{
+		if (this.checked) 
+		{
+			localStorage["sort"]=true;
+		}
+		else
+		{
+			localStorage["sort"]=false;
+		}
+	});
+	$('#light').change(function()
+	{
+		if (this.checked) 
+		{
+			localStorage["light"]=true;
+		}
+		else
+		{
+			localStorage["light"]=false;
+		}
+	});
+	$('#search').change(function()
+	{
+		if (this.checked) 
+		{
+			localStorage["search"]=true;
+		}
+		else
+		{
+			localStorage["search"]=false;
+		}
+	});
+}
+
+
+
 
 function saveOptions() {
 	
@@ -26,7 +105,7 @@ function saveOptions() {
     {
 		localStorage["id"] = newId;
 		localStorage["password"] = newPassword;
-        chrome.extension.getBackgroundPage().getBookmarks();
+        chrome.extension.getBackgroundPage().updateSQL();
 	}
 	$("#status").html("Save Complete<a href='javascript:window.close();'>Close</a>");
 }
@@ -34,7 +113,7 @@ function saveOptions() {
 function eraseOptions() {
 	localStorage.removeItem("id");
 	localStorage.removeItem("password");
-	chrome.extension.getBackgroundPage().getBookmarks();
+	//chrome.extension.getBackgroundPage().updateSQL();
 	location.reload();
 	window.close();
 }
@@ -51,5 +130,13 @@ PASSWORD:<input type="password" name="password" id="password">
 <br>
 <div id="status"></div>
 <a href="http://jason3e7.no-ip.org/linkslight/" target="_blank">Register</a>
+<br><br>
+Set Options<br>
+<input type=checkbox name="AutoConnect" id="autoConnect">AutoConnect<br>
+<input type=checkbox name="sort" id="sort" >Sort<br>
+<input type=checkbox name="light" id="light">Light<br>
+<input type=checkbox name="search" id="search">Search<br>
+<br>
+
 </body> 
 </html>

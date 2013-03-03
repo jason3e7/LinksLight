@@ -1,4 +1,4 @@
-<html>
+ï»¿<html>
 <head>
 <meta charset="utf-8" />
 <script type="text/javascript" src="jquery.min.js"></script> 
@@ -12,35 +12,38 @@ var connChoice=true;
 
 localStorage["conn"]=false;
 
-var bookmarkTree="<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=UTF-8\">\n"+
-"<TITLE>Bookmarks</TITLE>\n"+
-"<H1>Bookmarks</H1>\n";
+var bookmarkTree="<?xml version=\"1.0\"?>\n<bookmarks version=\"1\">\n";
 
-function init()
+function updateSQL()
 {
-	/*Copy Bookmarks bar To Other Bookmarks*/	
+	id = localStorage["id"];
+	password =localStorage["password"];
+	dumpBookmarks();
+	
 	// Traverse the bookmark tree, and print the folder and nodes.
 	function dumpBookmarks(query) {
-		var bookmarkTreeNodes = chrome.bookmarks.getTree(
+		//var bookmarkTreeNodes = chrome.bookmarks.getTree(
+		var bookmarkTreeNodes = chrome.bookmarks.getSubTree("1",
 		function(bookmarkTreeNodes) {
-			bookmarkTree=bookmarkTree.concat(dumpTreeNodes(bookmarkTreeNodes, query));			
-			alert(bookmarkTree);
+			bookmarkTree=bookmarkTree.concat(dumpTreeNodes(bookmarkTreeNodes, query));		
+			bookmarkTree+="</bookmarks>";
+			
+			bookmarkTree=bookmarkTree.replace(/&/g,"&amp;");
+			//alert(bookmarkTree);
+			$.get("http://jason3e7.no-ip.org/linkslight/cgi/updateSQL.php", { id: id, password: password ,xml: bookmarkTree} );
+			//$.get("http://jason3e7.no-ip.org/linkslight/cgi/updateSQL.php?id="+id+"&password="+password+"&xml="+bookmarkTree);
+			updateBookmarksBar();
 		});
 	}
-	
+		
 	function dumpTreeNodes(bookmarkNodes, query) {
-		var list = "<DL><p>\n";
+		var list ="";
 		var i;
 		for (i = 0; i < bookmarkNodes.length; i++) {
 			list=list.concat(dumpNode(bookmarkNodes[i], query));
-			//list.append(dumpNode(bookmarkNodes[i], query));
-			//list.append("TreeNode");
-			//list=list.concat("TreeNode");
 		}
-		list += "</DL><p>\n";
 		return list;
 	}
-	
 	
 	function dumpNode(bookmarkNode, query) {
 		var li="";
@@ -49,16 +52,15 @@ function init()
 				if (String(bookmarkNode.title).indexOf(query) == -1) {
 					return "<span></span>";
 				}
-			}
-			
+			}			
 			var anchor ="";
 			if(bookmarkNode.url)
 			{
-				anchor = "<DT><a "+"href="+bookmarkNode.url+">"+bookmarkNode.title+"</a>\n";
+				anchor = "<bookmark id=\""+bookmarkNode.id+"\" parentId=\""+bookmarkNode.parentId+"\" url=\""+bookmarkNode.url+"\" title=\""+bookmarkNode.title+"\"></bookmark>\n";
 			}
 			else
 			{
-				anchor = "<DT><H3>"+bookmarkNode.title+"</H3>\n";
+				anchor = "<bookmark id=\""+bookmarkNode.id+"\" parentId=\""+bookmarkNode.parentId+"\" title=\""+bookmarkNode.title+"\" ></bookmark>\n";
 			}
 			li+=(anchor);
 			
@@ -85,66 +87,66 @@ function delBookmarkBar()
 }
 
 
-function getBookmarks()
+function updateBookmarksBar()
 {
-	//alert(connChoice);
-	//alert(connChoice != false);
-	
 	if(connChoice != false)
-	{	
-		delBookmarkBar();
-		id = localStorage["id"];
-		password =localStorage["password"];
-		//if() ±b¸¹±K½Xªº§PÂ_
-		/*getBookmarks and Create on Chrome bar*/
-		$.get("http://jason3e7.no-ip.org/linkslight/cgi/getBookmarks.php?id="+id+"&password="+password, function(data){
-		
-			bookmarkXML=data;		
-			
-			$(bookmarkXML).find("bookmark[parentId='1']").each(function()
-			{ 
-				if($(this).attr("url"))
+	{		
+		if(localStorage["id"] != undefined && localStorage["password"] != undefined )
+		{
+			id = localStorage["id"];
+			password =localStorage["password"];
+			/*getBookmarks and Create on Chrome bar*/
+			$.get("http://jason3e7.no-ip.org/linkslight/cgi/getBookmarks.php?id="+id+"&password="+password, function(data)
+			{
+				
+				bookmarkXML=data;		
+				//$(bookmarkXML).find("bookmark[parentId='0']").each(function(){alert($(this).attr("id"))});
+				
+				if(data!="")
 				{
-					chrome.bookmarks.create(
+					delBookmarkBar();
+					$(bookmarkXML).find("bookmark[parentId='1']").each(function()
 					{
-						//alert($(this).children("parentId").attr("data"));
-						'parentId': $(this).attr("parentId"),
-						'title': $(this).attr("title"),
-						'url': $(this).attr("url")
-					});
+						if($(this).attr("url"))
+						{
+							chrome.bookmarks.create(
+							{
+								//alert($(this).children("parentId").attr("data"));
+								'parentId': $(this).attr("parentId"),
+								'title': $(this).attr("title"),
+								'url': $(this).attr("url")
+							});
+						}
+						else
+						{
+							var idTemp=$(this).attr("id");
+							chrome.bookmarks.create(
+							{
+								'parentId': $(this).attr("parentId"),
+								 'title': $(this).attr("title")},
+								function(newFolder) {
+								folderTree(idTemp,newFolder.id);						
+							});
+						}
+					}
+					);
+					//alert("Data not null ");
+					chrome.browserAction.setIcon({path:"images/icon_16.png"});
+					chrome.browserAction.setTitle({"title":"Connect"});
+					localStorage["conn"]=true; 
+					chrome.tabs.onUpdated.addListener(urlchange);
+					scheduleRequest();
 				}
 				else
 				{
-					var idTemp=$(this).attr("id");
-					chrome.bookmarks.create(
-					{
-						'parentId': $(this).attr("parentId"),
-                         'title': $(this).attr("title")},
-                        function(newFolder) {
-						folderTree(idTemp,newFolder.id);						
-					});
+					//alert("Data null ");
+					chrome.browserAction.setIcon({path:"images/loading.png"});
+					chrome.browserAction.setTitle({"title":"Disconnect"});
+					localStorage["conn"]=false; 
+					chrome.tabs.onUpdated.removeListener(urlchange);
 				}
-
 			});
-			
-			if(data!="")
-			{
-				//alert("Data not null ");
-				chrome.browserAction.setIcon({path:"images/icon_16.png"});
-				chrome.browserAction.setTitle({"title":"Connect"});
-				localStorage["conn"]=true; 
-				chrome.tabs.onUpdated.addListener(urlchange);
-				scheduleRequest();
-			}
-			else
-			{
-				//alert("Data null ");
-				chrome.browserAction.setIcon({path:"images/loading.png"});
-				chrome.browserAction.setTitle({"title":"Disconnect"});
-				localStorage["conn"]=false; 
-				chrome.tabs.onUpdated.removeListener(urlchange);
-			}
-		});
+		}
 	}
 }
 
@@ -178,9 +180,11 @@ function folderTree(parentId,folderId)
 	});	
 }
 
+
 /*button*/
 function onBrowserActionClicked() 
 {
+	//alert(localStorage["conn"]);
 	if (localStorage["conn"] != 'true') 
 	{
 		if(localStorage["id"] == undefined && localStorage["password"] == undefined )
@@ -190,7 +194,7 @@ function onBrowserActionClicked()
 		else
 		{
 			connChoice=true;
-			getBookmarks();
+			updateSQL();
 		}
     }
 	else
@@ -205,6 +209,7 @@ function onBrowserActionClicked()
 	}
 };        
 chrome.browserAction.onClicked.addListener(onBrowserActionClicked);
+
 
 /*Record*/
 function urlchange(tabId, changeInfo, tab)     
@@ -227,13 +232,11 @@ function scheduleRequest() {
 	console.log("Scheduling request...");
 	window.setTimeout(startRequest, reqeustInterval);
 }
-
-
 function startRequest()
 {
-	//alert(bookmark);
-	//dumpBookmarks();	
-   getBookmarks(); 
+	//updateBookmarksBar();
+	//alert("WHY");
+	updateSQL();
 }
 startRequest();
 </script>
