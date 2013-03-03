@@ -6,5 +6,5 @@ unset($_SESSION['id']);
 unset($_SESSION['user']);
 unset($_SESSION['mail']);
 echo '登出中......';
-echo '<meta http-equiv=REFRESH CONTENT=1;url=index.php>';
+echo '<meta http-equiv=REFRESH CONTENT=1;url=refresh.php>';
 ?>

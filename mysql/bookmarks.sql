@@ -1,138 +1,1324 @@
 -- phpMyAdmin SQL Dump
--- version 3.3.7deb5build0.10.10.1
+-- version 2.10.3
 -- http://www.phpmyadmin.net
---
+-- 
 -- 主機: localhost
--- 建立日期: Nov 01, 2011, 11:52 PM
--- 伺服器版本: 5.1.49
--- PHP 版本: 5.3.3-1ubuntu9.5
+-- 建立日期: Nov 09, 2011, 02:50 PM
+-- 伺服器版本: 5.0.51
+-- PHP 版本: 5.2.6
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
+-- 
 -- 資料庫: `bookmarks`
---
+-- 
 
 -- --------------------------------------------------------
 
---
+-- 
 -- 資料表格式： `bookmark`
---
+-- 
 
-CREATE TABLE IF NOT EXISTS `bookmark` (
-  `SQLid` int(11) NOT NULL AUTO_INCREMENT,
-  `user` text COLLATE utf8_unicode_ci NOT NULL,
-  `id` text COLLATE utf8_unicode_ci NOT NULL,
-  `parentId` text COLLATE utf8_unicode_ci NOT NULL,
-  `title` text COLLATE utf8_unicode_ci NOT NULL,
-  `url` text COLLATE utf8_unicode_ci NOT NULL,
-  `point` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`SQLid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=140 ;
+CREATE TABLE `bookmark` (
+  `SQLid` int(11) NOT NULL auto_increment,
+  `user` text collate utf8_unicode_ci NOT NULL,
+  `id` text collate utf8_unicode_ci NOT NULL,
+  `parentId` text collate utf8_unicode_ci NOT NULL,
+  `title` text collate utf8_unicode_ci NOT NULL,
+  `url` text collate utf8_unicode_ci NOT NULL,
+  `point` int(11) NOT NULL default '0',
+  `orderNum` int(15) unsigned NOT NULL,
+  `uptime` text collate utf8_unicode_ci NOT NULL,
+  PRIMARY KEY  (`SQLid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8607 ;
 
---
+-- 
 -- 列出以下資料庫的數據： `bookmark`
---
+-- 
 
-INSERT INTO `bookmark` (`SQLid`, `user`, `id`, `parentId`, `title`, `url`, `point`) VALUES
-(1, 'root', '1', '0', '書籤列', '', 0),
-(2, 'root', '11333', '1', 'webmeetup', 'http://webmeetup.org/what', 0),
-(3, 'root', '11334', '1', 'google', 'http://www.google.com/', 1),
-(4, 'root', '11335', '1', 'plurk', 'http://www.plurk.com/', 0),
-(5, 'root', '11336', '1', 'GOOD', 'http://www.yahoo.com/', 0),
-(6, 'root', '11337', '1', 'youtube', 'http://www.youtube.com/', 0),
-(7, 'root', '11338', '1', 'Wikipedia, the free encyclopedia', 'http://en.wikipedia.org/', 0),
-(8, 'root', '2206', '1', 'new', '', 0),
-(9, 'root', '2207', '2206', 'test', '', 0),
-(10, 'root', '11341', '11340', 'T客邦 - 我只推薦好東西', 'http://www.techbang.com.tw/', 0),
-(27, 'test', '17473', '17472', '行動後學習機制 - MBA智库百科', 'http://wiki.mbalib.com/zh-tw/%E8%A1%8C%E5%8A%A8%E5%90%8E%E5%AD%A6%E4%B9%A0%E6%9C%BA%E5%88%B6', 0),
-(26, 'test', '18853', '1', 'AI', '', 0),
-(25, 'test', '16343', '1', 'Samples - Google Chrome Extensions - Google Code', 'http://code.google.com/chrome/extensions/samples.html', 0),
-(23, 'test', '1', '0', '書籤列', '', 0),
-(24, 'test', '16342', '1', 'UVa', 'http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=25', 0),
-(21, 'test', '16340', '1', '書籤管理員', 'chrome-extension://eemcgdkfndhakfknompkggombfjjjeno/main.html#1', 0),
-(22, 'test', '16341', '1', 'GreenWiki', 'http://jason3e7.no-ip.org/greenwiki/index.php/%E9%A6%96%E9%A0%81', 0),
-(28, 'test', '17474', '17472', 'KNN演算法 « Mr./Ms. Days – 網路, 資訊, 觀察, 生活', 'http://mmdays.wordpress.com/2007/05/16/knn/', 0),
-(29, 'test', '17475', '17472', '演算法 | 宅學習 - Social Learning Space', 'http://sls.weco.net/course/alg', 0),
-(30, 'test', '17476', '17472', 'FUNcLogs: 感知學習演算法(Perceptron Learning Algorithm)白話說明', 'http://function1122.blogspot.com/2010/10/perceptron-learning-algorithm.html', 0),
-(31, 'test', '18858', '1', 'Kuso', '', 0),
-(32, 'test', '17631', '17630', 'YouTube - The best penalty kick ever', 'http://www.youtube.com/watch?v=7hQAjyWhC7s&feature=player_embedded', 0),
-(33, 'test', '17632', '17630', 'YouTube - Videos Posted by Sarsi Super  KAP BOOM !!!!!!!!!!!!!!!!!!!!!! HD', 'http://www.youtube.com/watch?v=685bGK212Mw', 0),
-(34, 'test', '17633', '17630', 'Pirates Love Daisies: An HTML5 Tower Defence Strategy Game', 'http://www.pirateslovedaisies.com/', 0),
-(35, 'test', '17634', '17630', '粉專欄：史上最無用的東西？其實是療癒系之物吧', 'http://chinese.engadget.com/2011/06/22/the-most-useless-thing-is-healing-system/', 0),
-(36, 'test', '17635', '17630', 'YouTube - 一分鐘做一顆核彈 how to make an atomic bomb in a min.', 'http://www.youtube.com/watch?v=W9ds52QqpCU&feature=share', 0),
-(37, 'test', '17636', '17630', 'YouTube - ‪【中文字幕】所有動畫片頭會用到的梗‬‏', 'https://www.youtube.com/watch?v=g2ZjDi5erWk', 0),
-(38, 'test', '17637', '17630', '邪教檢查表', 'http://www.richyli.com/column/sect/sekt_checklist.htm', 0),
-(39, 'test', '17638', '17630', '我的組員都不做報告 - YouTube', 'http://www.youtube.com/watch?v=RKjQ9gfW8Eo&feature=share', 0),
-(40, 'test', '17639', '17630', 'D-trix: 去你的網絡縮寫【中文字幕】 - YouTube', 'http://www.youtube.com/watch?feature=player_embedded&v=NMUKUB2lF2g', 0),
-(41, 'test', '17640', '17630', '[影片]現場搞笑表演團體【魚蹦興業】 - PttFB板 - Disp BBS', 'http://disp.cc/b/337-2qQZ', 0),
-(42, 'test', '17641', '17630', '92a6823192d948cc4ec72895dea4f828.jpg (800×600)', 'http://images.plurk.com/92a6823192d948cc4ec72895dea4f828.jpg', 0),
-(43, 'test', '17642', '17630', '2011 COSCUP Lightning Talk 嵌入世開發的故事 by BenLau(HK) - YouTube', 'http://www.youtube.com/watch?v=Aod7UDL0qTI&feature=player_embedded', 0),
-(44, 'test', '17643', '17630', '雞大牙短片- 姜國隊長：復仇者先鋒 @ 隨意窩 Xuite 影音', 'http://vlog.xuite.net/play/ZGJEWXNRLTM3ODcxMDMuZmx2', 0),
-(45, 'test', '18859', '1', '海龜湯', '', 0),
-(46, 'test', '18798', '18797', '美國FBI招工題目 (答對3題的人不超過4個)想知答案請按ctrl+a - 推理題專區 - IQ題終極匯集 - 香港討論區 Uwants.com', 'http://www.uwants.com/viewthread.php?tid=5356264', 0),
-(47, 'test', '18860', '1', 'PICTURE', '', 0),
-(48, 'test', '18786', '18785', '科技間的模仿', 'http://images.plurk.com/7ed71631e4c440843f363089a4314545.gif', 1),
-(49, 'test', '18787', '18785', '地球太危險了', 'http://images.plurk.com/770c6b42da40431039eef96949331065.jpg', 0),
-(50, 'test', '18788', '18785', '科技間的電池', 'http://images.plurk.com/8622bab1d8581a97f911ec0287c23f6b.jpg', 0),
-(51, 'test', '18789', '18785', '魔法少女小圓', 'http://i.imgur.com/OQysu.jpg', 0),
-(52, 'test', '18790', '18785', '你發現錯誤在哪裡了嗎？', 'http://images.plurk.com/c516ec73c538723f6f518f433b1481f6.jpg', 0),
-(53, 'test', '18791', '18785', '惡搞中華電信.jpg (413×217)', 'http://i.minus.com/ibulDG.jpg', 0),
-(54, 'test', '18792', '18785', 'Opera_QB', 'http://i.imgur.com/kBCSI.jpg', 0),
-(55, 'test', '18793', '18785', '三角函數', 'http://images.plurk.com/f499097f5bdacff4b82d300c83b28297.jpg', 0),
-(56, 'test', '18794', '18785', '時鐘', 'http://a.imageshack.us/img828/5/snap0879.jpg', 0),
-(57, 'test', '18795', '18785', '資訊人員的關係', 'http://i.imgur.com/3YFTG.jpg', 0),
-(58, 'test', '18796', '18785', '別人的書', 'http://images.plurk.com/6903107_8b26ef8bd027eae7947f66dd85a814a6.jpg', 0),
-(59, 'test', '16342', '1', 'UVa', 'http://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=25', 0),
-(60, 'test', '17631', '17630', 'YouTube - The best penalty kick ever', 'http://www.youtube.com/watch?v=7hQAjyWhC7s&amp;feature=player_embedded', 0),
-(61, 'test', '17635', '17630', 'YouTube - 一分鐘做一顆核彈 how to make an atomic bomb in a min.', 'http://www.youtube.com/watch?v=W9ds52QqpCU&amp;feature=share', 0),
-(62, 'test', '17638', '17630', '我的組員都不做報告 - YouTube', 'http://www.youtube.com/watch?v=RKjQ9gfW8Eo&amp;feature=share', 0),
-(63, 'test', '17639', '17630', 'D-trix: 去你的網絡縮寫【中文字幕】 - YouTube', 'http://www.youtube.com/watch?feature=player_embedded&amp;v=NMUKUB2lF2g', 0),
-(64, 'test', '17642', '17630', '2011 COSCUP Lightning Talk 嵌入世開發的故事 by BenLau(HK) - YouTube', 'http://www.youtube.com/watch?v=Aod7UDL0qTI&amp;feature=player_embedded', 0),
-(134, 'test', '2202', '1', 'webmeetup', 'http://webmeetup.org/what', 0),
-(129, 'new', '2188', '1', 'plurk', 'http://www.plurk.com/', 0),
-(130, 'new', '2189', '1', 'google', 'http://www.google.com/', 0),
-(131, 'new', '2190', '1', 'webmeetup', 'http://webmeetup.org/what', 0),
-(132, 'test', '2200', '1', 'plurk', 'http://www.plurk.com/', 0),
-(133, 'test', '2201', '1', 'google', 'http://www.google.com/', 0),
-(127, 'new', '2186', '1', 'youtube', 'http://www.youtube.com/', 0),
-(128, 'new', '2187', '1', 'GOOD', 'http://www.yahoo.com/', 0),
-(123, 'new', '1', '0', '書籤列', '', 0),
-(126, 'new', '2185', '1', 'Wikipedia, the free encyclopedia', 'http://en.wikipedia.org/', 0),
-(125, 'new', '2207', '2206', 'test', '', 0),
-(124, 'new', '2206', '1', 'new', '', 0),
-(135, 'test', '2203', '1', 'youtube', 'http://www.youtube.com/', 0),
-(136, 'test', '2204', '1', 'GOOD', 'http://www.yahoo.com/', 0),
-(137, 'test', '2205', '1', 'Wikipedia, the free encyclopedia', 'http://en.wikipedia.org/', 0),
-(138, 'test', '2206', '1', 'new', '', 0),
-(139, 'test', '2207', '2206', 'test', '', 0);
+INSERT INTO `bookmark` VALUES (27, 'test', '17473', '17472', '行動後學習機制 - MBA智库百科', 'http://wiki.mbalib.com/zh-tw/%E8%A1%8C%E5%8A%A8%E5%90%8E%E5%AD%A6%E4%B9%A0%E6%9C%BA%E5%88%B6', 0, 0, '');
+INSERT INTO `bookmark` VALUES (26, 'test', '18853', '1', 'AI', '', 0, 0, '');
+INSERT INTO `bookmark` VALUES (25, 'test', '16343', '1', 'Samples - Google Chrome Extensions - Google Code', 'http://code.google.com/chrome/extensions/samples.html', 0, 0, '');
+INSERT INTO `bookmark` VALUES (23, 'test', '1', '0', '書籤列', '', 0, 0, '');
+INSERT INTO `bookmark` VALUES (24, 'test', '16342', '1', 'UVa', 'http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=25', 0, 0, '');
+INSERT INTO `bookmark` VALUES (21, 'test', '16340', '1', '書籤管理員', 'chrome-extension://eemcgdkfndhakfknompkggombfjjjeno/main.html#1', 0, 0, '');
+INSERT INTO `bookmark` VALUES (22, 'test', '16341', '1', 'GreenWiki', 'http://jason3e7.no-ip.org/greenwiki/index.php/%E9%A6%96%E9%A0%81', 0, 0, '');
+INSERT INTO `bookmark` VALUES (28, 'test', '17474', '17472', 'KNN演算法 « Mr./Ms. Days – 網路, 資訊, 觀察, 生活', 'http://mmdays.wordpress.com/2007/05/16/knn/', 0, 0, '');
+INSERT INTO `bookmark` VALUES (29, 'test', '17475', '17472', '演算法 | 宅學習 - Social Learning Space', 'http://sls.weco.net/course/alg', 0, 0, '');
+INSERT INTO `bookmark` VALUES (30, 'test', '17476', '17472', 'FUNcLogs: 感知學習演算法(Perceptron Learning Algorithm)白話說明', 'http://function1122.blogspot.com/2010/10/perceptron-learning-algorithm.html', 0, 0, '');
+INSERT INTO `bookmark` VALUES (31, 'test', '18858', '1', 'Kuso', '', 0, 0, '');
+INSERT INTO `bookmark` VALUES (32, 'test', '17631', '17630', 'YouTube - The best penalty kick ever', 'http://www.youtube.com/watch?v=7hQAjyWhC7s&feature=player_embedded', 0, 0, '');
+INSERT INTO `bookmark` VALUES (33, 'test', '17632', '17630', 'YouTube - Videos Posted by Sarsi Super  KAP BOOM !!!!!!!!!!!!!!!!!!!!!! HD', 'http://www.youtube.com/watch?v=685bGK212Mw', 0, 0, '');
+INSERT INTO `bookmark` VALUES (34, 'test', '17633', '17630', 'Pirates Love Daisies: An HTML5 Tower Defence Strategy Game', 'http://www.pirateslovedaisies.com/', 0, 0, '');
+INSERT INTO `bookmark` VALUES (35, 'test', '17634', '17630', '粉專欄：史上最無用的東西？其實是療癒系之物吧', 'http://chinese.engadget.com/2011/06/22/the-most-useless-thing-is-healing-system/', 0, 0, '');
+INSERT INTO `bookmark` VALUES (36, 'test', '17635', '17630', 'YouTube - 一分鐘做一顆核彈 how to make an atomic bomb in a min.', 'http://www.youtube.com/watch?v=W9ds52QqpCU&feature=share', 0, 0, '');
+INSERT INTO `bookmark` VALUES (37, 'test', '17636', '17630', 'YouTube - ‪【中文字幕】所有動畫片頭會用到的梗‬‏', 'https://www.youtube.com/watch?v=g2ZjDi5erWk', 0, 0, '');
+INSERT INTO `bookmark` VALUES (38, 'test', '17637', '17630', '邪教檢查表', 'http://www.richyli.com/column/sect/sekt_checklist.htm', 0, 0, '');
+INSERT INTO `bookmark` VALUES (39, 'test', '17638', '17630', '我的組員都不做報告 - YouTube', 'http://www.youtube.com/watch?v=RKjQ9gfW8Eo&feature=share', 0, 0, '');
+INSERT INTO `bookmark` VALUES (40, 'test', '17639', '17630', 'D-trix: 去你的網絡縮寫【中文字幕】 - YouTube', 'http://www.youtube.com/watch?feature=player_embedded&v=NMUKUB2lF2g', 0, 0, '');
+INSERT INTO `bookmark` VALUES (41, 'test', '17640', '17630', '[影片]現場搞笑表演團體【魚蹦興業】 - PttFB板 - Disp BBS', 'http://disp.cc/b/337-2qQZ', 0, 0, '');
+INSERT INTO `bookmark` VALUES (42, 'test', '17641', '17630', '92a6823192d948cc4ec72895dea4f828.jpg (800×600)', 'http://images.plurk.com/92a6823192d948cc4ec72895dea4f828.jpg', 0, 0, '');
+INSERT INTO `bookmark` VALUES (43, 'test', '17642', '17630', '2011 COSCUP Lightning Talk 嵌入世開發的故事 by BenLau(HK) - YouTube', 'http://www.youtube.com/watch?v=Aod7UDL0qTI&feature=player_embedded', 0, 0, '');
+INSERT INTO `bookmark` VALUES (44, 'test', '17643', '17630', '雞大牙短片- 姜國隊長：復仇者先鋒 @ 隨意窩 Xuite 影音', 'http://vlog.xuite.net/play/ZGJEWXNRLTM3ODcxMDMuZmx2', 0, 0, '');
+INSERT INTO `bookmark` VALUES (45, 'test', '18859', '1', '海龜湯', '', 0, 0, '');
+INSERT INTO `bookmark` VALUES (46, 'test', '18798', '18797', '美國FBI招工題目 (答對3題的人不超過4個)想知答案請按ctrl+a - 推理題專區 - IQ題終極匯集 - 香港討論區 Uwants.com', 'http://www.uwants.com/viewthread.php?tid=5356264', 0, 0, '');
+INSERT INTO `bookmark` VALUES (47, 'test', '18860', '1', 'PICTURE', '', 0, 0, '');
+INSERT INTO `bookmark` VALUES (48, 'test', '18786', '18785', '科技間的模仿', 'http://images.plurk.com/7ed71631e4c440843f363089a4314545.gif', 1, 0, '');
+INSERT INTO `bookmark` VALUES (49, 'test', '18787', '18785', '地球太危險了', 'http://images.plurk.com/770c6b42da40431039eef96949331065.jpg', 0, 0, '');
+INSERT INTO `bookmark` VALUES (50, 'test', '18788', '18785', '科技間的電池', 'http://images.plurk.com/8622bab1d8581a97f911ec0287c23f6b.jpg', 0, 0, '');
+INSERT INTO `bookmark` VALUES (51, 'test', '18789', '18785', '魔法少女小圓', 'http://i.imgur.com/OQysu.jpg', 0, 0, '');
+INSERT INTO `bookmark` VALUES (52, 'test', '18790', '18785', '你發現錯誤在哪裡了嗎？', 'http://images.plurk.com/c516ec73c538723f6f518f433b1481f6.jpg', 0, 0, '');
+INSERT INTO `bookmark` VALUES (53, 'test', '18791', '18785', '惡搞中華電信.jpg (413×217)', 'http://i.minus.com/ibulDG.jpg', 0, 0, '');
+INSERT INTO `bookmark` VALUES (54, 'test', '18792', '18785', 'Opera_QB', 'http://i.imgur.com/kBCSI.jpg', 0, 0, '');
+INSERT INTO `bookmark` VALUES (55, 'test', '18793', '18785', '三角函數', 'http://images.plurk.com/f499097f5bdacff4b82d300c83b28297.jpg', 0, 0, '');
+INSERT INTO `bookmark` VALUES (56, 'test', '18794', '18785', '時鐘', 'http://a.imageshack.us/img828/5/snap0879.jpg', 0, 0, '');
+INSERT INTO `bookmark` VALUES (57, 'test', '18795', '18785', '資訊人員的關係', 'http://i.imgur.com/3YFTG.jpg', 0, 0, '');
+INSERT INTO `bookmark` VALUES (58, 'test', '18796', '18785', '別人的書', 'http://images.plurk.com/6903107_8b26ef8bd027eae7947f66dd85a814a6.jpg', 0, 0, '');
+INSERT INTO `bookmark` VALUES (59, 'test', '16342', '1', 'UVa', 'http://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=25', 0, 0, '');
+INSERT INTO `bookmark` VALUES (60, 'test', '17631', '17630', 'YouTube - The best penalty kick ever', 'http://www.youtube.com/watch?v=7hQAjyWhC7s&amp;feature=player_embedded', 0, 0, '');
+INSERT INTO `bookmark` VALUES (61, 'test', '17635', '17630', 'YouTube - 一分鐘做一顆核彈 how to make an atomic bomb in a min.', 'http://www.youtube.com/watch?v=W9ds52QqpCU&amp;feature=share', 0, 0, '');
+INSERT INTO `bookmark` VALUES (62, 'test', '17638', '17630', '我的組員都不做報告 - YouTube', 'http://www.youtube.com/watch?v=RKjQ9gfW8Eo&amp;feature=share', 0, 0, '');
+INSERT INTO `bookmark` VALUES (63, 'test', '17639', '17630', 'D-trix: 去你的網絡縮寫【中文字幕】 - YouTube', 'http://www.youtube.com/watch?feature=player_embedded&amp;v=NMUKUB2lF2g', 0, 0, '');
+INSERT INTO `bookmark` VALUES (64, 'test', '17642', '17630', '2011 COSCUP Lightning Talk 嵌入世開發的故事 by BenLau(HK) - YouTube', 'http://www.youtube.com/watch?v=Aod7UDL0qTI&amp;feature=player_embedded', 0, 0, '');
+INSERT INTO `bookmark` VALUES (134, 'test', '2202', '1', 'webmeetup', 'http://webmeetup.org/what', 0, 0, '');
+INSERT INTO `bookmark` VALUES (132, 'test', '2200', '1', 'plurk', 'http://www.plurk.com/', 0, 0, '');
+INSERT INTO `bookmark` VALUES (133, 'test', '2201', '1', 'google', 'http://www.google.com/', 0, 0, '');
+INSERT INTO `bookmark` VALUES (135, 'test', '2203', '1', 'youtube', 'http://www.youtube.com/', 0, 0, '');
+INSERT INTO `bookmark` VALUES (136, 'test', '2204', '1', 'GOOD', 'http://www.yahoo.com/', 0, 0, '');
+INSERT INTO `bookmark` VALUES (137, 'test', '2205', '1', 'Wikipedia, the free encyclopedia', 'http://en.wikipedia.org/', 0, 0, '');
+INSERT INTO `bookmark` VALUES (138, 'test', '2206', '1', 'new', '', 0, 0, '');
+INSERT INTO `bookmark` VALUES (139, 'test', '2207', '2206', 'test', '', 0, 0, '');
+INSERT INTO `bookmark` VALUES (7340, 'new', '21242', '20992', 'TimeStat：分析你用瀏覽器都在上什麼網站（Chrome） | 硬是要學', 'http://www.soft4fun.net/browsing/chrome-browsing/timestat%ef%bc%9a%e5%88%86%e6%9e%90%e4%bd%a0%e7%94%a8%e7%80%8f%e8%a6%bd%e5%99%a8%e9%83%bd%e5%9c%a8%e4%b8%8a%e4%bb%80%e9%ba%bc%e7%b6%b2%e7%ab%99%ef%bc%88chrome%ef%bc%89.htm', 0, 304, '1320470860430');
+INSERT INTO `bookmark` VALUES (7336, 'new', '21238', '20992', '请问：用http传输数据，一次可以传输大小为10兆的文件吗？_.Net问答6_.Net技术问答3_最全面的网站教程', 'http://study.qqcf.com/web/719/252533.htm', 0, 300, '1320470860430');
+INSERT INTO `bookmark` VALUES (7337, 'new', '21239', '20992', '傳輸配額', 'http://msdn.microsoft.com/zh-tw/library/ms731078.aspx', 0, 301, '1320470860430');
+INSERT INTO `bookmark` VALUES (7338, 'new', '21240', '20992', '高有效性簡介30篇: 1 (前言) - iT邦幫忙::IT知識分享社群', 'http://ithelp.ithome.com.tw/question/10075654', 0, 302, '1320470860430');
+INSERT INTO `bookmark` VALUES (7339, 'new', '21241', '20992', 'Myth #23: Choices should always be limited to 7+/-2 - UX Myths', 'http://uxmyths.com/post/931925744/myth-23-choices-should-always-be-limited-to-seven', 0, 303, '1320470860430');
+INSERT INTO `bookmark` VALUES (7332, 'new', '21234', '20992', 'JavaScript replace() Method', 'http://www.w3schools.com/jsref/jsref_replace.asp', 0, 296, '1320470860430');
+INSERT INTO `bookmark` VALUES (7333, 'new', '21236', '20992', 'Re: & in XML files', 'http://lists.xml.org/archives/xml-dev/200106/msg00225.html', 0, 298, '1320470860430');
+INSERT INTO `bookmark` VALUES (7334, 'new', '21235', '20992', 'JavaScript RegExp Object', 'http://www.w3schools.com/jsref/jsref_obj_regexp.asp', 0, 297, '1320470860430');
+INSERT INTO `bookmark` VALUES (7335, 'new', '21237', '20992', 'http 傳輸 限制 - Google 搜尋', 'http://www.google.com.tw/#q=http+%E5%82%B3%E8%BC%B8+%E9%99%90%E5%88%B6&hl=zh-TW&cr=countryTW&tbs=ctr:countryTW&prmd=imvns&ei=ba-oTormPJGVmQWpqt2zDw&start=10&sa=N&bav=on.2,or.r_gc.r_pw.r_cp.,cf.osb&fp=11dfe75e0f8e6be8&biw=1280&bih=662', 0, 299, '1320470860430');
+INSERT INTO `bookmark` VALUES (7328, 'new', '19925', '19440', '快速學會使用 PHP 開發 XML 系統 | InspireGate 派克空間', 'http://inspire.twgg.org/c/programming/php/rapid-development-of-xml-systems-learn-how-to-use-php.html', 0, 884, '1320470497505');
+INSERT INTO `bookmark` VALUES (7329, 'new', '21232', '20992', 'Chrome 線上應用程式商店', 'https://chrome.google.com/webstore/detail/jdnejaepfmacfdmhkplckpfdcjgbeode?hl=zh-TW', 0, 294, '1320470860430');
+INSERT INTO `bookmark` VALUES (7330, 'new', '19926', '19440', 'Parsing XML using PHP', 'http://www.codehelp.co.uk/php/xmlparse1.php', 0, 885, '1320470497505');
+INSERT INTO `bookmark` VALUES (7331, 'new', '21233', '20992', 'XML特殊符號 - 菜鳥工程師- 點部落', 'http://www.dotblogs.com.tw/siro228/archive/2008/09/10/5345.aspx', 0, 295, '1320470860430');
+INSERT INTO `bookmark` VALUES (7326, 'new', '19923', '19440', '傳送與接收 XML', 'http://caterpillar.onlyfun.net/Gossip/JavaScript/XML.html', 0, 882, '1320470497505');
+INSERT INTO `bookmark` VALUES (7327, 'new', '19924', '19440', 'XMLParser Documentation/Tutorial', 'http://www.criticaldevelopment.net/xml/doc.php', 0, 883, '1320470497505');
+INSERT INTO `bookmark` VALUES (7325, 'new', '19922', '19440', '[入門][XML] XML入門系列 (1) : XML 初論 - Johnny.Net- 點部落', 'http://www.dotblogs.com.tw/johnny/archive/2010/01/25/13303.aspx', 0, 881, '1320470497505');
+INSERT INTO `bookmark` VALUES (7322, 'new', '19920', '19439', 'Startup 需不需要一開始注意資金的問題？ | Blog.XDite.net', 'http://wp.xdite.net/?p=2840', 0, 878, '1320470497505');
+INSERT INTO `bookmark` VALUES (7323, 'new', '21231', '20992', 'XML', '', 0, 293, '1320470860430');
+INSERT INTO `bookmark` VALUES (7324, 'new', '19921', '19440', 'Trouble parsing xml with jQuery on a extension for google chrome - Stack Overflow', 'http://stackoverflow.com/questions/4001356/trouble-parsing-xml-with-jquery-on-a-extension-for-google-chrome', 0, 880, '1320470497505');
+INSERT INTO `bookmark` VALUES (7321, 'new', '19917', '19439', '初創惡夢？！Startup Company Nightmare @ 停看聽 :: 痞客邦 PIXNET ::', 'http://cando2008.pixnet.net/blog/post/34246597-%E5%88%9D%E5%89%B5%E6%83%A1%E5%A4%A2%EF%BC%9F%EF%BC%81startup-company-nightmare', 0, 875, '1320470497505');
+INSERT INTO `bookmark` VALUES (7320, 'new', '19918', '19439', '[教學]透過 Xmarks 輕鬆線上同步備份 Firefox の 書籤 / Internet Explorer の 我的最愛 @ 風月無邊 :: 痞客邦 PIXNET ::', 'http://izaka.pixnet.net/blog/post/23696582-%5B%E6%95%99%E5%AD%B8%5D%E9%80%8F%E9%81%8E-xmarks-%E8%BC%95%E9%AC%86%E7%B7%9A%E4%B8%8A%E5%90%8C%E6%AD%A5%E5%82%99%E4%BB%BD-firefox-%E3%81%AE-', 0, 876, '1320470497505');
+INSERT INTO `bookmark` VALUES (7318, 'new', '19916', '19439', '創投為什麼要教 Lean Startup？ » Mr. Jamie 看網路與創投', 'http://mrjamie.cc/2011/08/01/venture-capital-lean-startup/', 0, 874, '1320470497505');
+INSERT INTO `bookmark` VALUES (7319, 'new', '19919', '19439', '恭喜老爺，Xmarks 找到買家了 | T客邦 - 我只推薦好東西', 'http://www.techbang.com.tw/posts/4351-congratulations-sir-xmarks-to-find-a-buyer-the?related_post=true', 0, 877, '1320470497505');
+INSERT INTO `bookmark` VALUES (7316, 'new', '19914', '19439', 'Xmarks Bookmark Sync - Chrome 線上應用程式商店', 'https://chrome.google.com/webstore/detail/ajpgkpeckebdhofmmjfgcjjiiejpodla', 0, 872, '1320470497505');
+INSERT INTO `bookmark` VALUES (7317, 'new', '19915', '19439', '創業投資 - 维基百科，自由的百科全书', 'http://zh.wikipedia.org/wiki/%E9%A2%A8%E9%9A%AA%E6%8A%95%E8%B3%87', 0, 873, '1320470497505');
+INSERT INTO `bookmark` VALUES (7314, 'new', '21230', '20992', '創業', '', 0, 292, '1320470860430');
+INSERT INTO `bookmark` VALUES (7315, 'new', '19913', '19438', 'PHP: XML Tag Mapping Example - Manual', 'http://www.php.net/manual/en/example.xml-map-tags.php', 0, 870, '1320470497505');
+INSERT INTO `bookmark` VALUES (7313, 'new', '19912', '19438', '網頁就是程式！開啟Chrome秘密設計的Web Apps分頁 @ PCuSER 電腦人 :: 痞客邦 PIXNET ::', 'http://pcuser.pixnet.net/blog/post/26885940-%E7%B6%B2%E9%A0%81%E5%B0%B1%E6%98%AF%E7%A8%8B%E5%BC%8F%EF%BC%81%E9%96%8B%E5%95%9Fchrome%E7%A7%98%E5%AF%86%E8%A8%AD%E8%A8%88%E7%9A%84web-apps%E5%88%86', 0, 869, '1320470497505');
+INSERT INTO `bookmark` VALUES (7312, 'new', '19911', '19438', 'Google Chrome Extensions 應用 (2010-10-4) - Wiki', 'http://jackey525.no-ip.biz/wiki/index.php/Google_Chrome_Extensions_%E6%87%89%E7%94%A8_(2010-10-4)', 0, 868, '1320470497505');
+INSERT INTO `bookmark` VALUES (7309, 'new', '19908', '19438', 'mysql.js - devsearch-chrome-extension - Development and Coding Search extension for Google Chrome - Google Project Hosting', 'http://code.google.com/p/devsearch-chrome-extension/source/browse/trunk/mysql.js?r=194', 0, 865, '1320470497505');
+INSERT INTO `bookmark` VALUES (7311, 'new', '19910', '19438', 'javascript - Regarding google chrome extension development (tabs.onUpdated.addListener()) - Stack Overflow', 'http://stackoverflow.com/questions/7312691/regarding-google-chrome-extension-development-tabs-onupdated-addlistener', 0, 867, '1320470497505');
+INSERT INTO `bookmark` VALUES (7310, 'new', '19909', '19438', '怎样在Chrome插件里干涉相关网页_百度经验', 'http://jingyan.baidu.com/article/215817f73ebe901eda142320.html', 0, 866, '1320470497505');
+INSERT INTO `bookmark` VALUES (7308, 'new', '19907', '19438', 'chrome插件制作心得 -Javascript技术文档 - diybl', 'http://www.diybl.com/course/1_web/javascript/jsjs/20100719/448929.html', 0, 864, '1320470497505');
+INSERT INTO `bookmark` VALUES (7307, 'new', '19906', '19438', 'Chrome Extension URL Add 1 - Stack Overflow', 'http://stackoverflow.com/questions/6268920/chrome-extension-url-add-1', 0, 863, '1320470497505');
+INSERT INTO `bookmark` VALUES (7306, 'new', '19905', '19438', 'html - Get URL and save it | Chrome Extension - Stack Overflow', 'http://stackoverflow.com/questions/2797853/get-url-and-save-it-chrome-extension', 0, 862, '1320470497505');
+INSERT INTO `bookmark` VALUES (7304, 'new', '19903', '19438', '程式旅人 - 學習紀事 -: Google Chrome extension Howto', 'http://nio127.blogspot.com/2009/05/google-chrome-extension-howto.html', 0, 860, '1320470497505');
+INSERT INTO `bookmark` VALUES (7305, 'new', '19904', '19438', 'Juliana Peña » How to build a Chrome extension, Part 2: Options and localStorage', 'http://julianapena.com/2010/01/how-to-build-a-chrome-extension-part-2-options-and-localstorage/', 0, 861, '1320470497505');
+INSERT INTO `bookmark` VALUES (7301, 'new', '21229', '20992', 'chrome', '', 0, 291, '1320470860430');
+INSERT INTO `bookmark` VALUES (7302, 'new', '19901', '19438', '[教學] 來幫Chrome瀏覽器寫支外掛程式吧! - clayliao.f2e', 'http://clayliao.blogspot.com/2009/05/chrome-extention-how-to.html', 0, 858, '1320470497505');
+INSERT INTO `bookmark` VALUES (7303, 'new', '19902', '19438', '取得擴充元件的絕對網址 @ 歇息，等待明日的天空 :: 痞客邦 PIXNET ::', 'http://gphettoh.pixnet.net/blog/post/69249415-%E5%8F%96%E5%BE%97%E6%93%B4%E5%85%85%E5%85%83%E4%BB%B6%E7%9A%84%E7%B5%95%E5%B0%8D%E7%B6%B2%E5%9D%80', 0, 859, '1320470497505');
+INSERT INTO `bookmark` VALUES (7298, 'new', '19898', '19437', 'HOWTO: Tell if a checkbox is checked | drupal.org', 'http://drupal.org/node/116548', 0, 854, '1320470497505');
+INSERT INTO `bookmark` VALUES (7299, 'new', '19899', '19437', 'javascript - Check checkbox checked property using jQuery - Stack Overflow', 'http://stackoverflow.com/questions/901712/check-checkbox-checked-property-using-jquery', 0, 855, '1320470497505');
+INSERT INTO `bookmark` VALUES (7300, 'new', '19900', '19437', 'HTML CHECKBOX - HTML Code Tutorial', 'http://www.htmlcodetutorial.com/forms/_INPUT_TYPE_CHECKBOX.html', 0, 856, '1320470497505');
+INSERT INTO `bookmark` VALUES (7297, 'new', '19897', '19437', 'Jquery: if checkbox is checked, do this - Stack Overflow', 'http://stackoverflow.com/questions/4243554/jquery-if-checkbox-is-checked-do-this', 0, 853, '1320470497505');
+INSERT INTO `bookmark` VALUES (7295, 'new', '19894', '19437', '微妙的javascript執行順序', 'http://pheion.idv.tw/blog/article-275', 0, 850, '1320470497505');
+INSERT INTO `bookmark` VALUES (7296, 'new', '19896', '19437', 'Ernest Talks: jQuery: 判斷 checkbox 是否被選取: Drupal | Web | Cloud | Life', 'http://talk.ernestchiang.com/2008/10/jquery-checkbox.html', 0, 852, '1320470497505');
+INSERT INTO `bookmark` VALUES (7294, 'new', '19895', '19437', '[ASP.net WebForm] ListView的CheckBox勾選後，該列變色 - jQuery解法-行動版 - 點部落(行動版)', 'http://mobile.dotblogs.com.tw/shadow/archive/2011/07/30/32305.aspx', 0, 851, '1320470497505');
+INSERT INTO `bookmark` VALUES (7292, 'new', '19892', '19437', 'Javascript在網頁頁面加載時的執行順序網頁 / 南方站長', 'http://www.southmaster.com/article/pub.php?page=red2.php&id=5375', 0, 848, '1320470497505');
+INSERT INTO `bookmark` VALUES (7293, 'new', '19893', '19437', '請問網頁執行順序的問題(javascript)- 藍色小舖 BlueShop', 'http://www.blueshop.com.tw/board/show.asp?subcde=BRD20050520013529KWC&fumcde=FUM20041006152641OLG', 0, 849, '1320470497505');
+INSERT INTO `bookmark` VALUES (7289, 'new', '19889', '19437', '嗨！！歡迎來到：window.setTimeout( )', 'http://crazy.molerat.net/learner/cpuroom/homepage/reading.php?filename=971020113944.dov', 0, 845, '1320470497505');
+INSERT INTO `bookmark` VALUES (7290, 'new', '19891', '19437', 'Answering Baranovskiy’s JavaScript quiz « Linmic之雜亂記事', 'http://linmic.cooplex.cc/blog/?p=254', 0, 847, '1320470497505');
+INSERT INTO `bookmark` VALUES (7291, 'new', '19890', '19437', '程式語言教學誌: JavaScript 快速導覽 - 內建 Boolean 物件', 'http://pydoing.blogspot.com/2011/01/javascript-boolean.html', 0, 846, '1320470497505');
+INSERT INTO `bookmark` VALUES (7287, 'new', '19887', '19437', '魚乾的筆記本: Javascript讀XML', 'http://kevyu.blogspot.com/2007/12/javascriptxml.html', 0, 843, '1320470497505');
+INSERT INTO `bookmark` VALUES (7288, 'new', '19888', '19437', 'TIPS-神奇的jQuery XML查詢魔法 - 黑暗執行緒', 'http://blog.darkthread.net/blogs/darkthreadtw/archive/2008/05/16/use-jquery-to-parse-xml.aspx', 0, 844, '1320470497505');
+INSERT INTO `bookmark` VALUES (7286, 'new', '19886', '19437', 'JavaScript Note', 'http://irw.ncut.edu.tw/peterju/jscript.html', 0, 842, '1320470497505');
+INSERT INTO `bookmark` VALUES (7285, 'new', '19885', '19437', 'MiiSoo開發日誌: Javascript 字串處理 (String Operations)', 'http://miisoo.blogspot.com/2008/01/javascript-string-operations.html', 0, 841, '1320470497505');
+INSERT INTO `bookmark` VALUES (7284, 'new', '19884', '19437', 'jQuery 教學 » 篩選元素 (Traversing) - jQuery Tutorial', 'http://webdesign.kerthis.com/jquery/jquery_traversing', 0, 840, '1320470497505');
+INSERT INTO `bookmark` VALUES (7281, 'new', '19881', '19437', 'jQuery 學習筆記-2 @ 一陣嘻，噓! :: 痞客邦 PIXNET ::', 'http://ezcshi.pixnet.net/blog/post/27406659-jquery-%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-2', 0, 837, '1320470497505');
+INSERT INTO `bookmark` VALUES (7283, 'new', '19883', '19437', 'jQuery 教學 » 選取元素 (Selectors) - jQuery Tutorial', 'http://webdesign.kerthis.com/jquery/jquery_selectors', 0, 839, '1320470497505');
+INSERT INTO `bookmark` VALUES (7282, 'new', '21228', '20992', 'JavaScript', 'http://taiwantc.com/js/js_tut_a4.htm', 0, 290, '1320470860430');
+INSERT INTO `bookmark` VALUES (7280, 'new', '19880', '19437', 'jquery find(selector)方法在线测试2-DEMO By甘强|梦三秋在线测试工具1.0版', 'http://www.skygq.com/ci/diy/index/94.html', 0, 836, '1320470497505');
+INSERT INTO `bookmark` VALUES (7279, 'new', '19878', '19437', 'jQuery 参考手册 - 遍历', 'http://www.w3school.com.cn/jquery/jquery_ref_traversing.asp', 0, 834, '1320470497505');
+INSERT INTO `bookmark` VALUES (7278, 'new', '19879', '19437', 'jQuery基础教程之DOM操作-遍历节点-find()方法 | 梦三秋', 'http://www.skygq.com/2011/02/02/jquery-dom-process-find-method/', 0, 835, '1320470497505');
+INSERT INTO `bookmark` VALUES (7277, 'new', '19877', '19437', 'jQuery 教學 - jQuery Tutorial', 'http://webdesign.kerthis.com/jquery/', 0, 833, '1320470497505');
+INSERT INTO `bookmark` VALUES (7276, 'new', '19876', '19437', 'jQuery 教學 - 基礎篇 - JavaScript 教學、心得分享 - jsGears.com 技術論壇 - AJAX, JavaScript, jQuery, 網站開發, 前端效能優化 - Powered by Discuz!', 'http://jsgears.com/thread-63-1-1.html', 0, 832, '1320470497505');
+INSERT INTO `bookmark` VALUES (7275, 'new', '19875', '19437', '[Javascript] 使用javascript取得網址的URL參數和值 | SEO - 知識家', 'http://www.yes-seo.tw/2011/04/javascript-get-url/', 0, 831, '1320470497505');
+INSERT INTO `bookmark` VALUES (7273, 'new', '19874', '19437', '.find() – jQuery API', 'http://api.jquery.com/find/', 0, 830, '1320470497505');
+INSERT INTO `bookmark` VALUES (7274, 'new', '19872', '19437', '邊做邊學 jQuery 系列 15- AJAX式內容管理介面 @ 網頁程式 - coke750101™ :: 隨意窩 Xuite日誌', 'http://blog.xuite.net/coke750101/networkprogramming/32374551', 0, 828, '1320470497505');
+INSERT INTO `bookmark` VALUES (7271, 'new', '21227', '20992', '用「稍後閱讀」過濾資訊洪水的五種層次與六個方法 | 電腦玩物', 'http://playpcesor.blogspot.com/2011/10/blog-post.html', 0, 289, '1320470860430');
+INSERT INTO `bookmark` VALUES (7272, 'new', '19873', '19437', '超猛的 jQuery 外掛蒐集列表 | InspireGate 派克空間', 'http://inspire.twgg.org/c/programming/jquery/the-jquery-plug-in-collection-list.html', 0, 829, '1320470497505');
+INSERT INTO `bookmark` VALUES (7270, 'new', '21226', '20992', 'App 競賽時程表 – 拿獎金、衝名氣、出國比賽去 - Inside 網路趨勢觀察', 'http://www.inside.com.tw/2011/10/24/app-contest-lineup-in-taiwan', 0, 288, '1320470860430');
+INSERT INTO `bookmark` VALUES (7269, 'new', '21225', '20992', '那些我從 Startup Weekend 學到的事 | DreamersLab', 'http://dreamerslab.com/blog/tw/what-have-i-learned-from-startup-weekend/', 0, 287, '1320470860430');
+INSERT INTO `bookmark` VALUES (7267, 'new', '21223', '20992', '文件物件模型 - 维基百科，自由的百科全书', 'http://zh.wikipedia.org/wiki/%E6%96%87%E4%BB%B6%E7%89%A9%E4%BB%B6%E6%A8%A1%E5%9E%8B', 0, 285, '1320470860430');
+INSERT INTO `bookmark` VALUES (7268, 'new', '21224', '20992', '全域變數:PHP5知識交換中心 -- 全域變數,PHP,全域變數 LINUX ,MSN,JAVA,MYSQL,FEDORA,FLASH,DREAMWEAVER,SQL,XML,ORACLE ( php5網管實驗室 )', 'http://w3.php5.idv.tw/modules.php?mod=books&act=show&shid=761', 0, 286, '1320470860430');
+INSERT INTO `bookmark` VALUES (7265, 'new', '21221', '20992', 'Where does Google Chrome for Linux store user specific data? - Super User', 'http://superuser.com/questions/52428/where-does-google-chrome-for-linux-store-user-specific-data', 0, 283, '1320470860430');
+INSERT INTO `bookmark` VALUES (7266, 'new', '21222', '20992', 'Firebug & Chrome Console 控制台使用指南(转载) » Welcome to YiiBlog', 'http://yiiblog.info/blog/2011/04/firebug-chrome-console-%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%E8%BD%AC%E8%BD%BD/', 0, 284, '1320470860430');
+INSERT INTO `bookmark` VALUES (7263, 'new', '21219', '20992', '網頁設計之網站Favicon(我的最愛icon)快速製作教學 - 凱士網頁設計公司', 'http://www.cadiis.com.tw/website-favicon-rapid-production-of-teaching.html', 0, 281, '1320470860430');
+INSERT INTO `bookmark` VALUES (7264, 'new', '21220', '20992', '自訂網址列圖示﹝FavIcon﹞ - 遇見瓦特比', 'http://waterbee.blogspot.com/2006/03/favicon.html', 0, 282, '1320470860430');
+INSERT INTO `bookmark` VALUES (7260, 'new', '21216', '20992', 'remove', 'http://www.oschina.net/code/explore/chromium.r67069/chrome/common/extensions/docs/examples/api/bookmarks/basic/popup.html', 0, 278, '1320470860430');
+INSERT INTO `bookmark` VALUES (7261, 'new', '21217', '20992', 'Chrome Web Store 詳解！與Google應用程式商店原生免費Apps | 電腦玩物', 'http://playpcesor.blogspot.com/2010/12/chrome-web-store-googleapps.html', 0, 279, '1320470860430');
+INSERT INTO `bookmark` VALUES (7262, 'new', '21218', '20992', '<產業人物>7年級生創全台唯一運彩論壇網站 年收千萬', 'http://www.moneyweekly.com.tw/Journal/article.aspx?UID=25247', 0, 280, '1320470860430');
+INSERT INTO `bookmark` VALUES (7258, 'new', '20992', '1', '自己的事業', '', 0, 276, '1320470860430');
+INSERT INTO `bookmark` VALUES (7259, 'new', '21215', '20992', 'PHP寫的Google翻譯API | InspireGate 派克空間', 'http://inspire.twgg.org/c/programming/php/google-translation-api-written-in-php.html', 0, 277, '1320470860430');
+INSERT INTO `bookmark` VALUES (7257, 'new', '21214', '20991', '垃圾收集機制(Garbage Collection)批判_StackDoc', 'http://renren.it/a/bianchengyuyan/C__/20110706/95240.html', 0, 275, '1320470860430');
+INSERT INTO `bookmark` VALUES (7256, 'new', '19871', '19422', 'FUNcLogs: 感知學習演算法(Perceptron Learning Algorithm)白話說明', 'http://function1122.blogspot.com/2010/10/perceptron-learning-algorithm.html', 0, 811, '1320470497505');
+INSERT INTO `bookmark` VALUES (7251, 'new', '21212', '20991', 'but, or bug… » 程式設計師的格言', 'http://but.tw/2008/10/programmers_rule/', 0, 273, '1320470860430');
+INSERT INTO `bookmark` VALUES (7252, 'new', '21213', '20991', 'AI', '', 0, 274, '1320470860430');
+INSERT INTO `bookmark` VALUES (7253, 'new', '19868', '19422', '行動後學習機制 - MBA智库百科', 'http://wiki.mbalib.com/zh-tw/%E8%A1%8C%E5%8A%A8%E5%90%8E%E5%AD%A6%E4%B9%A0%E6%9C%BA%E5%88%B6', 0, 808, '1320470497505');
+INSERT INTO `bookmark` VALUES (7254, 'new', '19869', '19422', 'KNN演算法 « Mr./Ms. Days – 網路, 資訊, 觀察, 生活', 'http://mmdays.wordpress.com/2007/05/16/knn/', 0, 809, '1320470497505');
+INSERT INTO `bookmark` VALUES (7255, 'new', '19870', '19422', '演算法 | 宅學習 - Social Learning Space', 'http://sls.weco.net/course/alg', 0, 810, '1320470497505');
+INSERT INTO `bookmark` VALUES (7249, 'new', '21210', '20991', 'BCC-16 (in Chinese) 計算機概論十六講 POOL 5.08 RGB Color Name and Definition', 'http://libai.math.ncu.edu.tw/bcc16/pool/5.08.shtml', 0, 271, '1320470860430');
+INSERT INTO `bookmark` VALUES (7250, 'new', '21211', '20991', 'Programmer Competency Matrix', 'http://www.indiangeek.net/wp-content/uploads/Programmer%20competency%20matrix.htm', 0, 272, '1320470860430');
+INSERT INTO `bookmark` VALUES (7248, 'new', '19867', '19418', 'C 語言常見誤解 - Google Docs', 'https://docs.google.com/document/d/12cR0qb-kl7jB8RA_eHQu8OSmGKEOshwLeX4Mx5qBzUE/preview?pli=1&ndplr=1&sle=true#bookmark=id.96t1jak51zgw', 0, 803, '1320470497505');
+INSERT INTO `bookmark` VALUES (7244, 'new', '21208', '20991', '一個老程式設計師的建議 - Learn Ruby The Hard Way', 'http://lrthw.github.com/advice/', 0, 269, '1320470860430');
+INSERT INTO `bookmark` VALUES (7245, 'new', '21209', '20991', 'C/C++', '', 0, 270, '1320470860430');
+INSERT INTO `bookmark` VALUES (7246, 'new', '19865', '19418', 'C++ cin 小研究 @ ｌｏｌｙの部屋 :: 痞客邦 PIXNET ::', 'http://v6610688.pixnet.net/blog/post/446636', 0, 801, '1320470497505');
+INSERT INTO `bookmark` VALUES (7247, 'new', '19866', '19418', '米酪丘星球的構築法則: C89, C90, C99是什麼？', 'http://codingnote.blogspot.com/2006/07/c89-c90-c99.html', 0, 802, '1320470497505');
+INSERT INTO `bookmark` VALUES (7240, 'new', '21205', '20991', '有限狀態機 (finite state machine)', 'http://nthucad.cs.nthu.edu.tw/~yyliu/personal/nou/04ds/fsm.html', 0, 266, '1320470860430');
+INSERT INTO `bookmark` VALUES (7241, 'new', '21204', '20991', '橡皮鴨程序調試法_StackDoc', 'http://renren.it/a/kaifaguanli/xiangmuguanli/20110706/94910.html', 0, 265, '1320470860430');
+INSERT INTO `bookmark` VALUES (7242, 'new', '21206', '20991', 'Framework - 線上英漢字典 (English-Chinese Dictionary)', 'http://cdict.net/q/Framework', 0, 267, '1320470860430');
+INSERT INTO `bookmark` VALUES (7243, 'new', '21207', '20991', '024 Luba Tang 淺談 GCC 編譯技術 Break Compilation Boundaries with GCC - YouTube', 'http://www.youtube.com/embed/o1tlfhrkrYQ?hd=1&playlist=', 0, 268, '1320470860430');
+INSERT INTO `bookmark` VALUES (7238, 'new', '21203', '20991', 'Writing Efficient C and C Code Optimization - CodeProject', 'http://www.codeproject.com/KB/cpp/C___Code_Optimization.aspx', 0, 264, '1320470860430');
+INSERT INTO `bookmark` VALUES (7239, 'new', '21202', '20991', '程式總動員', 'http://www.acelan.idv.tw/', 0, 263, '1320470860430');
+INSERT INTO `bookmark` VALUES (7237, 'new', '19864', '19409', 'knapsack.pdf - 技術提供：Google 文件', 'http://docs.google.com/viewer?a=v&q=cache:IBJyP057AsoJ:www.es.ele.tue.nl/education/5MC10/Solutions/knapsack.pdf+DP+0-1+knapsack&hl=zh-TW&gl=tw&pid=bl&srcid=ADGEEShfbGN_4mLOUNVb6EIABPL1oNusmtQRSL3DPsgV_mz7LqEjiAKgc6Kt4CxgjWURGPJ56ZN5eXynl-CYCjk87UTwst_jcGB9vEc_BkAc5jhdp1lUcpf0csUyAH9AZK7YM7ZnsXsx&sig=AHIEtbROLTc0f3AglC8s7gDF1YFXEy9bTw', 0, 791, '1320470497505');
+INSERT INTO `bookmark` VALUES (7235, 'new', '19863', '19409', '超軟之家: 精簡版作業系統實戰: 自製OS用Qemu執行', 'http://ben6.blogspot.com/2011/05/qemu.html', 0, 790, '1320470497505');
+INSERT INTO `bookmark` VALUES (7236, 'new', '21201', '20991', '10 JavaScript Shorthand Coding Techniques | jQuery4u', 'http://www.jquery4u.com/javascript/shorthand-javascript-techniques/', 0, 262, '1320470860430');
+INSERT INTO `bookmark` VALUES (7233, 'new', '19861', '19409', '演算法筆記', 'http://www.csie.ntnu.edu.tw/~u91029/', 0, 788, '1320470497505');
+INSERT INTO `bookmark` VALUES (7234, 'new', '19862', '19409', 'Optimizing C++ - Wikibooks, open books for an open world', 'http://en.wikibooks.org/wiki/Optimizing_C%2B%2B', 0, 789, '1320470497505');
+INSERT INTO `bookmark` VALUES (7231, 'new', '19859', '19409', '2011大學程式能力檢定', 'http://cpe.lis.nsysu.edu.tw/', 0, 786, '1320470497505');
+INSERT INTO `bookmark` VALUES (7232, 'new', '19860', '19409', 'Amazon.com: System Software: An Introduction to Systems Programming (3rd Edition) (9780201423006): Leland L. Beck: Books', 'http://www.amazon.com/System-Software-Introduction-Systems-Programming/dp/0201423006', 0, 787, '1320470497505');
+INSERT INTO `bookmark` VALUES (7229, 'new', '19857', '19409', '[小惡魔的電腦教室] 3-1.認識記憶體，時脈和時序的意義 - Mobile01', 'http://www.mobile01.com/topicdetail.php?f=489&t=370468&p=1&cache=0', 0, 784, '1320470497505');
+INSERT INTO `bookmark` VALUES (7230, 'new', '19858', '19409', '程式設計師節 - 維基百科，自由的百科全書', 'http://zh.wikipedia.org/zh-tw/%E7%A8%8B%E5%BA%8F%E5%91%98%E8%8A%82', 0, 785, '1320470497505');
+INSERT INTO `bookmark` VALUES (7226, 'new', '19854', '19409', '博客來書籍館>組合語言(第五版)', 'http://www.books.com.tw/exep/prod/booksfile.php?item=0010389601', 0, 781, '1320470497505');
+INSERT INTO `bookmark` VALUES (7227, 'new', '19855', '19409', 'XOR swap algorithm - Wikipedia, the free encyclopedia', 'http://en.wikipedia.org/wiki/XOR_swap_algorithm', 0, 782, '1320470497505');
+INSERT INTO `bookmark` VALUES (7228, 'new', '19856', '19409', '演算法筆記 - Bitwise Operation', 'http://www.csie.ntnu.edu.tw/~u91029/BitwiseOperation.html', 0, 783, '1320470497505');
+INSERT INTO `bookmark` VALUES (7225, 'new', '19853', '19409', '博客來書籍館>Windows 環境下32位元組合語言程式設計', 'http://www.books.com.tw/exep/prod/booksfile.php?item=0010235605', 0, 780, '1320470497505');
+INSERT INTO `bookmark` VALUES (7223, 'new', '19851', '19409', 'Vim 簡短入門提示 - 沒穿方服', 'http://bootleq.blogspot.com/2010/08/vim.html', 0, 778, '1320470497505');
+INSERT INTO `bookmark` VALUES (7224, 'new', '19852', '19409', '輕鬆上手專案管理淺談PMP (07/16台北)', 'https://docs.google.com/present/view?id=dc33tb5_216gwpc5sd2&pli=1', 0, 779, '1320470497505');
+INSERT INTO `bookmark` VALUES (7222, 'new', '19850', '19409', '架設VPN server, 被Iptables攔截了 /. [論壇 - Ubuntu基本設定] | Ubuntu 正體中文站', 'http://www.ubuntu-tw.org/modules/newbb/viewtopic.php?post_id=108102', 0, 777, '1320470497505');
+INSERT INTO `bookmark` VALUES (7221, 'new', '19849', '19409', 'Birdlex', 'http://blog.0nz.cc/', 0, 776, '1320470497505');
+INSERT INTO `bookmark` VALUES (7220, 'new', '19848', '19409', 'Virtual private network - Wikipedia, the free encyclopedia', 'http://en.wikipedia.org/wiki/Virtual_private_network', 0, 775, '1320470497505');
+INSERT INTO `bookmark` VALUES (7219, 'new', '19847', '19409', 'lego gun - Google 搜尋', 'http://www.google.com.tw/images?hl=zh-tw&q=lego%20gun&um=1&ie=UTF-8&source=og&sa=N&tab=wi&biw=1268&bih=561', 0, 774, '1320470497505');
+INSERT INTO `bookmark` VALUES (7216, 'new', '19844', '19409', '校園天下', 'http://school.cw.com.tw/article/show/158?cname=INSIGHT', 0, 771, '1320470497505');
+INSERT INTO `bookmark` VALUES (7218, 'new', '19846', '19409', '列最高三星等級 米其林推薦台38景點 | 頭條要聞 | 蘋果日報', 'http://tw.nextmedia.com/applenews/article/art_id/33211206/IssueID/20110226', 0, 773, '1320470497505');
+INSERT INTO `bookmark` VALUES (7217, 'new', '19845', '19409', 'Facebook 排程預約、自動發文程式（ShareAnytime）', 'http://briian.com/?p=7461', 0, 772, '1320470497505');
+INSERT INTO `bookmark` VALUES (7215, 'new', '19843', '19409', '.:: Phrack Magazine ::.', 'http://www.phrack.com/issues.html?issue=65&id=7', 0, 770, '1320470497505');
+INSERT INTO `bookmark` VALUES (7212, 'new', '19840', '19409', 'de0118d0106f1e19171da11321915135.jpg (JPEG 圖片，518x604 像素) - 已縮放 (90%)', 'http://images.plurk.com/de0118d0106f1e19171da11321915135.jpg', 0, 767, '1320470497505');
+INSERT INTO `bookmark` VALUES (7213, 'new', '19841', '19409', 'BIOS Implementation Test Suite', 'http://biosbits.org/', 0, 768, '1320470497505');
+INSERT INTO `bookmark` VALUES (7211, 'new', '19839', '19409', '利用 Facebook 新版個人檔案完成的版面設計作品(副教學) @ 點子燈泡的天地 :: 痞客邦 PIXNET ::', 'http://ideaslamp.pixnet.net/blog/post/47323677', 0, 766, '1320470497505');
+INSERT INTO `bookmark` VALUES (7209, 'new', '19837', '19409', '為台灣教育界投下一顆震撼彈！ - 陳鍾誠的網站', 'http://ccckmit.wikidot.com/po:bomb', 0, 764, '1320470497505');
+INSERT INTO `bookmark` VALUES (7210, 'new', '19838', '19409', '人多的地方不要去 (特別寫給還在學的讀者看) - 專案管理的生活思維', 'http://www.projectup.net/blog/index.php?option=com_content&view=article&id=2731:2010-09-17-15-37-21&catid=9:life&Itemid=25', 0, 765, '1320470497505');
+INSERT INTO `bookmark` VALUES (7208, 'new', '19836', '19409', '博客來書籍館>編程創藝：編寫出卓越的程式碼', 'http://www.books.com.tw/exep/prod/booksfile.php?item=0010453033', 0, 763, '1320470497505');
+INSERT INTO `bookmark` VALUES (7206, 'new', '19834', '19409', '博客來書籍館>重構：改善既有程式的設計', 'http://www.books.com.tw/exep/prod/booksfile.php?item=0010231852', 0, 761, '1320470497505');
+INSERT INTO `bookmark` VALUES (7207, 'new', '19835', '19409', '博客來書籍館>約耳趣談軟體：來自專案管理的現場實錄', 'http://www.books.com.tw/exep/prod/booksfile.php?item=0010467041', 0, 762, '1320470497505');
+INSERT INTO `bookmark` VALUES (7204, 'new', '19832', '19409', 'jjjHB2.PNG (PNG 圖片，787x600 像素) - 已縮放 (90%)', 'http://i.min.us/jjjHB2.PNG', 0, 759, '1320470497505');
+INSERT INTO `bookmark` VALUES (7205, 'new', '19833', '19409', '天瓏網路書店 | 敏捷軟體開發：原則、樣式及實務 (Agile Software Development: Principles, Patterns, and Practices)', 'http://www.tenlong.com.tw/items/9861541489', 0, 760, '1320470497505');
+INSERT INTO `bookmark` VALUES (7214, 'new', '19842', '19409', 'Git 版本控制 branch model 分支模組基本介紹 | 小惡魔 - 電腦技術 - 工作筆記 - AppleBOY', 'http://blog.wu-boy.com/2011/03/git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-branch-model-%E5%88%86%E6%94%AF%E6%A8%A1%E7%B5%84%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%B4%B9/', 0, 769, '1320470497505');
+INSERT INTO `bookmark` VALUES (7203, 'new', '19831', '19409', 'najafali.com - Why PHP is better than Ruby', 'http://najafali.com/php-is-better-than-ruby.html', 0, 758, '1320470497505');
+INSERT INTO `bookmark` VALUES (7202, 'new', '19830', '19409', 'What is ‘this’ in JavaScript? » JavaScript & CSS » SitePoint Blogs', 'http://blogs.sitepoint.com/2011/02/25/what-is-this-in-javascript/', 0, 757, '1320470497505');
+INSERT INTO `bookmark` VALUES (7201, 'new', '19829', '19409', 'Dive Into HTML5', 'http://diveintohtml5.org/', 0, 756, '1320470497505');
+INSERT INTO `bookmark` VALUES (7199, 'new', '19827', '19409', 'ZyeCO.jpg (JPEG 圖片，724x1864 像素)', 'http://i.imgur.com/ZyeCO.jpg', 0, 754, '1320470497505');
+INSERT INTO `bookmark` VALUES (7200, 'new', '19828', '19409', 'x1ndhk.png (PNG 圖片，1024x768 像素) - 已縮放 (70%)', 'http://i53.tinypic.com/x1ndhk.png', 0, 755, '1320470497505');
+INSERT INTO `bookmark` VALUES (7198, 'new', '19826', '19409', 'winception.jpg (JPEG 圖片，700x1578 像素)', 'http://img.flamingeeks.com/2011/02/winception.jpg', 0, 753, '1320470497505');
+INSERT INTO `bookmark` VALUES (7197, 'new', '19825', '19409', '2011台網中心電子報', 'http://www.myhome.net.tw/2011_03/p04.htm', 0, 752, '1320470497505');
+INSERT INTO `bookmark` VALUES (7196, 'new', '19824', '19409', '電腦和網際網路 | 路西瓜', 'http://lucangel1975.wordpress.com/category/%e9%9b%bb%e8%85%a6%e5%92%8c%e7%b6%b2%e9%9a%9b%e7%b6%b2%e8%b7%af/', 0, 751, '1320470497505');
+INSERT INTO `bookmark` VALUES (7195, 'new', '19823', '19409', 'KaLUG | KaLUG / EnricoZiniAutotools', 'http://kalug.linux.org.tw/pmwiki/pmwiki.php?n=KaLUG.EnricoZiniAutotools', 0, 750, '1320470497505');
+INSERT INTO `bookmark` VALUES (7193, 'new', '19821', '19409', '一山還有一山高，帶你看超優 外國人辦公室 - 第 6 頁 | T客邦 - 我只推薦好東西', 'http://www.techbang.com.tw/posts/4924-foreign-design-office?page=6', 0, 748, '1320470497505');
+INSERT INTO `bookmark` VALUES (7194, 'new', '19822', '19409', '酷！學園 - [轉貼]Linux Solution -- VPN架設 〔固定IP對固定IP〕', 'http://phorum.study-area.org/index.php?topic=18748.0', 0, 749, '1320470497505');
+INSERT INTO `bookmark` VALUES (7192, 'new', '19820', '19409', '書摘─創投教父筆下的蘋果與賈伯斯幕後正史 | IT書訊 | iThome online', 'http://www.ithome.com.tw/itadm/article.php?c=65932', 0, 747, '1320470497505');
+INSERT INTO `bookmark` VALUES (7191, 'new', '19817', '19409', 'YouTube - 《正義：一場思辨之旅》之代理孕母 (雙語字幕)', 'http://www.youtube.com/watch?v=EHv04LhDmCo', 0, 744, '1320470497505');
+INSERT INTO `bookmark` VALUES (7190, 'new', '19819', '19409', 'YouTube - 《正義：一場思辨之旅》之電車問題 (雙語字幕)', 'http://www.youtube.com/watch?v=Y4HqXP47lPQ', 0, 746, '1320470497505');
+INSERT INTO `bookmark` VALUES (7189, 'new', '19818', '19409', 'YouTube - 《正義：一場思辨之旅》之有錢人應該多繳稅嗎', 'http://www.youtube.com/watch?v=WafZgL0V_1Y', 0, 745, '1320470497505');
+INSERT INTO `bookmark` VALUES (7188, 'new', '19816', '19409', '王立第二戰研所 Evil Overlord International affairs and Strategic Studies: 如何寫一篇發人深省(使人混亂)的文章 2/20新增範例文 - yam天空部落', 'http://blog.yam.com/eoiss/article/35234638', 0, 743, '1320470497505');
+INSERT INTO `bookmark` VALUES (7187, 'new', '19815', '19409', '鳥哥的 Linux 私房菜-新手討論區 • 檢視主題 - [分享] CentOS 4.4 之 VPN 安裝心得筆記', 'http://phorum.vbird.org/viewtopic.php?t=26986', 0, 742, '1320470497505');
+INSERT INTO `bookmark` VALUES (7186, 'new', '19814', '19409', '請列出 armcc 與 gcc 十個已知的語意差異 - Google 搜尋', 'http://www.google.com/search?q=%E8%AB%8B%E5%88%97%E5%87%BA+armcc+%E8%88%87+gcc+%E5%8D%81%E5%80%8B%E5%B7%B2%E7%9F%A5%E7%9A%84%E8%AA%9E%E6%84%8F%E5%B7%AE%E7%95%B0&ie=utf-8&oe=utf-8&aq=t&rls=org.debian:zh-TW:unofficial&client=iceweasel-a', 0, 741, '1320470497505');
+INSERT INTO `bookmark` VALUES (7185, 'new', '19813', '19409', '質的張而弓矢至焉，林木茂而斧斤至焉，樹成蔭而眾鳥息焉，醯酸而蚋聚焉 - Google 搜尋', 'http://www.google.com/search?q=%E8%B3%AA%E7%9A%84%E5%BC%B5%E8%80%8C%E5%BC%93%E7%9F%A2%E8%87%B3%E7%84%89%EF%BC%8C%E6%9E%97%E6%9C%A8%E8%8C%82%E8%80%8C%E6%96%A7%E6%96%A4%E8%87%B3%E7%84%89%EF%BC%8C%E6%A8%B9%E6%88%90%E8%94%AD%E8%80%8C%E7%9C%BE%E9%B3%A5%E6%81%AF%E7%84%89%EF%BC%8C%E9%86%AF%E9%85%B8%E8%80%8C%E8%9A%8B%E8%81%9A%E7%84%89&ie=utf-8&oe=utf-8&aq=t&rls=org.debian:zh-TW:unofficial&client=iceweasel-a', 0, 740, '1320470497505');
+INSERT INTO `bookmark` VALUES (7184, 'new', '19812', '19409', '11068_1297996916MmC2.jpg (JPEG 圖片，500x370 像素)', 'http://www.nciku.com.tw/space/attachment/201102/18/11068_1297996916MmC2.jpg', 0, 739, '1320470497505');
+INSERT INTO `bookmark` VALUES (7183, 'new', '19811', '19409', '42.jpg (JPEG 圖片，401x350 像素)', 'http://www.aref-adib.com/archives/42.jpg', 0, 738, '1320470497505');
+INSERT INTO `bookmark` VALUES (7182, 'new', '19810', '19409', '在地社群 | Linux 台灣', 'http://www.linux.org.tw/node/325', 0, 737, '1320470497505');
+INSERT INTO `bookmark` VALUES (7181, 'new', '19809', '19409', '高雄都提咖啡DUTTY COFFEE :: 隨意窩 Xuite日誌', 'http://blog.xuite.net/dutty.classic/0301', 0, 736, '1320470497505');
+INSERT INTO `bookmark` VALUES (7180, 'new', '19808', '19409', 'CES 2011: Razer Switchblade 移動PC遊戲概念機 | 老貓測3C', 'http://www.iqmore.idv.tw/ces-2011-razer-switchblade', 0, 735, '1320470497505');
+INSERT INTO `bookmark` VALUES (7179, 'new', '19807', '19409', 'reason-why-computer-user-se.jpg (JPEG 圖片，540x447 像素)', 'http://www.aqee.net/wordpress/wp-content/uploads/2011/02/reason-why-computer-user-se.jpg', 0, 734, '1320470497505');
+INSERT INTO `bookmark` VALUES (7178, 'new', '19806', '19409', '174413j8ti7zjt8ti3anee.jpg (JPEG 圖片，416x600 像素) - 已縮放 (90%)', 'http://citytalk.tw/sns/data/attachment/forum/201102/20/174413j8ti7zjt8ti3anee.jpg', 0, 733, '1320470497505');
+INSERT INTO `bookmark` VALUES (7177, 'new', '19805', '19409', 'chinamobile.png (PNG 圖片，757x473 像素)', 'http://samwu.tw/scr/chinamobile.png', 0, 732, '1320470497505');
+INSERT INTO `bookmark` VALUES (7176, 'new', '19804', '19409', 'Facebook Photo Uploadr 快速、大量上傳照片到 Facebook 相簿', 'http://briian.com/?p=7456', 0, 731, '1320470497505');
+INSERT INTO `bookmark` VALUES (7175, 'new', '19803', '19409', 'cleartext - Google 搜尋', 'http://www.google.com/search?q=cleartext&hl=zh-TW&client=iceweasel-a&rls=org.debian:zh-TW:unofficial&prmd=ivns&source=lnt&tbs=lr:lang_1zh-TW&lr=lang_zh-TW&sa=X&ei=7d1kTe3mO43UvQPVz52rBg&ved=0CAgQpwUoAg', 0, 730, '1320470497505');
+INSERT INTO `bookmark` VALUES (7174, 'new', '19802', '19409', '勸敗之後，社長Aeron現身 | T客邦 - 我只推薦好東西', 'http://www.techbang.com.tw/posts/2452-urged-defeat-the-president-appeared-aeron', 0, 729, '1320470497505');
+INSERT INTO `bookmark` VALUES (7173, 'new', '19801', '19409', '凍仁的 Ubuntu 筆記: Pentadactyl, Firefox F1 大亂鬥 on Firefox 4', 'http://jonny.ubuntu-tw.net/2011/02/pentadactyl-firefox-f1-on-firefox-4.html', 0, 728, '1320470497505');
+INSERT INTO `bookmark` VALUES (7172, 'new', '19800', '19409', '親朋稱呼表', 'http://dict.revised.moe.edu.tw/htm/fulu/cw.htm', 0, 727, '1320470497505');
+INSERT INTO `bookmark` VALUES (7171, 'new', '19799', '19409', '喲哪桑 Speaking 之專案工作日誌: 辦公室，難做事？ Is office not a good place to work?', 'http://jonathanspeaking.blogspot.com/2011/02/is-office-not-good-place-to-work.html?utm_source=feedburner&utm_medium=feed&utm_campaign=Feed%3A+jonathanspeaking+%28Jonathan+Speaking+Software%29', 0, 726, '1320470497505');
+INSERT INTO `bookmark` VALUES (7169, 'new', '19797', '19409', 'WinDbg', 'http://www.windbg.org/', 0, 724, '1320470497505');
+INSERT INTO `bookmark` VALUES (7170, 'new', '19798', '19409', '無標題文件', 'http://www.trend.org/event/2011contest/index.html', 0, 725, '1320470497505');
+INSERT INTO `bookmark` VALUES (7168, 'new', '19795', '19409', 'xj2gj.png (PNG 圖片，1250x1962 像素)', 'http://i.imgur.com/xj2gj.png', 0, 722, '1320470497505');
+INSERT INTO `bookmark` VALUES (7167, 'new', '19796', '19409', 'SaneTwain', 'http://sanetwain.ozuzo.net/', 0, 723, '1320470497505');
+INSERT INTO `bookmark` VALUES (7166, 'new', '19794', '19409', '自由電子報 - 碩士生打造「掰噗」機器人 10萬噗友瘋迷', 'http://www.libertytimes.com.tw/2011/new/feb/28/today-life10.htm', 0, 721, '1320470497505');
+INSERT INTO `bookmark` VALUES (7165, 'new', '19793', '19409', '【珍贵材料】1999 年 Google 办公室的视频 | 谷奥——探寻谷歌的奥秘', 'http://www.guao.hk/posts/videos-from-the-old-googleplex-in-1999.html', 0, 720, '1320470497505');
+INSERT INTO `bookmark` VALUES (7164, 'new', '19792', '19409', '189022_10150162735906153_342845101152_8400110_7530488_n.jpg (JPEG 圖片，600x335 像素)', 'http://a7.sphotos.ak.fbcdn.net/hphotos-ak-ash4/189022_10150162735906153_342845101152_8400110_7530488_n.jpg', 0, 719, '1320470497505');
+INSERT INTO `bookmark` VALUES (7163, 'new', '19791', '19409', '軟體工程(Software Engineering;SE)', 'http://irw.ncut.edu.tw/peterju/se.html', 0, 718, '1320470497505');
+INSERT INTO `bookmark` VALUES (7161, 'new', '19789', '19409', 'gasodroid', 'http://sites.google.com/site/gasodroid/', 0, 716, '1320470497505');
+INSERT INTO `bookmark` VALUES (7162, 'new', '19790', '19409', '【4/7 TOSSUG 心得分享】gasolin: Android 應用程式設計大不同 | Linux 台灣', 'http://www.linux.org.tw/node/653', 0, 717, '1320470497505');
+INSERT INTO `bookmark` VALUES (7160, 'new', '19788', '19409', 'INET6', 'http://blog.gasolin.idv.tw/', 0, 715, '1320470497505');
+INSERT INTO `bookmark` VALUES (7159, 'new', '19787', '19409', '[Android 教學] Android 開發環境建置教學 & Android 模擬器安裝教學課程講義 (For Eclipse IDE)｜Android 教學 | 孫傳雄談科技｜數位部落格｜中時部落格｜中時電子報', 'http://blog.chinatimes.com/tomsun/archive/2010/09/16/539502.html', 0, 714, '1320470497505');
+INSERT INTO `bookmark` VALUES (7158, 'new', '19786', '19409', 'Android 教學 | 孫傳雄談科技｜中時電子報', 'http://blog.chinatimes.com/tomsun/category/6478.html', 0, 713, '1320470497505');
+INSERT INTO `bookmark` VALUES (7157, 'new', '19785', '19409', '更改 GVim 預設字型及配色', 'http://www.facebook.com/notes/%E5%87%8D%E4%BB%81%E7%9A%84ubuntu%E7%AD%86%E8%A8%98/%E6%9B%B4%E6%94%B9-gvim-%E9%A0%90%E8%A8%AD%E5%AD%97%E5%9E%8B%E5%8F%8A%E9%85%8D%E8%89%B2/436447090727', 0, 712, '1320470497505');
+INSERT INTO `bookmark` VALUES (7156, 'new', '19784', '19409', 'TinyTask 電腦操作步驟錄製工具，全自動操控你的鍵盤、滑鼠！', 'http://briian.com/?p=7471', 0, 711, '1320470497505');
+INSERT INTO `bookmark` VALUES (7155, 'new', '19783', '19409', 'W3C HTML5中文小组', 'http://www.w3.org/html/ig/zh/Overview.zh-hant.html', 0, 710, '1320470497505');
+INSERT INTO `bookmark` VALUES (7154, 'new', '19782', '19409', '不一定有道理，但堅持下去就會行得通', 'http://www.wretch.cc/blog/gradlive/9375625', 0, 709, '1320470497505');
+INSERT INTO `bookmark` VALUES (7153, 'new', '19781', '19409', '「定論」往往是為了「需要」而來', 'http://www.wretch.cc/blog/gradlive/9382984', 0, 708, '1320470497505');
+INSERT INTO `bookmark` VALUES (7152, 'new', '19780', '19409', 'Solidot | 骗子克隆美国学校网站欺骗亚洲学生', 'http://internet.solidot.org/article.pl?sid=11/03/02/1139221', 0, 707, '1320470497505');
+INSERT INTO `bookmark` VALUES (7151, 'new', '19779', '19409', '读《程序员的思维修炼》 - 梦想风暴 - 博客大巴', 'http://dreamhead.blogbus.com/logs/98316410.html', 0, 706, '1320470497505');
+INSERT INTO `bookmark` VALUES (7150, 'new', '19778', '19409', '做研究與寫論文 | vgod’s blog', 'http://blog.vgod.tw/2011/03/03/research-and-paper/', 0, 705, '1320470497505');
+INSERT INTO `bookmark` VALUES (7149, 'new', '19777', '19409', 'nickelanddime.png (PNG 圖片，1200x1400 像素) - 已縮放 (38%)', 'http://ndftz.com/nickelanddime.png', 0, 704, '1320470497505');
+INSERT INTO `bookmark` VALUES (7148, 'new', '19776', '19409', 'softnext - Google 搜尋', 'http://www.google.com.tw/search?hl=zh-TW&source=hp&biw=577&bih=449&q=softnext&aq=0&aqi=g5&aql=&oq=%09+softnext', 0, 703, '1320470497505');
+INSERT INTO `bookmark` VALUES (7147, 'new', '19775', '19409', '子凌的精靈夜語: 子凌的linux筆記 - sudo,su,gksu - yam天空部落', 'http://blog.yam.com/kenshinn/article/1901885', 0, 702, '1320470497505');
+INSERT INTO `bookmark` VALUES (7145, 'new', '19772', '19409', 'Linux 指令篇：文件管理--diff-Linux频道-中国IT实验室', 'http://linux.chinaitlab.com/command/723444.html', 0, 699, '1320470497505');
+INSERT INTO `bookmark` VALUES (7146, 'new', '19774', '19409', 'www.softking.com.tw/soft/clickcount.asp?fid3=10459', 'http://www.softking.com.tw/soft/clickcount.asp?fid3=10459', 0, 701, '1320470497505');
+INSERT INTO `bookmark` VALUES (7144, 'new', '19773', '19409', 'coding.derkeiler.com/pdf/Archive/C_CPP/comp.lang.c/2006-09/msg00489.pdf', 'http://coding.derkeiler.com/pdf/Archive/C_CPP/comp.lang.c/2006-09/msg00489.pdf', 0, 700, '1320470497505');
+INSERT INTO `bookmark` VALUES (7143, 'new', '19771', '19409', 'Incredible StartPage - Productive Start Page for Chrome! - Google 瀏覽器擴充功能庫', 'https://chrome.google.com/extensions/detail/ncdfeghkpohnalmpblddmnppfooljekh?hl=zh-tw', 0, 698, '1320470497505');
+INSERT INTO `bookmark` VALUES (7142, 'new', '19770', '19409', '[转]从IDA中提取代码做汇编注册机之VB篇_Cizkey的空间_百度空间', 'http://hi.baidu.com/cizkey/blog/item/db5e55ca8ea1001a7f3e6faf.html', 0, 697, '1320470497505');
+INSERT INTO `bookmark` VALUES (7141, 'new', '19769', '19409', 'testdbg - Google 搜尋', 'http://www.google.com.tw/search?hl=zh-TW&source=hp&biw=1280&bih=654&q=testdbg&aq=f&aqi=&aql=&oq=', 0, 696, '1320470497505');
+INSERT INTO `bookmark` VALUES (7140, 'new', '19768', '19409', '511Tigers.de', 'http://www.hackquest.de/net/', 0, 695, '1320470497505');
+INSERT INTO `bookmark` VALUES (7138, 'new', '19766', '19409', 'The W3C Markup Validation Service', 'http://validator.w3.org/', 0, 693, '1320470497505');
+INSERT INTO `bookmark` VALUES (7139, 'new', '19767', '19409', 'Notpron - The Hardest Riddle Available on the Internet', 'http://deathball.net/notpron/', 0, 694, '1320470497505');
+INSERT INTO `bookmark` VALUES (7136, 'new', '19763', '19409', 'W3m - TestingMediawiki', 'http://www.andcycle.idv.tw/mediawiki/index.php/W3m', 0, 690, '1320470497505');
+INSERT INTO `bookmark` VALUES (7137, 'new', '19764', '19409', 'JAVA SCRIPT簡介', 'http://web.ntit.edu.tw/~yclin/script.htm', 0, 691, '1320470497505');
+INSERT INTO `bookmark` VALUES (7134, 'new', '19761', '19409', 'Rsyslog - Debian Wiki', 'http://wiki.debian.org/Rsyslog', 0, 688, '1320470497505');
+INSERT INTO `bookmark` VALUES (7135, 'new', '19762', '19409', 'archlinux - Google 搜尋', 'http://www.google.com.tw/search?hl=zh-TW&biw=1280&bih=654&q=archlinux&aq=f&aqi=g10&aql=&oq=', 0, 689, '1320470497505');
+INSERT INTO `bookmark` VALUES (7133, 'new', '19760', '19409', 'Xinetd 管理', 'http://tnrc.ncku.edu.tw/course/93/fedora_core2/services/xinetd.htm', 0, 687, '1320470497505');
+INSERT INTO `bookmark` VALUES (7132, 'new', '19755', '19409', 'rsync參數詳解 - 鍵盤語言 (Keyboard Languag) - 網路語言是時代變遷的記錄，更是社會文化的載體，它彰顯出網路時代青年人的思維習慣與言語方式，是當代青年人以網路生活為主題，尤其在網聊、「網路社區」中使用的「鍵盤語言」。沒有規則，自成方圓的網路語言以其快捷性、豐富性、自由性、互通性的鮮明特徵，迅速地成為了虛擬時代青少年的新寵。當然,這些網路「新語言」撇開了語言規範，只能用在網路世界中，現實生活裏，我們還得「老老實實」說話。', 'http://www.xspace.idv.tw/bo_blog/read.php?101', 0, 682, '1320470497505');
+INSERT INTO `bookmark` VALUES (7131, 'new', '19759', '19409', '/sbin directory definition, by The Linux Information Project (LINFO)', 'http://www.linfo.org/sbin.html', 0, 686, '1320470497505');
+INSERT INTO `bookmark` VALUES (7130, 'new', '19758', '19409', 'The Linux Information Project (LINFO) Home Page', 'http://www.linfo.org/', 0, 685, '1320470497505');
+INSERT INTO `bookmark` VALUES (7128, 'new', '19756', '19409', 'dsewnr: C: gets() 是個危險的函式！', 'http://dsewnr.blogspot.com/2007/05/c-gets.html', 0, 683, '1320470497505');
+INSERT INTO `bookmark` VALUES (7129, 'new', '19757', '19409', 'gcc gets - Google 搜尋', 'http://www.google.com.tw/search?q=gcc+gets&hl=zh-TW&biw=1280&bih=654&prmd=ivns&source=lnt&tbs=ctr:countryTW&cr=countryTW&sa=X&ei=aVljTdTtB4S-vgPn38WvDQ&ved=0CAkQpwUoAw', 0, 684, '1320470497505');
+INSERT INTO `bookmark` VALUES (7127, 'new', '19754', '19409', '小小工程師的生活雜記: rsync 參數設定及範例', 'http://cychiang719.blogspot.com/2009/06/rsync.html', 0, 681, '1320470497505');
+INSERT INTO `bookmark` VALUES (7126, 'new', '19753', '19409', 'sudo -s -u mirror - Google 搜尋', 'http://www.google.com.tw/search?hl=zh-TW&source=hp&biw=1280&bih=654&q=sudo+-s+-u+mirror&aq=f&aqi=&aql=&oq=', 0, 680, '1320470497505');
+INSERT INTO `bookmark` VALUES (7125, 'new', '19752', '19409', '[抓小白教學] 安裝 StatCounter 計數器 @ 比利時。愛情札誌 :: 痞客邦 PIXNET ::', 'http://arielhsiao.pixnet.net/blog/post/2161806', 0, 679, '1320470497505');
+INSERT INTO `bookmark` VALUES (7124, 'new', '19751', '19409', 'StatCounter Free invisible Web tracker, Hit counter and Web stats', 'http://statcounter.com/', 0, 678, '1320470497505');
+INSERT INTO `bookmark` VALUES (7123, 'new', '19750', '19409', 'julianor.tripod.com/bc/formatstring-1.2.pdf', 'http://julianor.tripod.com/bc/formatstring-1.2.pdf', 0, 677, '1320470497505');
+INSERT INTO `bookmark` VALUES (7122, 'new', '19749', '19409', 'Debian mirrors - OSWikiHK', 'http://wiki.linux.org.hk/w/Debian_mirrors#.E5.8F.B0.E7.81.A3_.28Taiwan.29', 0, 676, '1320470497505');
+INSERT INTO `bookmark` VALUES (7121, 'new', '19748', '19409', '很棒的 Linux系統安全隱患及加強安全管理方法 @ ㄚ凱凱的IT日誌 :: 隨意窩 Xuite日誌', 'http://blog.xuite.net/kai0227/notebook/23528629', 0, 675, '1320470497505');
+INSERT INTO `bookmark` VALUES (7120, 'new', '19747', '19409', 'incident.png (PNG 圖片，695x309 像素)', 'http://imgs.xkcd.com/comics/incident.png', 0, 674, '1320470497505');
+INSERT INTO `bookmark` VALUES (7118, 'new', '19765', '19409', 'W3M Homepage', 'http://w3m.sourceforge.net/', 0, 692, '1320470497505');
+INSERT INTO `bookmark` VALUES (7119, 'new', '19746', '19409', '摩托學園討論區 • 檢視主題 - [問題]請教如何建置一個apt server', 'http://moto.debian.org.tw/viewtopic.php?t=634', 0, 673, '1320470497505');
+INSERT INTO `bookmark` VALUES (7116, 'new', '19744', '19409', 'http://www.futures.org.tw/Gaobei_check.asp?T=ABGHIJKLMCDEF', 'http://www.futures.org.tw/Gaobei_check.asp?T=ABGHIJKLMCDEF', 0, 671, '1320470497505');
+INSERT INTO `bookmark` VALUES (7117, 'new', '19745', '19409', 'Five and a Half Habits of Highly Effective Designers - Smashing Magazine', 'http://www.smashingmagazine.com/2011/02/18/five-and-a-half-habits-of-highly-effective-designers/', 0, 672, '1320470497505');
+INSERT INTO `bookmark` VALUES (7115, 'new', '19741', '19409', 'What is being creative? on Vimeo', 'http://vimeo.com/18079655', 0, 668, '1320470497505');
+INSERT INTO `bookmark` VALUES (7114, 'new', '19742', '19409', 'TCTV: Inside Dropbox’s Office - Office Snapshots', 'http://www.officesnapshots.com/2011/02/11/tctv-inside-dropboxs-office', 0, 669, '1320470497505');
+INSERT INTO `bookmark` VALUES (7112, 'new', '19740', '19409', 'Self-Induced Panic And The Financial Crisis - Technology Review', 'http://www.technologyreview.com/blog/arxiv/26397/', 0, 667, '1320470497505');
+INSERT INTO `bookmark` VALUES (7113, 'new', '19743', '19409', 'Index of /pub/linux/kernel/people/mcgrof/zd1211', 'http://www.kernel.org/pub/linux/kernel/people/mcgrof/zd1211/', 0, 670, '1320470497505');
+INSERT INTO `bookmark` VALUES (7111, 'new', '19739', '19409', '5455245617_4b32428381_o.jpg (JPEG 圖片，1280x852 像素)', 'http://farm6.static.flickr.com/5094/5455245617_4b32428381_o.jpg', 0, 666, '1320470497505');
+INSERT INTO `bookmark` VALUES (7110, 'new', '19738', '19409', 'Linux Signals', 'http://www.comptechdoc.org/os/linux/programming/linux_pgsignals.html', 0, 665, '1320470497505');
+INSERT INTO `bookmark` VALUES (7109, 'new', '19736', '19409', 'People behind Debian: Maximilian Attems, member of the kernel team | apt-get install debian-wizard', 'http://raphaelhertzog.com/2011/02/17/people-behind-debian-maximilian-attems-member-of-the-kernel-team/', 0, 663, '1320470497505');
+INSERT INTO `bookmark` VALUES (7107, 'new', '19737', '19409', 'Angry Birds — Birds', 'http://shop.angrybirds.com/collections/birds', 0, 664, '1320470497505');
+INSERT INTO `bookmark` VALUES (7108, 'new', '19735', '19409', 'x2go - server based computing: index', 'http://www.x2go.org/index.php?id=1&L=5', 0, 662, '1320470497505');
+INSERT INTO `bookmark` VALUES (7103, 'new', '19731', '19409', '分享美麗的世界', 'http://share.yes99.tw/', 0, 658, '1320470497505');
+INSERT INTO `bookmark` VALUES (7104, 'new', '19732', '19409', 'RSync - TWEmu.no-ip.org', 'http://twemu.no-ip.org/wiki/index.php/RSync', 0, 659, '1320470497505');
+INSERT INTO `bookmark` VALUES (7105, 'new', '19733', '19409', 'The Flavor of Rice Fields in Taiwan. �啁哐蝔駁���', 'http://www.frogfree.com/riceflavor/', 0, 660, '1320470497505');
+INSERT INTO `bookmark` VALUES (7106, 'new', '19734', '19409', 'Linux 的 RDP 終端機系統 - MaruMagi部落格之拷貝經驗 - 別人耶經驗,著是我耶成功啦!!', 'http://maru.gates.tw/read.php/191.htm', 0, 661, '1320470497505');
+INSERT INTO `bookmark` VALUES (7101, 'new', '19729', '19409', 'Unique Content Verifier 找出網路上誰盜用你的文章！（重複文章搜尋器）', 'http://briian.com/?p=7439', 0, 656, '1320470497505');
+INSERT INTO `bookmark` VALUES (7102, 'new', '19730', '19409', '我目前常常使用的瀏覽器 Bookmarklets 書籤小工具2010版 | 電腦玩物', 'http://playpcesor.blogspot.com/2010/06/bookmarklets-2010.html', 0, 657, '1320470497505');
+INSERT INTO `bookmark` VALUES (7100, 'new', '19728', '19409', 'Zh TW:Sabayon Linux - Sabayon Wiki', 'http://wiki.sabayon.org/index.php?title=Zh_TW:Sabayon_Linux', 0, 655, '1320470497505');
+INSERT INTO `bookmark` VALUES (7098, 'new', '19726', '19409', 'remote debugging - Google 搜尋', 'http://www.google.com.tw/search?hl=zh-TW&source=hp&biw=1268&bih=561&q=remote+debugging&aq=1&aqi=g10&aql=&oq=remote+deb', 0, 653, '1320470497505');
+INSERT INTO `bookmark` VALUES (7099, 'new', '19727', '19409', 'NoteSlate /// intuitively simple monochrome paper alike tablet device', 'http://www.noteslate.com/', 0, 654, '1320470497505');
+INSERT INTO `bookmark` VALUES (7097, 'new', '19725', '19409', 'Scope resolution operator - Wikipedia, the free encyclopedia', 'http://en.wikipedia.org/wiki/Scope_resolution_operator#C.2B.2B', 0, 652, '1320470497505');
+INSERT INTO `bookmark` VALUES (7096, 'new', '19724', '19409', 'Roland專門術語詞典', 'http://www.rolandtaiwan.com.tw/glossary/c.htm', 0, 651, '1320470497505');
+INSERT INTO `bookmark` VALUES (7095, 'new', '19723', '19409', 'TIOBE Software: Tiobe Index', 'http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html', 0, 650, '1320470497505');
+INSERT INTO `bookmark` VALUES (7094, 'new', '19722', '19409', 'resume_comic.png (PNG 圖片，1000x1853 像素)', 'http://coolshell.cn/wp-content/uploads/2009/11/resume_comic.png', 0, 649, '1320470497505');
+INSERT INTO `bookmark` VALUES (7092, 'new', '21200', '20991', 'coding技術', '', 0, 261, '1320470860430');
+INSERT INTO `bookmark` VALUES (7093, 'new', '19721', '19409', '雲惟彬 - Google 搜尋', 'http://www.google.com/search?q=%E9%9B%B2%E6%83%9F%E5%BD%AC&ie=utf-8&oe=utf-8&aq=t&rls=org.debian:zh-TW:unofficial&client=iceweasel-a', 0, 648, '1320470497505');
+INSERT INTO `bookmark` VALUES (7091, 'new', '21199', '20991', 'Program optimization - Wikipedia, the free encyclopedia', 'http://en.wikipedia.org/wiki/Program_optimization', 0, 260, '1320470860430');
+INSERT INTO `bookmark` VALUES (7090, 'new', '21198', '20991', '駝峰式大小寫 - 维基百科，自由的百科全书', 'http://zh.wikipedia.org/wiki/%E9%A7%9D%E5%B3%B0%E5%BC%8F%E5%A4%A7%E5%B0%8F%E5%AF%AB', 0, 259, '1320470860430');
+INSERT INTO `bookmark` VALUES (7089, 'new', '19720', '19406', '鳥哥的 Linux 私房菜 -- 正規表示法 (regular expression, RE) 與文件格式化處理', 'http://linux.vbird.org/linux_basic/0330regularex.php', 0, 644, '1320470497505');
+INSERT INTO `bookmark` VALUES (7088, 'new', '19719', '19406', '正規表示式 Regular Expression « 就是愛程式', 'http://atedev.wordpress.com/2007/11/23/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%A4%BA%E5%BC%8F-regular-expression/', 0, 643, '1320470497505');
+INSERT INTO `bookmark` VALUES (7087, 'new', '19716', '19406', '正規表示式(Regular Expressions)', 'http://irw.ncut.edu.tw/peterju/webslide/re/', 0, 640, '1320470497505');
+INSERT INTO `bookmark` VALUES (7086, 'new', '19717', '19406', '正規表式 - 維基百科，自由的百科全書', 'http://zh.wikipedia.org/w/index.php?title=%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F&variant=zh-tw', 0, 641, '1320470497505');
+INSERT INTO `bookmark` VALUES (7083, 'new', '21197', '20991', '正規表示法', '', 0, 258, '1320470860430');
+INSERT INTO `bookmark` VALUES (7084, 'new', '21196', '20991', 'Hello World - 維基百科，自由的百科全書', 'http://zh.wikipedia.org/zh-hant/Hello_World#Python', 0, 257, '1320470860430');
+INSERT INTO `bookmark` VALUES (7085, 'new', '19718', '19406', '3-13：正規表示法：表單資料驗證', 'http://neural.cs.nthu.edu.tw/jang/books/webprog/03jscript/reg1.asp?SessionCount=13', 0, 642, '1320470497505');
+INSERT INTO `bookmark` VALUES (7082, 'new', '21195', '20991', '天瓏網路書店 | 編譯系統設計 (Compilers: Principles, Techniques, and Tools, 2/e)', 'http://www.tenlong.com.tw/items/9861549366?item_id=51450', 0, 256, '1320470860430');
+INSERT INTO `bookmark` VALUES (7081, 'new', '21194', '20991', 'malloc()、free()、calloc() 與 realloc()', 'http://caterpillar.onlyfun.net/Gossip/CGossip/MallocFree.html', 0, 255, '1320470860430');
+INSERT INTO `bookmark` VALUES (7077, 'new', '19715', '19399', '程式、音樂、數學 :: 觀看文章 - 浮點數 入門 (發言整理中)', 'http://www.phpbbserver.com/graphicsparalle/viewtopic.php?t=158', 0, 632, '1320470497505');
+INSERT INTO `bookmark` VALUES (7078, 'new', '21191', '20991', '博客來書籍館>程式設計師的自我修養：連結、載入、程式庫', 'http://www.books.com.tw/exep/prod/booksfile.php?item=0010456858', 0, 252, '1320470860430');
+INSERT INTO `bookmark` VALUES (7079, 'new', '21192', '20991', 'C++：動態配置陣列 - 牛皮線條筆記 - Yahoo!奇摩部落格', 'http://tw.myblog.yahoo.com/pp-tea/article?mid=22', 0, 253, '1320470860430');
+INSERT INTO `bookmark` VALUES (7080, 'new', '21193', '20991', '「　」: C++陣列過大造成stack overflow', 'http://legnaleurc.blogspot.com/2007/06/cstack-overflow.html', 0, 254, '1320470860430');
+INSERT INTO `bookmark` VALUES (7076, 'new', '19714', '19399', 'Matlab 導引：變數 Matlab Guide---Variables', 'http://libai.math.ncu.edu.tw/bcc16/B/matlab/variables.html', 0, 631, '1320470497505');
+INSERT INTO `bookmark` VALUES (7074, 'new', '19712', '19399', '[C數] 非線性方程式求解前言 @ Edison.X. Blog :: 痞客邦 PIXNET ::', 'http://edisonx.pixnet.net/blog/post/35757088', 0, 629, '1320470497505');
+INSERT INTO `bookmark` VALUES (7075, 'new', '19713', '19399', 'IEEE754 , C/C++ 浮點數誤差 @ Edison.X. Blog :: 痞客邦 PIXNET ::', 'http://edisonx.pixnet.net/blog/post/46103946', 0, 630, '1320470497505');
+INSERT INTO `bookmark` VALUES (7073, 'new', '21190', '20991', 'C++ esp浮點數', '', 0, 251, '1320470860430');
+INSERT INTO `bookmark` VALUES (7072, 'new', '19711', '19398', 'Fingerprint SDK Java-based Applications Overview | Griaule Biometrics', 'http://www.griaulebiometrics.com/en-us/manual/fingerprint-sdk-java/using-the-sdk/fingerprint-sdk-java-based-applications-overview', 0, 627, '1320470497505');
+INSERT INTO `bookmark` VALUES (7071, 'new', '19709', '19398', 'com.griaule.grfingerjava', 'http://griaule.com.br/javadoc/GrFingerJava/com/griaule/grfingerjava/package-summary.html', 0, 625, '1320470497505');
+INSERT INTO `bookmark` VALUES (7070, 'new', '19710', '19398', 'FormMain.java - java-magnaldo - Arquivos Java - Google Project Hosting', 'http://code.google.com/p/java-magnaldo/source/browse/trunk/GrFinger/src/com/griaule/fingerprintsdk/sample/FormMain.java?spec=svn303&r=303', 0, 626, '1320470497505');
+INSERT INTO `bookmark` VALUES (7069, 'new', '19706', '19398', 'Java: fingerprint SDK, fingerprint verification, fingerprint recognition', 'http://en.allexperts.com/q/Java-1046/2009/7/fingerprint-SDK.htm', 0, 622, '1320470497505');
+INSERT INTO `bookmark` VALUES (7068, 'new', '19708', '19398', 'Google 翻譯', 'http://translate.google.com/translate?hl=zh-TW&sl=en&u=http://www.griaule.com.br/en-us/manual/fingerprint-sdk-java/using-the-sdk/deploying-a-fingerprint-sdk-java-based-application/required-files&ei=sp0_TrXiGKqDmQW-wsCfCA&sa=X&oi=translate&ct=result&resnum=3&ved=0CDsQ7gEwAg&prev=/search%3Fq%3Dlinux%2Bjava%2Bfingerprint%2Bsdk%26hl%3Dzh-TW%26client%3Dubuntu%26hs%3Dt7L%26channel%3Dfs%26prmd%3Divns', 0, 624, '1320470497505');
+INSERT INTO `bookmark` VALUES (7066, 'new', '19705', '19398', 'Fingerprint Sdk 2009 Manual English', 'http://www.scribd.com/doc/46207328/Fingerprint-Sdk-2009-Manual-English', 0, 621, '1320470497505');
+INSERT INTO `bookmark` VALUES (7067, 'new', '19707', '19398', 'Fingerprint SDK - Wikipedia, the free encyclopedia', 'http://en.wikipedia.org/wiki/Fingerprint_SDK', 0, 623, '1320470497505');
+INSERT INTO `bookmark` VALUES (7065, 'new', '19704', '19398', 'Screen Blank in fingerprint SDK Applet Sample 2009 | Griaule Biometrics', 'http://www.griaulebiometrics.com/en-us/forum/screen-blank-fingerprint-sdk-java-sample-2009', 0, 620, '1320470497505');
+INSERT INTO `bookmark` VALUES (7064, 'new', '19703', '19398', 'Applets and Fingerprint SDK Overview | Griaule Biometrics', 'http://www.griaulebiometrics.com/en-us/manual/fingerprint-sdk/using-the-sdk/fingerprint-sdk-java-for-windows-prerequisites/applet-prerequisites/applets-and-fingerprint', 0, 619, '1320470497505');
+INSERT INTO `bookmark` VALUES (7063, 'new', '19702', '19398', '指紋辨識系統開發套件 Fingerprint identification SDK', 'http://www.idmethod.com/p_grfingersdk.html#5', 0, 618, '1320470497505');
+INSERT INTO `bookmark` VALUES (7061, 'new', '19700', '19398', '首页 (Home) | Griaule Biometrics', 'http://www.griaule.com.br/zh-cn', 0, 616, '1320470497505');
+INSERT INTO `bookmark` VALUES (7062, 'new', '19701', '19398', 'www.blazee.com/neurotaiwan/VeriFingerSDK.html', 'http://www.blazee.com/neurotaiwan/VeriFingerSDK.html', 0, 617, '1320470497505');
+INSERT INTO `bookmark` VALUES (7060, 'new', '19699', '19398', 'Java Class Decompile 反編譯教學 | 六度數位空間', 'http://jeremy.tfeng.org/?p=620', 0, 615, '1320470497505');
+INSERT INTO `bookmark` VALUES (7059, 'new', '19698', '19398', 'Java Decompiler Class反编译工具  -  棒槌网@Android开发论坛 - Powered by phpwind', 'http://www.bangchui.org/simple/?t11844.html', 0, 614, '1320470497505');
+INSERT INTO `bookmark` VALUES (7058, 'new', '19697', '19398', 'XJad（Java原始程式碼反編譯軟體）v2.2 綠色版 - 軟件專區 - hkbbs - Powered by Discuz!', 'http://www.hkbbs.biz/thread-60934-1-6.html', 0, 613, '1320470497505');
+INSERT INTO `bookmark` VALUES (7057, 'new', '19695', '19398', '.class 反編譯 - Google 搜尋', 'http://www.google.com.tw/#hl=zh-TW&source=hp&q=.class+%E5%8F%8D%E7%B7%A8%E8%AD%AF&oq=.class+&aq=1&aqi=g10&aql=&gs_sm=e&gs_upl=3713l8403l0l10734l14l11l0l0l0l0l717l717l6-1l1l0&bav=on.2,or.r_gc.r_pw.&fp=4a95666c1c7f665d&biw=1280&bih=699', 0, 611, '1320470497505');
+INSERT INTO `bookmark` VALUES (7056, 'new', '19696', '19398', 'DJ Java Decompiler - java disassembler decompiler and editor', 'http://members.fortunecity.com/neshkov/dj.html', 0, 612, '1320470497505');
+INSERT INTO `bookmark` VALUES (7055, 'new', '21189', '20991', '20100818_java', '', 0, 250, '1320470860430');
+INSERT INTO `bookmark` VALUES (7054, 'new', '19694', '19397', '軟貓玩具: Android Socket教學', 'http://toimy.blogspot.com/2010/03/android-socket.html', 0, 609, '1320470497505');
+INSERT INTO `bookmark` VALUES (7053, 'new', '19693', '19397', 'JWorld@TW Java論壇 - 如何在Android上開檔?', 'http://www.javaworld.com.tw/jute/post/view?bid=26&id=279037', 0, 608, '1320470497505');
+INSERT INTO `bookmark` VALUES (7052, 'new', '19692', '19397', '使用者登入', 'http://140.116.65.250/WebApp/Account/UserLogOn.aspx', 0, 607, '1320470497505');
+INSERT INTO `bookmark` VALUES (7051, 'new', '19691', '19397', '公告', 'http://140.116.65.250/WebApp/Content/Publication.aspx', 0, 606, '1320470497505');
+INSERT INTO `bookmark` VALUES (7050, 'new', '19690', '19397', 'DavidLanz:[Android]發佈程式至Android Market - 樂多日誌', 'http://blog.roodo.com/DavidLanz/archives/10066113.html', 0, 605, '1320470497505');
+INSERT INTO `bookmark` VALUES (7049, 'new', '19689', '19397', '[Android]如何發佈開發好的程式至手機 @ 聰明的生活 :: 痞客邦 PIXNET ::', 'http://catyku.pixnet.net/blog/post/29948473', 0, 604, '1320470497505');
+INSERT INTO `bookmark` VALUES (7047, 'new', '19687', '19397', 'Java int to String(整數轉字串)', 'http://cooking-java.blogspot.com/2010/03/java-int-to-string.html', 0, 602, '1320470497505');
+INSERT INTO `bookmark` VALUES (7048, 'new', '19688', '19397', '求助：Androidd 中AlertDialog中EditText取值问题 - Android 实例教程 - eoe·Android开发者门户 - Powered by Discuz!', 'http://www.eoeandroid.com/thread-12964-1-1.html', 0, 603, '1320470497505');
+INSERT INTO `bookmark` VALUES (7046, 'new', '19686', '19397', 'Chapter 3 - 技術提供：Google 文件', 'https://docs.google.com/viewer?a=v&q=cache:sFgmZDo5r7cJ:teachers.ksu.edu.tw/rscheng/course/F0990-ppt_e/CH3e.ppt+%E5%8B%95%E6%85%8B%E5%BC%95%E5%85%A5XML+android&hl=zh-TW&gl=tw&pid=bl&srcid=ADGEESjkcBlcV2CcbAcsIJb7y24QO-dzXNCcen7fRhBIxgXP68gKWwHEvVPqXTaGXRefJZHiIb2v0IzDtgszBYu80HLknujFaP4c6epsj1Ru9jSwMk6wtjE0mtAZDKNMqgQ-qFf_oZC9&sig=AHIEtbQUE6Wg0crgZM-61umo26PNcQwHIA', 0, 601, '1320470497505');
+INSERT INTO `bookmark` VALUES (7045, 'new', '19685', '19397', 'Android 中的 TableLayout - 陳鍾誠的網站', 'http://ccckmit.wikidot.com/ga:tablelayout', 0, 600, '1320470497505');
+INSERT INTO `bookmark` VALUES (7043, 'new', '20054', '19684', 'NodeList: item(int index) : NodeList « org.w3c.dom « Java by API', 'http://www.java2s.com/Code/JavaAPI/org.w3c.dom/NodeListitemintindex.htm', 0, 598, '1320470497505');
+INSERT INTO `bookmark` VALUES (7044, 'new', '20055', '19684', 'Node (Java 2 Platform SE 5.0)', 'http://download.oracle.com/javase/1.5.0/docs/api/org/w3c/dom/Node.html', 0, 599, '1320470497505');
+INSERT INTO `bookmark` VALUES (7042, 'new', '20053', '19684', 'XML String 解析问题！！！急急急！！！ - Java / Java EE', 'http://topic.csdn.net/t/20050804/12/4188338.html', 0, 597, '1320470497505');
+INSERT INTO `bookmark` VALUES (7041, 'new', '20051', '19684', 'XML DOM - Node List and NamedNodeMap', 'http://www.w3schools.com/dom/dom_nodes_nodelist.asp', 0, 595, '1320470497505');
+INSERT INTO `bookmark` VALUES (7040, 'new', '20052', '19684', 'XML DOM - Get Node Values', 'http://www.w3schools.com/dom/dom_nodes_get.asp', 0, 596, '1320470497505');
+INSERT INTO `bookmark` VALUES (7039, 'new', '20050', '19684', 'XML DOM - Element object', 'http://www.w3schools.com/dom/dom_element.asp', 0, 594, '1320470497505');
+INSERT INTO `bookmark` VALUES (7038, 'new', '20049', '19684', 'Working with XML on Android', 'http://www.ibm.com/developerworks/opensource/library/x-android/index.html', 0, 593, '1320470497505');
+INSERT INTO `bookmark` VALUES (7037, 'new', '20048', '19684', 'Ken Yang 筆記: android parse xml', 'http://blog.kenyang.net/2010/08/android-parse-xml.html', 0, 592, '1320470497505');
+INSERT INTO `bookmark` VALUES (7035, 'new', '20046', '19684', 'How to read XML file in Java – (DOM Parser)', 'http://www.mkyong.com/java/how-to-read-xml-file-in-java-dom-parser/', 0, 590, '1320470497505');
+INSERT INTO `bookmark` VALUES (7036, 'new', '20047', '19684', 'Parsing XML in Android (DOM method) « Park, Dong Yoon | www.cre8ive.kr', 'http://www.cre8ive.kr/blog/2010/04/10/parsing-xml-in-android-dom-method/', 0, 591, '1320470497505');
+INSERT INTO `bookmark` VALUES (7034, 'new', '20045', '19684', 'Android XML Parsing Tutorial – Using DOMParser | Androidpeople.com', 'http://www.androidpeople.com/android-xml-parsing-tutorial-%E2%80%93-using-domparser', 0, 589, '1320470497505');
+INSERT INTO `bookmark` VALUES (7032, 'new', '20043', '19684', 'XML介紹與 Java 應用', 'http://140.128.179.4/~loren/article/xml-jaxp/index.html', 0, 587, '1320470497505');
+INSERT INTO `bookmark` VALUES (7033, 'new', '20044', '19684', 'How to read XML file in Java – (DOM Parser)', 'http://www.mkyong.com/java/how-to-read-xml-file-in-java-dom-parser', 0, 588, '1320470497505');
+INSERT INTO `bookmark` VALUES (7031, 'new', '20042', '19684', 'anddev.org • View topic - Parsing XML from the Net - Using the SAXParser', 'http://www.anddev.org/parsing_xml_from_the_net_-_using_the_saxparser-t353.html', 0, 586, '1320470497505');
+INSERT INTO `bookmark` VALUES (7029, 'new', '19684', '19397', 'Android XML', '', 0, 584, '1320470497505');
+INSERT INTO `bookmark` VALUES (7030, 'new', '20041', '19684', 'How to read XML file in Java – (SAX Parser)', 'http://www.mkyong.com/java/how-to-read-xml-file-in-java-sax-parser/', 0, 585, '1320470497505');
+INSERT INTO `bookmark` VALUES (7028, 'new', '20040', '19683', 'Chapter 4 - 技術提供：Google 文件', 'https://docs.google.com/viewer?a=v&q=cache:lzRDWmtKyLoJ:teachers.ksu.edu.tw/rscheng/course/F0790-ppt/CH4.ppt+LinearLayout+%E9%99%A3%E5%88%97&hl=zh-TW&gl=tw&pid=bl&srcid=ADGEESiYpUNh-zbkont4akVLKwMFGKnNPvD7leTYRczdxduudt8byYB2q4ejMZ323I4bCPZQV6abH6IZA7qPpwrnZ22_t582peyMGVg2OVcU4LjqI0jkQNe_iSGogLlLwnPS6ZLi-vl7&sig=AHIEtbQt7BuEaS-DPtMLKsXxweLNB20AWw', 0, 583, '1320470497505');
+INSERT INTO `bookmark` VALUES (7027, 'new', '20039', '19683', 'Android SimpleAdapter，列表(ListView)、表格(GridView)', 'http://www.360doc.com/content/11/0102/15/373180_83369335.shtml', 0, 582, '1320470497505');
+INSERT INTO `bookmark` VALUES (7026, 'new', '20038', '19683', 'shrinkColumns=2 - Google 搜尋', 'http://www.google.com.tw/search?hl=zh-TW&q=shrinkColumns%3D2&oq=shrinkColumns%3D2&aq=f&aqi=&aql=&gs_sm=e&gs_upl=2866l5723l0l6164l7l4l0l0l0l0l599l1026l4-1.1l2', 0, 581, '1320470497505');
+INSERT INTO `bookmark` VALUES (7025, 'new', '20037', '19683', 'Java Artisan: Android Layout Managers - TableLayout', 'http://cw1057.blogspot.com/2011/04/android-layout-managers-tablelayout.html', 0, 580, '1320470497505');
+INSERT INTO `bookmark` VALUES (7024, 'new', '20035', '19683', 'TableLayout 中 stretchColumns 的用法|Android|中国手机开发网', 'http://www.cnmsdn.com/html/201003/1269408077ID2535.html', 0, 578, '1320470497505');
+INSERT INTO `bookmark` VALUES (7023, 'new', '20033', '19683', '三明智筆記本: [android] table layout 做出指定版型', 'http://ffej1022.blogspot.com/2010/10/android-table-layout.html', 0, 576, '1320470497505');
+INSERT INTO `bookmark` VALUES (7022, 'new', '20034', '19683', '用android UI做出類似windows的top-down menu視窗-尋找屬於我的世界-無名小站網誌', 'http://www.wretch.cc/blog/michaeloil/23294101', 0, 577, '1320470497505');
+INSERT INTO `bookmark` VALUES (7020, 'new', '19683', '19397', 'Android TableLayout', '', 0, 575, '1320470497505');
+INSERT INTO `bookmark` VALUES (7021, 'new', '20036', '19683', 'TableLayout中layout_column和stretchColumns作用是什么？ - Android开发论坛 DevDiv移动开发社区', 'http://www.devdiv.com/thread-46022-1-1.html', 0, 579, '1320470497505');
+INSERT INTO `bookmark` VALUES (7019, 'new', '19682', '19397', 'XML and Java - Parsing XML using Java Tutorial', 'http://www.java-samples.com/showtutorial.php?tutorialid=152', 0, 574, '1320470497505');
+INSERT INTO `bookmark` VALUES (7018, 'new', '19681', '19397', '軟貓玩具: Android 動態的增加物件以按鈕為例子', 'http://toimy.blogspot.com/2010/07/android.html', 0, 573, '1320470497505');
+INSERT INTO `bookmark` VALUES (7017, 'new', '19678', '19397', 'Android的ListView多選清單的使用範例-初階篇 @ 奶油蘇的天空 :: 痞客邦 PIXNET ::', 'http://sukelven.pixnet.net/blog/post/53825727', 0, 570, '1320470497505');
+INSERT INTO `bookmark` VALUES (7015, 'new', '19679', '19397', 'org.xml.sax.XMLReader; - Google 搜尋', 'http://www.google.com.tw/search?sourceid=chrome&ie=UTF-8&q=org.xml.sax.XMLReader%3B', 0, 571, '1320470497505');
+INSERT INTO `bookmark` VALUES (7016, 'new', '19680', '19397', 'Android編程: 動態刪除列表視圖(ListView)的內容', 'http://androidbiancheng.blogspot.com/2011/05/listview_28.html', 0, 572, '1320470497505');
+INSERT INTO `bookmark` VALUES (7012, 'new', '19675', '19397', '笨笨網站 HTML 語法測試板', 'http://www.bunbunhk.com/cgi-bin/html/', 0, 567, '1320470497505');
+INSERT INTO `bookmark` VALUES (7013, 'new', '19676', '19397', 'Jollen 的 Android 教學,#6: WebView 體驗與 findViewByID', 'http://www.jollen.org/blog/2009/01/jollen-android-programming-6.html', 0, 568, '1320470497505');
+INSERT INTO `bookmark` VALUES (7014, 'new', '19677', '19397', 'Android編程: 動態添加列表視圖(ListView)的內容', 'http://androidbiancheng.blogspot.com/2011/05/listview.html', 0, 569, '1320470497505');
+INSERT INTO `bookmark` VALUES (7011, 'new', '19673', '19397', 'Android與XML開發應用教學 - 移動產品系統(OMP)_:: PCTartarus 地獄電腦 :: - Infomation Share Site 資訊分享平台', 'http://www.pctartarus.com/bbs/thread-2963-1-1.html', 0, 565, '1320470497505');
+INSERT INTO `bookmark` VALUES (7010, 'new', '19672', '19397', '在 Android 上使用 XML', 'http://www.ibm.com/developerworks/cn/xml/x-android/', 0, 564, '1320470497505');
+INSERT INTO `bookmark` VALUES (7009, 'new', '19674', '19397', 'Introduction to HTML, NTUPT', 'http://www.pt.ntu.edu.tw/hmchai/ptcomputer03_2/hHTML/HTMLtable.htm', 0, 566, '1320470497505');
+INSERT INTO `bookmark` VALUES (7007, 'new', '19670', '19397', 'XML - 维基百科，自由的百科全书', 'http://zh.wikipedia.org/wiki/XML', 0, 562, '1320470497505');
+INSERT INTO `bookmark` VALUES (7008, 'new', '19671', '19397', 'Android 解析 XML - OnClick- 點部落', 'http://www.dotblogs.com.tw/nethawk/archive/2011/05/02/24047.aspx', 0, 563, '1320470497505');
+INSERT INTO `bookmark` VALUES (7003, 'new', '19666', '19397', '加入第三方jar檔變成無法順利編譯安裝? | Android中文資源站', 'http://android.cool3c.com/article/8388', 0, 558, '1320470497505');
+INSERT INTO `bookmark` VALUES (7004, 'new', '19667', '19397', '[android] java.net.SocketException: Permission denied', 'http://www.wretch.cc/blog/superMagon/34257877', 0, 559, '1320470497505');
+INSERT INTO `bookmark` VALUES (7005, 'new', '19668', '19397', 'java.net.SocketException: Permission denied - 123 - ITeye技术网站', 'http://yyyyy5101.iteye.com/blog/691707', 0, 560, '1320470497505');
+INSERT INTO `bookmark` VALUES (7006, 'new', '19669', '19397', 'XMLStreamWriter Demo : Streaming XML Parser « JDK 6 « Java', 'http://www.java2s.com/Code/Java/JDK-6/XMLStreamWriterDemo.htm', 0, 561, '1320470497505');
+INSERT INTO `bookmark` VALUES (7002, 'new', '19665', '19397', '如何下载android.jar源代码和设置android.jar在eclipse中的源代码目录 - laqxs的日志 - 网易博客', 'http://laqxs.blog.163.com/blog/static/86990063201111162130565/', 0, 557, '1320470497505');
+INSERT INTO `bookmark` VALUES (7001, 'new', '19663', '19397', 'Wiki Pages - swiftp - FTP server for Android - Google Project Hosting', 'http://code.google.com/p/swiftp/w/list', 0, 555, '1320470497505');
+INSERT INTO `bookmark` VALUES (7000, 'new', '19664', '19397', 'ftp4j - a pure Java FTP client library', 'http://www.sauronsoftware.it/projects/ftp4j/index.php', 0, 556, '1320470497505');
+INSERT INTO `bookmark` VALUES (6999, 'new', '19662', '19397', 'android FTP上传下载源码 CSDN 下载频道', 'http://download.csdn.net/source/3034936', 0, 554, '1320470497505');
+INSERT INTO `bookmark` VALUES (6998, 'new', '19661', '19397', '在android使用ftp4j实现ftp文件上传 - Android 问题&解答 - eoe·Android开发者门户 - Powered by Discuz!', 'http://www.eoeandroid.com/thread-58473-1-1.html', 0, 553, '1320470497505');
+INSERT INTO `bookmark` VALUES (6997, 'new', '19660', '19397', 'Android手机上如何实现FTP文件下传 - Android 原创软件发布与交流 - eoe·Android开发者门户 - Powered by Discuz!', 'http://www.eoeandroid.com/thread-73635-1-1.html', 0, 552, '1320470497505');
+INSERT INTO `bookmark` VALUES (6996, 'new', '19658', '19397', '[請益] 新手請教個問題關於檔案上傳使用FTP><', 'http://www.ptt.cc/bbs/Android/M.1282010504.A.60B.html', 0, 550, '1320470497505');
+INSERT INTO `bookmark` VALUES (6995, 'new', '19659', '19397', 'Android手机上如何实现FTP文件上传？ - Android 问题&解答 - eoe·Android开发者门户 - Powered by Discuz!', 'http://www.eoeandroid.com/thread-20290-1-1.html', 0, 551, '1320470497505');
+INSERT INTO `bookmark` VALUES (6994, 'new', '19657', '19397', 'FileInputStream、 FileOutputStream', 'http://caterpillar.onlyfun.net/Gossip/JavaGossip-V2/FileInOutStream.htm', 0, 549, '1320470497505');
+INSERT INTO `bookmark` VALUES (6993, 'new', '19656', '19397', '用FileInputStream.read()读文件1.txt（内容为12345678），为什么输出的却是50 52 54 56？代码如内容所示 - Java / Java SE', 'http://topic.csdn.net/t/20060205/22/4540993.html', 0, 548, '1320470497505');
+INSERT INTO `bookmark` VALUES (6992, 'new', '19655', '19397', '程式扎記: [Android SDK 入門] 常用控制項 : 編輯文字控制項 - EditText', 'http://puremonkey2010.blogspot.com/2010/10/android-sdk-edittext.html', 0, 547, '1320470497505');
+INSERT INTO `bookmark` VALUES (6991, 'new', '19654', '19397', 'FileOutputStream | Android Developers', 'http://developer.android.com/reference/java/io/FileOutputStream.html', 0, 546, '1320470497505');
+INSERT INTO `bookmark` VALUES (6990, 'new', '19651', '19397', 'R&D專欄', 'http://www.interinfo.com.tw/edoc/ch9/r_n_d.htm', 0, 543, '1320470497505');
+INSERT INTO `bookmark` VALUES (6988, 'new', '19653', '19397', 'java.io.FileOutputStream - Java Platform Extension Documentation', 'http://j2se5.javax.idv.tw/home/java-io/fileoutputstream', 0, 545, '1320470497505');
+INSERT INTO `bookmark` VALUES (6989, 'new', '19652', '19397', 'JWorld@TW Java論壇 - Re:關於檔案複製到新資料夾的問題', 'http://www.javaworld.com.tw/jute/post/view?bid=5&id=218722&sty=3', 0, 544, '1320470497505');
+INSERT INTO `bookmark` VALUES (6987, 'new', '19650', '19397', 'JWorld@TW Java論壇 - 關於FileOutputStream的問題', 'http://www.javaworld.com.tw/jute/post/view?bid=5&id=194504', 0, 542, '1320470497505');
+INSERT INTO `bookmark` VALUES (6985, 'new', '19648', '19397', '第十八讲：Android SharedPreferences和File « { Android学习指南 }', 'http://android.yaohuiji.com/archives/672', 0, 540, '1320470497505');
+INSERT INTO `bookmark` VALUES (6986, 'new', '19649', '19397', 'Android編程: Android的共享選項編輯器(SharedPreferences.Editor)', 'http://androidbiancheng.blogspot.com/2011/02/androidsharedpreferenceseditor.html', 0, 541, '1320470497505');
+INSERT INTO `bookmark` VALUES (6984, 'new', '19647', '19397', 'SharedPreferences機制 Android | 易春木', 'http://eeepage.info/sharedpreferences-android/', 0, 539, '1320470497505');
+INSERT INTO `bookmark` VALUES (6983, 'new', '19646', '19397', '遊戲科學 (Game Science): Android程式設計 (十五) 使用SharedPreferences', 'http://nkeegamedev.blogspot.com/2010/08/android-sharedpreference.html', 0, 538, '1320470497505');
+INSERT INTO `bookmark` VALUES (6981, 'new', '19644', '19397', '程式搖滾: Android 資料儲存', 'http://ozzysun.blogspot.com/2010/11/android.html', 0, 536, '1320470497505');
+INSERT INTO `bookmark` VALUES (6982, 'new', '19645', '19397', 'asia.edu.tw/~lincyu/Android/Chapter11.pdf', 'http://asia.edu.tw/~lincyu/Android/Chapter11.pdf', 0, 537, '1320470497505');
+INSERT INTO `bookmark` VALUES (6980, 'new', '19643', '19397', 'Package Index | Android Developers', 'http://developer.android.com/reference/packages.html', 0, 535, '1320470497505');
+INSERT INTO `bookmark` VALUES (6978, 'new', '19641', '19397', 'Xecure Lab.', 'http://blog.xecure-lab.com/', 0, 533, '1320470497505');
+INSERT INTO `bookmark` VALUES (6979, 'new', '19642', '19397', 'BoT 2011 網路報名系統', 'https://spreadsheets.google.com/spreadsheet/viewform?formkey=dDBzaVVLV0EtZFhUckVmNEJBV1I3eUE6MQ&theme=0AX42CRMsmRFbUy04NmYzYTk2OC1hYzhjLTQ1NTAtOTRiNS0zZWI4YWM2MmI4Njk&ifq', 0, 534, '1320470497505');
+INSERT INTO `bookmark` VALUES (6977, 'new', '19640', '19397', '研究生2.0: 推薦書籍列表', 'http://newgenerationresearcher.blogspot.com/2011/07/blog-post.html?utm_source=feedburner&utm_medium=feed&utm_campaign=Feed:+newgenerationresearcher+(Researcher+2.0)', 0, 532, '1320470497505');
+INSERT INTO `bookmark` VALUES (6976, 'new', '19639', '19397', '東方和風語: Log配合logcat', 'http://hatsukiakio.blogspot.com/2009/05/loglogcat.html', 0, 531, '1320470497505');
+INSERT INTO `bookmark` VALUES (6975, 'new', '19638', '19397', 'android--logcat使用方法 @ 心的距離 :: 痞客邦 PIXNET ::', 'http://kezeodsnx.pixnet.net/blog/post/26517648', 0, 530, '1320470497505');
+INSERT INTO `bookmark` VALUES (6974, 'new', '19637', '19397', 'the application has stopped unexpected。please try again_歇斯底里--hysteria_百度空间', 'http://hi.baidu.com/sharebophar/blog/item/447a20c6409c4b039c163d46.html', 0, 529, '1320470497505');
+INSERT INTO `bookmark` VALUES (6973, 'new', '19636', '19397', 'Android setContentView的應用-科技頻道-和訊網', 'http://tech.hexun.com.tw/2011-02-10/127203973.html', 0, 528, '1320470497505');
+INSERT INTO `bookmark` VALUES (6972, 'new', '19635', '19397', 'Jollen 的 Android 教學,#16: Event Listener的用法: 以Click Listener為例', 'http://www.jollen.org/blog/2009/06/jollen-android-programming-16.html', 0, 527, '1320470497505');
+INSERT INTO `bookmark` VALUES (6971, 'new', '19634', '19397', 'android 小程式 - 01.Button', 'http://www.wretch.cc/blog/A0972362170/32258752', 0, 526, '1320470497505');
+INSERT INTO `bookmark` VALUES (6970, 'new', '19633', '19397', '昭佑.天翔: Android Activity 利用 setContentView 更換 Layout', 'http://tomkuo139.blogspot.com/2010/01/android-activity-setcontentview-layout.html', 0, 525, '1320470497505');
+INSERT INTO `bookmark` VALUES (6969, 'new', '19632', '19397', 'setContentView - Google 搜尋', 'http://www.google.com.tw/search?sourceid=chrome&ie=UTF-8&q=setContentView', 0, 524, '1320470497505');
+INSERT INTO `bookmark` VALUES (6968, 'new', '19631', '19397', 'harism/android_page_curl - GitHub', 'https://github.com/harism/android_page_curl', 0, 523, '1320470497505');
+INSERT INTO `bookmark` VALUES (6967, 'new', '19630', '19397', 'Android - 维基百科，自由的百科全书', 'http://zh.wikipedia.org/wiki/Android', 0, 522, '1320470497505');
+INSERT INTO `bookmark` VALUES (6966, 'new', '19629', '19397', 'Android作業系統前景看俏 Android 版本演進 @ No. 5 :: 痞客邦 PIXNET ::', 'http://sqa5.pixnet.net/blog/post/30055591', 0, 521, '1320470497505');
+INSERT INTO `bookmark` VALUES (6965, 'new', '19628', '19397', '[Android]如何發佈開發好的程式至手機 | 聰明的生活2', 'http://blog.yslifes.com/archives/447', 0, 520, '1320470497505');
+INSERT INTO `bookmark` VALUES (6964, 'new', '19627', '19397', '[Android 教學] Android SDK 下載安裝中文教學課程講義｜Android SDK 教學 | 孫傳雄談科技｜數位部落格｜中時部落格｜中時電子報', 'http://blog.chinatimes.com/tomsun/archive/2010/09/07/536320.html', 0, 519, '1320470497505');
+INSERT INTO `bookmark` VALUES (6963, 'new', '20032', '19626', 'Android MediaPlayer 简单综合应用——列出sdcard里所有.mp3文件,并且可以点击播放! | 第三极 | 移动开发者', 'http://disanji.net/2011/01/29/android-mediaplayer-sdcard-mp3/', 0, 518, '1320470497505');
+INSERT INTO `bookmark` VALUES (6962, 'new', '20031', '19626', 'android开发之简单图片浏览器 读取sdcard图片+形成缩略图+Gallery - 一点一滴，一天一天 - CSDN博客', 'http://blog.csdn.net/zzy916853616/article/details/6525631', 0, 517, '1320470497505');
+INSERT INTO `bookmark` VALUES (6961, 'new', '20030', '19626', 'Android 存取 SD Card 檔案 @ 狼翔天地 :: 痞客邦 PIXNET ::', 'http://jjnnykimo.pixnet.net/blog/post/32806754', 0, 516, '1320470497505');
+INSERT INTO `bookmark` VALUES (6960, 'new', '20029', '19626', '在GridView中展示sd卡中的图片 - 点点滴滴 - ITeye技术网站', 'http://wang-peng1.iteye.com/blog/676010', 0, 515, '1320470497505');
+INSERT INTO `bookmark` VALUES (6959, 'new', '20028', '19626', '如何取得多个sdcard中的图片文件路径啊？ - Android 问题&解答 - eoe·Android开发者门户 - Powered by Discuz!', 'http://www.eoeandroid.com/thread-67082-1-1.html', 0, 514, '1320470497505');
+INSERT INTO `bookmark` VALUES (6958, 'new', '20027', '19626', 'Ken Yang 筆記: android 偵測 sdcard', 'http://blog.kenyang.net/2010/08/android-sdcard.html', 0, 513, '1320470497505');
+INSERT INTO `bookmark` VALUES (6957, 'new', '20026', '19626', '[Reply] 15分鐘用ruby把android手機變成遠端間諜相機 - iT邦幫忙::IT知識分享社群', 'http://ithelp.ithome.com.tw/question/10055076', 0, 512, '1320470497505');
+INSERT INTO `bookmark` VALUES (6956, 'new', '20025', '19626', 'Android編程: 實現Android照相機的拍照功能(Camera.takePicture)', 'http://androidbiancheng.blogspot.com/2010/12/androidcameratakepicture.html', 0, 511, '1320470497505');
+INSERT INTO `bookmark` VALUES (6955, 'new', '20024', '19626', '7-16　拍照瞬間啟動相機自動對焦 — android.hardware.Camera.AutoFocusCallback @ Google Android SDK 開發範例大全2 :: 痞客邦 PIXNET ::', 'http://androidsdk.pixnet.net/blog/post/4547268', 0, 510, '1320470497505');
+INSERT INTO `bookmark` VALUES (6954, 'new', '20023', '19626', 'Camera | Android Developers', 'http://developer.android.com/reference/android/hardware/Camera.html', 0, 509, '1320470497505');
+INSERT INTO `bookmark` VALUES (6953, 'new', '20022', '19626', 'android Camera - Google 搜尋', 'http://www.google.com.tw/#hl=zh-TW&q=android+Camera+&oq=android+Camera+&aq=f&aqi=&aql=&gs_sm=e&gs_upl=2505l3049l13l3359l4l4l0l0l0l0l0l0ll0&bav=on.2,or.r_gc.r_pw.&fp=55cc24f9137019be&biw=1280&bih=699', 0, 508, '1320470497505');
+INSERT INTO `bookmark` VALUES (6952, 'new', '20021', '19626', 'android Camera 旋轉 90 ° @ 當厲害的人出現的時候 :: 痞客邦 PIXNET ::', 'http://fecbob.pixnet.net/blog/post/35370196', 0, 507, '1320470497505');
+INSERT INTO `bookmark` VALUES (6951, 'new', '20019', '19625', 'Linux操作系統下三種配置環境變量的方法正文閱讀-網絡學院-中國代碼網China-Code.Net-打造中國最大代碼、源代碼、源碼下載網站', 'http://big5.china-code.net/read/5/6/204159.html', 0, 504, '1320470497505');
+INSERT INTO `bookmark` VALUES (6950, 'new', '20020', '19626', '簡介 Android Camera 三大功能區塊', 'http://www.jollen.org/blog/2010/11/android-camera-block-diagram.html', 0, 506, '1320470497505');
+INSERT INTO `bookmark` VALUES (6948, 'new', '20018', '19625', '缺一角的圓: 在linux上設定java classpath變數', 'http://doflower.blogspot.com/2009/05/linuxjava-classpath.html', 0, 503, '1320470497505');
+INSERT INTO `bookmark` VALUES (6949, 'new', '19626', '19397', 'Android Camera', '', 0, 505, '1320470497505');
+INSERT INTO `bookmark` VALUES (6947, 'new', '20017', '19625', '[藍森林-自由軟件] － 請教RedHat中安裝JDK出現的問題', 'http://www.lslnet.com/linux/f/docs1/i19/big5190921.htm', 0, 502, '1320470497505');
+INSERT INTO `bookmark` VALUES (6946, 'new', '20016', '19625', 'Ubuntu JDK安裝配置詳解 - 工程師媽咪的blog - Yahoo!奇摩部落格', 'http://tw.myblog.yahoo.com/jw!q5yoQbKZG0AAcnvqqbxB/article?mid=16&sc=1', 0, 501, '1320470497505');
+INSERT INTO `bookmark` VALUES (6945, 'new', '20015', '19625', '[java] 在 linux 底下使用 java 來執行 Linux 指令 | 小惡魔 - 電腦技術 - 工作筆記 - AppleBOY', 'http://blog.wu-boy.com/2008/03/java-%E5%9C%A8-linux-%E5%BA%95%E4%B8%8B%E4%BD%BF%E7%94%A8-java-%E4%BE%86%E5%9F%B7%E8%A1%8C-linux-%E6%8C%87%E4%BB%A4/', 0, 500, '1320470497505');
+INSERT INTO `bookmark` VALUES (6944, 'new', '20014', '19625', '[原創] 在 Fedora 8 Linux 安裝 JAVA 開發環境 @ 經驗交流分享與備忘 :: 痞客邦 PIXNET ::', 'http://uiop7890.pixnet.net/blog/post/18885328', 0, 499, '1320470497505');
+INSERT INTO `bookmark` VALUES (6942, 'new', '19625', '19397', 'java IDE in Linux', '', 0, 497, '1320470497505');
+INSERT INTO `bookmark` VALUES (6943, 'new', '20013', '19625', '安裝 Java 開發/執行環境 @ ericsk 的 Ubuntu Linux 筆記 :: 隨意窩 Xuite日誌', 'http://blog.xuite.net/ericsk0313/ubuntu/5290427', 0, 498, '1320470497505');
+INSERT INTO `bookmark` VALUES (6941, 'new', '19624', '19397', 'Chapter9.pdf - 技術提供：Google 文件', 'http://docs.google.com/viewer?a=v&q=cache:JPXVPXkPs4kJ:asia.edu.tw/~lincyu/Android/Chapter9.pdf+mylocationoverlay&hl=zh-TW&gl=tw&pid=bl&srcid=ADGEESjGV86lrKDtf6Pew7f9yB_3POCB7iGwR0AFs0h-YWoXEa2omI3H45EmpGI6_vcgaChNKbNLulfEYE5ey7vSfn6LnEBZRop7nPwm3H35_wzN-KZgIp8Ufx2ASb6cwnJWc0PoKM3y&sig=AHIEtbRnLVK-yxp63edDfvBjEk1haZGG-Q', 0, 496, '1320470497505');
+INSERT INTO `bookmark` VALUES (6940, 'new', '19623', '19397', 'HLab : [Android] How to use MyLocationOverlay to find where I am?', 'http://consultingblogs.emc.com/harolee/archive/2009/01/08/android-how-to-use-mylocationoverlay-to-find-where-i-am.aspx', 0, 495, '1320470497505');
+INSERT INTO `bookmark` VALUES (6939, 'new', '19622', '19397', '軟貓玩具: Android如何載入別人程式碼或是範例程式', 'http://toimy.blogspot.com/2009/09/android.html', 0, 494, '1320470497505');
+INSERT INTO `bookmark` VALUES (6938, 'new', '19621', '19397', 'Hello, World | Android Developers', 'http://developer.android.com/guide/tutorials/hello-world.html', 0, 493, '1320470497505');
+INSERT INTO `bookmark` VALUES (6937, 'new', '19620', '19397', '【推薦】行車記錄器軟體～DailyRoads @ Meet Vampire :: 隨意窩 Xuite日誌', 'http://blog.xuite.net/tim13/vampire/35383542', 0, 492, '1320470497505');
+INSERT INTO `bookmark` VALUES (6936, 'new', '19619', '19397', '利用 Android 手機記錄 GPS 行程', 'http://www.openfoundry.org/index.php?option=com_content&task=view&id=8116&Itemid=4;isletter=1', 0, 491, '1320470497505');
+INSERT INTO `bookmark` VALUES (6935, 'new', '19618', '19397', '[Android軟體] 免費 DailyRoads Voyager 行車記錄器（車用錄影機）', 'http://briian.com/?p=7281', 0, 490, '1320470497505');
+INSERT INTO `bookmark` VALUES (6934, 'new', '19617', '19397', 'Google Maps 基本範例教學 ( 程式碼集散地 - 社群文章 )', 'http://itgroup.blueshop.com.tw/jimwayne/programming?n=convew&i=228837', 0, 489, '1320470497505');
+INSERT INTO `bookmark` VALUES (6933, 'new', '19616', '19397', 'Using Google Maps in Android | mobiForge', 'http://mobiforge.com/developing/story/using-google-maps-android', 0, 488, '1320470497505');
+INSERT INTO `bookmark` VALUES (6932, 'new', '19615', '19397', 'Android: Google Map範例 - 花栗鼠柑仔店', 'http://chip.twbbs.org/2010/09/android-google-map.html', 0, 487, '1320470497505');
+INSERT INTO `bookmark` VALUES (6931, 'new', '19613', '19397', 'JWorld@TW Java論壇 - 推薦新書《Google Android SDK 開發範例大全 2》', 'http://www.javaworld.com.tw/jute/post/view?bid=22&id=275144', 0, 485, '1320470497505');
+INSERT INTO `bookmark` VALUES (6930, 'new', '19614', '19397', 'JWorld@TW Java論壇 - 《Google Android SDK開發範例大全》新書發表囉！', 'http://www.javaworld.com.tw/jute/post/view?bid=22&id=256124&sty=1&tpg=1&age=0', 0, 486, '1320470497505');
+INSERT INTO `bookmark` VALUES (6929, 'new', '19612', '19397', 'JWorld@TW Java論壇 - android googel map 範例問題', 'http://www.javaworld.com.tw/jute/post/view?bid=26&id=279634', 0, 484, '1320470497505');
+INSERT INTO `bookmark` VALUES (6928, 'new', '19611', '19397', '{Android}Using Google Maps in Android 使用Google Maps在Android上的範例sample @ 發呆亭 :: 痞客邦 PIXNET ::', 'http://sing522.pixnet.net/blog/post/28576427', 0, 483, '1320470497505');
+INSERT INTO `bookmark` VALUES (6927, 'new', '19610', '19397', 'Android 手機程式設計 -- 最新修改 - 陳鍾誠的網站', 'http://ccckmit.wikidot.com/ga:modify', 0, 482, '1320470497505');
+INSERT INTO `bookmark` VALUES (6926, 'new', '19609', '19397', 'YouTube - Android應用程式-接收GPS訊號-範例.avi', 'http://www.youtube.com/watch?v=UOA_54hjwK4', 0, 481, '1320470497505');
+INSERT INTO `bookmark` VALUES (6925, 'new', '19607', '19397', '旗標知識網：第一個Android程式: Hello Android', 'http://www.flag.com.tw/book/cento-5105.asp?bokno=f9791&id=573', 0, 479, '1320470497505');
+INSERT INTO `bookmark` VALUES (6924, 'new', '19608', '19397', 'Android手機程式開發手冊-以GPS、G-Sensor、Socket為例', 'http://www.scribd.com/doc/46998092/Android%E6%89%8B%E6%A9%9F%E7%A8%8B%E5%BC%8F%E9%96%8B%E7%99%BC%E6%89%8B%E5%86%8A-%E4%BB%A5GPS%E3%80%81G-Sensor%E3%80%81Socket%E7%82%BA%E4%BE%8B', 0, 480, '1320470497505');
+INSERT INTO `bookmark` VALUES (6923, 'new', '19606', '19397', '黯雲資訊小舖 » 【心得】Android 程式學習心得', 'http://www.anyun.idv.tw/454', 0, 478, '1320470497505');
+INSERT INTO `bookmark` VALUES (6922, 'new', '19605', '19397', 'Google Android 手機程式設計--第二章:開發您的第一個程式 - Android Development - 香港矽谷', 'http://www.hksilicon.com/kb/articles/3698/Google-Android', 0, 477, '1320470497505');
+INSERT INTO `bookmark` VALUES (6921, 'new', '19604', '19397', 'Android 教學 | 孫傳雄談科技｜數位部落格｜中時部落格｜中時電子報', 'http://blog.chinatimes.com/tomsun/', 0, 476, '1320470497505');
+INSERT INTO `bookmark` VALUES (6919, 'new', '21188', '20991', 'Android', '', 0, 249, '1320470860430');
+INSERT INTO `bookmark` VALUES (6920, 'new', '19603', '19397', 'InstallAndroid - androidbmi - 安裝 Android 開發工具 - Project Hosting on Google Code', 'http://code.google.com/p/androidbmi/wiki/InstallAndroid', 0, 475, '1320470497505');
+INSERT INTO `bookmark` VALUES (6918, 'new', '19602', '19396', 'jQuery 教學 » Ajax - jQuery Tutorial', 'http://webdesign.kerthis.com/jquery/jquery_ajax', 0, 473, '1320470497505');
+INSERT INTO `bookmark` VALUES (6917, 'new', '19601', '19396', 'jQuery.get() – jQuery API', 'http://api.jquery.com/jQuery.get/', 0, 472, '1320470497505');
+INSERT INTO `bookmark` VALUES (6916, 'new', '19600', '19396', 'SA.PHP觀念教室 首部曲:了解$_POST,$_GET', 'http://phorum.study-area.org/index.php?topic=32453.0', 0, 471, '1320470497505');
+INSERT INTO `bookmark` VALUES (6915, 'new', '19599', '19396', '小灰狼php筆記: 使用nl2br 讓php5裡面自動補上br的換行方式', 'http://phpwolf.blogspot.com/2008/06/nl2br-php.html', 0, 470, '1320470497505');
+INSERT INTO `bookmark` VALUES (6914, 'new', '19598', '19396', '使用JavaScript來判斷form表單是否有填寫! @ 只要肯努力......! :: 痞客邦 PIXNET ::', 'http://dreamtails.pixnet.net/blog/post/22501946-%E4%BD%BF%E7%94%A8javascript%E4%BE%86%E5%88%A4%E6%96%B7form%E8%A1%A8%E5%96%AE%E6%98%AF%E5%90%A6%E6%9C%89%E5%A1%AB%E5%AF%AB!', 0, 469, '1320470497505');
+INSERT INTO `bookmark` VALUES (6913, 'new', '19597', '19396', '網頁版權標示、資料引用標示、與引用網頁資料標示方式', 'http://ianthro.tw/~pingpu/pinpunews/readingmaterial/copyright.html', 0, 468, '1320470497505');
+INSERT INTO `bookmark` VALUES (6911, 'new', '19595', '19396', 'Cannot modify header information的解決方法 - 香腸炒魷魚', 'http://sofree.cc/output_buffering/', 0, 466, '1320470497505');
+INSERT INTO `bookmark` VALUES (6912, 'new', '19596', '19396', 'Re:請問在程式前的著作權和授權宣告要怎麼寫? - Forum - OpenFoundry', 'http://www.openfoundry.org/tw/forum?func=view&catid=10&id=345', 0, 467, '1320470497505');
+INSERT INTO `bookmark` VALUES (6910, 'new', '19594', '19396', '請問寫入資料庫之後重新顯式網頁的問題？', 'http://bbs-mychat.com/sindex.php?t566383.html', 0, 465, '1320470497505');
+INSERT INTO `bookmark` VALUES (6908, 'new', '20011', '19593', 'FRAME', 'http://www.csie.nctu.edu.tw/~jglee/teacher/frame2.htm', 0, 463, '1320470497505');
+INSERT INTO `bookmark` VALUES (6909, 'new', '20012', '19593', 'Frame', 'http://www.math.ncu.edu.tw/~chenym/test/frame.html', 0, 464, '1320470497505');
+INSERT INTO `bookmark` VALUES (6907, 'new', '20010', '19593', 'FrameSet 屬性與值', 'http://www.webpage.idv.tw/study/03/08/frameset1.htm', 0, 462, '1320470497505');
+INSERT INTO `bookmark` VALUES (6905, 'new', '19593', '19396', 'Html_frame 切割', '', 0, 460, '1320470497505');
+INSERT INTO `bookmark` VALUES (6906, 'new', '5237', '5235', 'www.takka.com.hk/jstutor/ch3/ch3.htm#3.2', 'http://www.takka.com.hk/jstutor/ch3/ch3.htm#3.2', 0, 774, '1320376924275');
+INSERT INTO `bookmark` VALUES (6904, 'new', '20009', '19593', 'html教學', 'http://m7.dfps.tp.edu.tw/chen/main5/ahtml/14.asp', 0, 461, '1320470497505');
+INSERT INTO `bookmark` VALUES (6902, 'new', '21228', '20992', 'Javascript', '', 0, 290, '1320470860430');
+INSERT INTO `bookmark` VALUES (6903, 'new', '5236', '5235', '按刪除跳出警告視窗- 藍色小舖 BlueShop', 'http://www.blueshop.com.tw/board/show.asp?subcde=BRD200708091309229VQ', 0, 773, '1320376924275');
+INSERT INTO `bookmark` VALUES (6901, 'new', '20008', '19592', 'DIV與Table佈局在大型網站的可用性比較_Photo說，經常說_華夏社區門戶 - powered by X-Space', 'http://big5.huaxia.com/gate/big5/blog.huaxia.com/html/13/13_itemid_438.html', 0, 459, '1320470497505');
+INSERT INTO `bookmark` VALUES (6900, 'new', '20007', '19592', 'Nice and Free CSS Templates', 'http://www.mycelly.com/', 0, 458, '1320470497505');
+INSERT INTO `bookmark` VALUES (6899, 'new', '20006', '19592', '網頁設計之css div PK table css-網頁設計教程', 'http://mid.lt263.com/mb/jiaocheng/19701.html', 0, 457, '1320470497505');
+INSERT INTO `bookmark` VALUES (6897, 'new', '20082', '20004', 'CSS 表格', 'http://css.1keydata.com/tw/table.php', 0, 454, '1320470497505');
+INSERT INTO `bookmark` VALUES (6898, 'new', '20005', '19592', 'DIV 及 TABLE 建議用處~~ @ 果粒印象 :: 痞客邦 PIXNET ::', 'http://goliimage.pixnet.net/blog/post/26437445-div-%E5%8F%8A-table-%E5%BB%BA%E8%AD%B0%E7%94%A8%E8%99%95~~', 0, 456, '1320470497505');
+INSERT INTO `bookmark` VALUES (6896, 'new', '20081', '20004', 'css width of <td>', 'http://www.velocityreviews.com/forums/t161352-css-width-of-td.html', 0, 453, '1320470497505');
+INSERT INTO `bookmark` VALUES (6893, 'new', '20079', '20004', 'CSS 邊界', 'http://css.1keydata.com/tw/margin.php', 0, 451, '1320470497505');
+INSERT INTO `bookmark` VALUES (6894, 'new', '20080', '20004', 'CSS equivalet to HTML <td> valign attribute? CSS forum at WebmasterWorld', 'http://www.webmasterworld.com/forum83/569.htm', 0, 452, '1320470497505');
+INSERT INTO `bookmark` VALUES (6895, 'new', '20083', '20004', 'CSS 文字', 'http://css.1keydata.com/tw/text.php', 0, 455, '1320470497505');
+INSERT INTO `bookmark` VALUES (6892, 'new', '20078', '20004', '螞蟻的 CSS: DIV+CSS 網頁佈局', 'http://ant4css.blogspot.com/2009/02/cssdiv.html', 0, 450, '1320470497505');
+INSERT INTO `bookmark` VALUES (6891, 'new', '20077', '20004', 'OECSPACE - Css style 教學- 框線屬性一覽', 'http://www.hsiu28.net/style/style_5.php', 0, 449, '1320470497505');
+INSERT INTO `bookmark` VALUES (6890, 'new', '20076', '20004', 'CSS排版程式(2)－套用規則 | 摩刻部落', 'http://www.moke.tw/wordpress/computer/web/194', 0, 448, '1320470497505');
+INSERT INTO `bookmark` VALUES (6889, 'new', '20075', '20004', '程式語言教學誌: CSS 2.1 快速導覽 - 文字裝飾 text-decoration', 'http://pydoing.blogspot.com/2011/08/css-textdecoration.html', 0, 447, '1320470497505');
+INSERT INTO `bookmark` VALUES (6888, 'new', '20074', '20004', '謝晒的PHP網頁設計學習筆記: [CSS] 用div排版常見的問題', 'http://seanphpbook.blogspot.com/2009/12/css-div.html', 0, 446, '1320470497505');
+INSERT INTO `bookmark` VALUES (6887, 'new', '20073', '20004', 'Nice and Free CSS Template 2a', 'http://www.mycelly.com/css_templates/css_template_02a.htm', 0, 445, '1320470497505');
+INSERT INTO `bookmark` VALUES (6886, 'new', '20072', '20004', '【教學】從table到div——CSS排版基礎教學 | 光速捏猫爪♪', 'http://blog.cat-fish.net/post/361/', 0, 444, '1320470497505');
+INSERT INTO `bookmark` VALUES (6885, 'new', '20071', '20004', 'CSS+DIV排版', 'http://www.java3z.com/cwbwebhome/article/article9/ht26.html', 0, 443, '1320470497505');
+INSERT INTO `bookmark` VALUES (6884, 'new', '20070', '20004', '[CSS]淺談CSS與Div排版技術，適用IE與FireFox', 'http://zh-tw.facebook.com/note.php?note_id=379494399350&id=230454283340', 0, 442, '1320470497505');
+INSERT INTO `bookmark` VALUES (6883, 'new', '20069', '20004', 'HTML div tag', 'http://www.w3schools.com/tags/tag_div.asp', 0, 441, '1320470497505');
+INSERT INTO `bookmark` VALUES (6881, 'new', '20004', '19592', 'DIV教學', '', 0, 439, '1320470497505');
+INSERT INTO `bookmark` VALUES (6882, 'new', '20068', '20004', '玩Web無窮(Enjoy Web Tech): CSS基礎教學(8)--文字顏色與背景顏色', 'http://enjoywebtech.blogspot.com/2008/07/css8.html', 0, 440, '1320470497505');
+INSERT INTO `bookmark` VALUES (6880, 'new', '19592', '19396', 'DIVvsTABLE', '', 0, 438, '1320470497505');
+INSERT INTO `bookmark` VALUES (6879, 'new', '20003', '19591', '使用 PHP、MySQL 與 Google 地圖建立商店定位器 - Google Maps API 系列 - Google Code', 'http://code.google.com/intl/zh-TW/apis/maps/articles/phpsqlsearch.html', 0, 437, '1320470497505');
+INSERT INTO `bookmark` VALUES (6878, 'new', '20002', '19591', 'PHP基礎', 'http://140.134.26.25/~cyt/matt_php/PHP_basic.html', 0, 436, '1320470497505');
+INSERT INTO `bookmark` VALUES (6877, 'new', '20067', '20001', '小開PHP私房菜 • 檢視主題 - 取得不重複亂數', 'http://www.gocar.idv.tw/phpbb3/viewtopic.php?f=9&t=55', 0, 435, '1320470497505');
+INSERT INTO `bookmark` VALUES (6876, 'new', '20066', '20001', '防止表單傳送兩次的方法 ( gipi的幻想空間 - 社群文章 )', 'http://itgroup.blueshop.com.tw/gipi/blog?n=convew&i=6439', 0, 434, '1320470497505');
+INSERT INTO `bookmark` VALUES (6874, 'new', '20065', '20001', '精讚部落', 'http://note.tcc.edu.tw/388.html', 0, 433, '1320470497505');
+INSERT INTO `bookmark` VALUES (6875, 'new', '20064', '20001', 'PHP/CURL Examples Book with Tutorial Help and online Forum', 'http://curl.phptrack.com/', 0, 432, '1320470497505');
+INSERT INTO `bookmark` VALUES (6873, 'new', '20063', '20001', 'php使用curl模擬用戶登陸-PHP編程教程', 'http://mid.lt263.com/mb/biancheng/php/php_23699.html', 0, 431, '1320470497505');
+INSERT INTO `bookmark` VALUES (6872, 'new', '20062', '20001', 'Sending HTTP POST with php cURL @ 筆記 :: 痞客邦 PIXNET ::', 'http://pink0420.pixnet.net/blog/post/5058240', 0, 430, '1320470497505');
+INSERT INTO `bookmark` VALUES (6871, 'new', '20061', '20001', '在Windows下使用curl命令 - starspace - 博客园', 'http://www.cnblogs.com/starspace/archive/2009/02/24/1397043.html', 0, 429, '1320470497505');
+INSERT INTO `bookmark` VALUES (6869, 'new', '20059', '20001', 'curl php curl安裝 curl 設定 window下安裝 curl 模組 | IT 達人', 'http://www.itmaster.tw/?p=7767', 0, 427, '1320470497505');
+INSERT INTO `bookmark` VALUES (6870, 'new', '20060', '20001', 'cURL 在 MS-Windows 環境的使用 [蔡宗融個人網站]', 'http://www.ichiayi.com/wiki/tech/curl_ssl_win', 0, 428, '1320470497505');
+INSERT INTO `bookmark` VALUES (6868, 'new', '20058', '20001', '[php] 利用 curl 來抓取網頁結果 - 海芋小站', 'http://www.inote.tw/2009/04/php-curl.html', 0, 426, '1320470497505');
+INSERT INTO `bookmark` VALUES (6867, 'new', '20057', '20001', 'window 下安裝 curl 模組 @ 筆記 :: 痞客邦 PIXNET ::', 'http://pink0420.pixnet.net/blog/post/23905817-window-%E4%B8%8B%E5%AE%89%E8%A3%9D-curl-%E6%A8%A1%E7%B5%84', 0, 425, '1320470497505');
+INSERT INTO `bookmark` VALUES (6865, 'new', '20001', '19591', 'windows curl', '', 0, 423, '1320470497505');
+INSERT INTO `bookmark` VALUES (6866, 'new', '20056', '20001', 'sJ 的電腦筆記本: 在Windows 安裝cURL', 'http://snjoetw.blogspot.com/2007/06/windows-curl.html', 0, 424, '1320470497505');
+INSERT INTO `bookmark` VALUES (6864, 'new', '20000', '19591', 'PHP: mysql_fetch_array - Manual', 'http://www.php.net/manual/en/function.mysql-fetch-array.php', 0, 422, '1320470497505');
+INSERT INTO `bookmark` VALUES (6863, 'new', '19999', '19591', 'php+mysql', 'http://www.sy3es.tnc.edu.tw/teaching/php_mysql/php-mysql.htm', 0, 421, '1320470497505');
+INSERT INTO `bookmark` VALUES (6862, 'new', '19998', '19591', '抓form action 的值 ?', 'http://phorum.study-area.org/index.php?topic=53592.0', 0, 420, '1320470497505');
+INSERT INTO `bookmark` VALUES (6861, 'new', '19997', '19591', '請問表單內可以有3個以上的命令按鈕嗎？', 'http://phorum.study-area.org/index.php/topic,55169.0.html', 0, 419, '1320470497505');
+INSERT INTO `bookmark` VALUES (6860, 'new', '19996', '19591', 'PHP/MySQL相關函數', 'http://dyna.hcc.edu.tw/php/class4_4.htm', 0, 418, '1320470497505');
+INSERT INTO `bookmark` VALUES (6858, 'new', '19591', '19396', 'PHP+Mysql', '', 0, 416, '1320470497505');
+INSERT INTO `bookmark` VALUES (6859, 'new', '19995', '19591', 'php - MySQL 教學 @ [todo Austin] 奧斯丁。土豆 :: 痞客邦 PIXNET ::', 'http://austintodo.pixnet.net/blog/post/23821431', 0, 417, '1320470497505');
+INSERT INTO `bookmark` VALUES (6857, 'new', '19994', '19590', '架設sendmail 信件無法寄出問題 - iT邦幫忙::IT知識分享社群', 'http://ithelp.ithome.com.tw/question/10021843?tag=rt.rq', 0, 415, '1320470497505');
+INSERT INTO `bookmark` VALUES (6856, 'new', '19993', '19590', '請問一個 php 發 mail 設定 SMTP 的問題', 'http://phorum.study-area.org/index.php?topic=30669.0', 0, 414, '1320470497505');
+INSERT INTO `bookmark` VALUES (6855, 'new', '19992', '19590', 'ini_set() 相關注意事項-享受寂寞-無名小站網誌', 'http://www.wretch.cc/blog/Justlight/15771187', 0, 413, '1320470497505');
+INSERT INTO `bookmark` VALUES (6854, 'new', '19991', '19590', '憂藍夢境‧部落格 » [PHP] 可以使用 ini_set() 改變的項目', 'http://blog.linym.net/archives/58', 0, 412, '1320470497505');
+INSERT INTO `bookmark` VALUES (6853, 'new', '19990', '19590', '如何在php程式中，用Gmail的mail server 發信(php 5.2.12) | Save-CoCo 心得筆記', 'http://save-coco.blogspot.com/2010/02/phpgmailmail-server-php-5212.html', 0, 411, '1320470497505');
+INSERT INTO `bookmark` VALUES (6852, 'new', '19989', '19590', '[教學] 用php發送E-MAIL - 頂客社區 - 免費空間,免費遊戲,免費交友', 'http://www.dk101.com/index.php/viewnews-837.html', 0, 410, '1320470497505');
+INSERT INTO `bookmark` VALUES (6851, 'new', '19988', '19590', '[PHP]使用Mail函式透過SMTP發信 - 香腸炒魷魚', 'http://sofree.cc/php-smtp-mail/', 0, 409, '1320470497505');
+INSERT INTO `bookmark` VALUES (6850, 'new', '19987', '19590', '石頭閒語:PHP mail() and charset encoding question - 樂多日誌', 'http://blog.roodo.com/rocksaying/archives/2950655.html', 0, 408, '1320470497505');
+INSERT INTO `bookmark` VALUES (6848, 'new', '19590', '19396', 'PHP_EMAIL', '', 0, 406, '1320470497505');
+INSERT INTO `bookmark` VALUES (6849, 'new', '19986', '19590', '簡易製作網頁互動表單用php! - Others - 簡易網站製作交流網^^y討論區 - Powered by Discuz!', 'http://www.htdocs.pingjean.com/viewthread.php?tid=29', 0, 407, '1320470497505');
+INSERT INTO `bookmark` VALUES (6846, 'new', '21187', '20991', 'Web(PHP,Mysql,Html,Javascrip,CSS)', '', 0, 248, '1320470860430');
+INSERT INTO `bookmark` VALUES (6847, 'new', '20991', '1', 'Programming', '', 0, 247, '1320470860430');
+INSERT INTO `bookmark` VALUES (6845, 'new', '21186', '20990', '(1) 遊戲新鮮人交流會', 'http://www.facebook.com/event.php?eid=191493220926986', 0, 246, '1320470860430');
+INSERT INTO `bookmark` VALUES (6844, 'new', '21184', '20990', '鄭有傑 - 维基百科，自由的百科全书', 'http://zh.wikipedia.org/wiki/%E9%84%AD%E6%9C%89%E5%82%91', 0, 244, '1320470860430');
+INSERT INTO `bookmark` VALUES (6843, 'new', '21185', '20990', '警方失職 重機警車追不上少年小50 民眾諷警無能 - [PPT 短網址 / 文章閱讀 (BBS版)]', 'http://ppt.cc/BO~@', 0, 245, '1320470860430');
+INSERT INTO `bookmark` VALUES (6842, 'new', '21183', '20990', '保經科技有限公司', 'http://www.prokey.com.tw/', 0, 243, '1320470860430');
+INSERT INTO `bookmark` VALUES (6841, 'new', '21182', '20990', '一些面試注意事項與怪談 - 楊舒凱碎碎念', 'http://shukaiyang.myweb.hinet.net/articles/interview.htm', 0, 242, '1320470860430');
+INSERT INTO `bookmark` VALUES (6840, 'new', '21181', '20990', '2011年11月25日、11月28日 - 南投區網中心資訊安全研討會', 'http://www.doc.ncnu.edu.tw/ntrc/index.php?option=com_content&view=article&id=459:2011-10-13-04-50-19&catid=42:2008-09-11-11-52-31&Itemid=1', 0, 241, '1320470860430');
+INSERT INTO `bookmark` VALUES (6839, 'new', '21180', '20990', 'ZDNet Taiwan - 程式開發 Java漸不受青睞 - 新聞 - 企業軟體', 'http://www.zdnet.com.tw/news/software/0,2000085678,20151678,00.htm?feed=RSS:+ZDNet+Taiwan%3A+%B7s%BBD+-+%B7%ED%A4%E9%B3%CC%B7s', 0, 240, '1320470860430');
+INSERT INTO `bookmark` VALUES (6838, 'new', '21179', '20990', 'PHPConf Taiwan 2011', 'http://phpconf.tw/2011', 0, 239, '1320470860430');
+INSERT INTO `bookmark` VALUES (6837, 'new', '21178', '20990', 'Vim-Taiwan | Google 網上論壇', 'http://groups.google.com/group/vim-taiwan?msg=pending', 0, 238, '1320470860430');
+INSERT INTO `bookmark` VALUES (6836, 'new', '21177', '20990', 'Vim Taiwan 聚會 | Registrano', 'http://registrano.com/events/vim-taiwan-1', 0, 237, '1320470860430');
+INSERT INTO `bookmark` VALUES (6835, 'new', '21176', '20990', '2011年台灣維基人秋季聚會暨成功大學校園導覽 | Registrano', 'http://registrano.com/events/wikipediatw-meetup-28', 0, 236, '1320470860430');
+INSERT INTO `bookmark` VALUES (6834, 'new', '21175', '20990', 'HouseFun好房誌雜誌-雜誌閱讀,房產趨勢,生活圈影音導覽', 'http://mag.housefun.com.tw/Trend/Detail.aspx?id=353341fa-8007-46e5-9e31-e7c98df939b0', 0, 235, '1320470860430');
+INSERT INTO `bookmark` VALUES (6833, 'new', '21174', '20990', 'Spider-Woman scales castle wall: Ma Jei climbs 70ft to dodge £2.50 admission fee | Mail Online', 'http://www.dailymail.co.uk/news/article-2046504/Spider-Woman-scales-castle-wall-Ma-Jei-climbs-70ft-dodge-2-50-admission-fee.html#ixzz1a9abu5hP', 0, 234, '1320470860430');
+INSERT INTO `bookmark` VALUES (6832, 'new', '21173', '20990', 'fellow.ietf82.tw', 'http://fellow.ietf82.tw/', 0, 233, '1320470860430');
+INSERT INTO `bookmark` VALUES (6831, 'new', '21172', '20990', 'JoemanStarCraft 的頻道 - YouTube', 'http://www.youtube.com/user/JoemanStarCraft#g/u', 0, 232, '1320470860430');
+INSERT INTO `bookmark` VALUES (6829, 'new', '21170', '20990', '高雄軟體促進會', 'http://www.facebook.com/pages/%E9%AB%98%E9%9B%84%E8%BB%9F%E9%AB%94%E4%BF%83%E9%80%B2%E6%9C%83/138631736212278', 0, 230, '1320470860430');
+INSERT INTO `bookmark` VALUES (6830, 'new', '21171', '20990', 'WhoisThisDomain 批次查詢網址（網域名稱）的擁有者、相關資訊與站長的底細', 'http://briian.com/?p=7800', 0, 231, '1320470860430');
+INSERT INTO `bookmark` VALUES (6828, 'new', '21169', '20990', 'KHDC 高雄軟體工程研究社', 'http://www.facebook.com/khdev', 0, 229, '1320470860430');
+INSERT INTO `bookmark` VALUES (6827, 'new', '21168', '20990', 'Web Meetup | Google 網上論壇', 'http://groups.google.com/group/web-meetup/about', 0, 228, '1320470860430');
+INSERT INTO `bookmark` VALUES (6826, 'new', '21167', '20990', 'Web Meetup - 這是什麼活動？', 'http://webmeetup.org/what', 0, 227, '1320470860430');
+INSERT INTO `bookmark` VALUES (6825, 'new', '21166', '20990', '“叹为观纸”第一期：现代折纸介绍 - DIY - 果壳网 guokr.com', 'http://www.guokr.com/article/63817/', 0, 226, '1320470860430');
+INSERT INTO `bookmark` VALUES (6824, 'new', '21165', '20990', '潘泓仁', 'http://www.facebook.com/profile.php?id=100001436843674&sk=wall', 0, 225, '1320470860430');
+INSERT INTO `bookmark` VALUES (6823, 'new', '21164', '20990', '免費抽獎情報-LuckyDog抽獎達人', 'http://luckydog.tw/', 0, 224, '1320470860430');
+INSERT INTO `bookmark` VALUES (6822, 'new', '21163', '20990', '[好站介紹]問別人先Google!如何Google搜尋的動畫教學 | 玩樂部落格大全', 'http://happy-yblog.blogspot.com/2009/08/googlegoogle.html', 0, 223, '1320470860430');
+INSERT INTO `bookmark` VALUES (6821, 'new', '21162', '20990', 'Tetris Battle 149 lines sent (No T spin) 留四打法,純靠接技149!! - YouTube', 'http://www.youtube.com/watch?v=ck32wVcLhxQ&feature=player_embedded', 0, 222, '1320470860430');
+INSERT INTO `bookmark` VALUES (6820, 'new', '21161', '20990', '人品問題', 'http://translate.google.com.tw/translate_t?q=RenPinWenTi&um=1&ie=UTF-8&sa=N&hl=zh-TW&tab=wT#', 0, 221, '1320470860430');
+INSERT INTO `bookmark` VALUES (6819, 'new', '21160', '20990', '分類:台灣配音員 - 维基百科，自由的百科全书', 'http://zh.wikipedia.org/wiki/Category:%E5%8F%B0%E7%81%A3%E9%85%8D%E9%9F%B3%E5%93%A1', 0, 220, '1320470860430');
+INSERT INTO `bookmark` VALUES (6818, 'new', '20990', '1', '短期資訊', '', 0, 219, '1320470860430');
+INSERT INTO `bookmark` VALUES (6817, 'new', '21159', '20989', '軍情局對大陸情蒐費用減少?高華柱:沒有 - Yahoo!奇摩新聞', 'http://tw.news.yahoo.com/%E8%BB%8D%E6%83%85%E5%B1%80%E5%B0%8D%E5%A4%A7%E9%99%B8%E6%83%85%E8%92%90%E8%B2%BB%E7%94%A8%E6%B8%9B%E5%B0%91-%E9%AB%98%E8%8F%AF%E6%9F%B1-%E6%B2%92%E6%9C%89-082011916.html', 0, 218, '1320470860430');
+INSERT INTO `bookmark` VALUES (6816, 'new', '19589', '19367', 'ZDNet Taiwan - 還困在實體隔離的資料外洩防護模式嗎？ - 名家專欄 - 周世雄', 'http://www.zdnet.com.tw/enterprise/column/jack/0,2000090425,20140134,00.htm', 0, 374, '1320470497505');
+INSERT INTO `bookmark` VALUES (6815, 'new', '19588', '19367', '實體隔離是資安萬靈丹 !?,Information Security 資安人科技網', 'http://www.isecutech.com.tw/article/article_detail.aspx?aid=5313', 0, 373, '1320470497505');
+INSERT INTO `bookmark` VALUES (6814, 'new', '19587', '19367', 'I Security-政府法規與資源-資安鑑識實驗室', 'http://www.i-security.tw/law/lobo_det.asp?id=13', 0, 372, '1320470497505');
+INSERT INTO `bookmark` VALUES (6813, 'new', '19586', '19367', '實體隔離 - Google 搜尋', 'http://www.google.com.tw/#hl=zh-TW&source=hp&q=%E5%AF%A6%E9%AB%94%E9%9A%94%E9%9B%A2&oq=%E5%AF%A6%E9%AB%94%E9%9A%94%E9%9B%A2&aq=f&aqi=&aql=&gs_sm=e&gs_upl=1210l3646l0l4120l5l5l0l0l0l0l0l0ll0l0&bav=on.2,or.r_gc.r_pw.&fp=ae4ee51a51472904&biw=1280&bih=699', 0, 371, '1320470497505');
+INSERT INTO `bookmark` VALUES (6812, 'new', '21158', '20989', '實體隔離', '', 0, 217, '1320470860430');
+INSERT INTO `bookmark` VALUES (6811, 'new', '19985', '19585', '3秒鐘直達對方的心：絕對派得上用場的心理技巧 | 艾雪兒的趴兔窩', 'http://share.yes99.tw/3%E7%A7%92%E7%9B%B4%E9%81%94.html', 0, 369, '1320470497505');
+INSERT INTO `bookmark` VALUES (6810, 'new', '19984', '19585', '博客來書籍館>間諜：特務情報世界揭密全紀錄', 'http://www.books.com.tw/exep/prod/booksfile.php?item=0010499563', 0, 368, '1320470497505');
+INSERT INTO `bookmark` VALUES (6809, 'new', '19983', '19585', '催眠偵訊在刑事偵查上之應用', 'http://www.hmi.com.tw/hypinter-4.html', 0, 367, '1320470497505');
+INSERT INTO `bookmark` VALUES (6808, 'new', '19982', '19585', '博客來書籍館>揭開偵訊的神秘面紗－暴力篇', 'http://www.books.com.tw/exep/prod/booksfile.php?item=0010396626', 0, 366, '1320470497505');
+INSERT INTO `bookmark` VALUES (6806, 'new', '19585', '19366', '社交工程', '', 0, 364, '1320470497505');
+INSERT INTO `bookmark` VALUES (6807, 'new', '19981', '19585', '嫌犯不招供，超心理學伺候', 'http://www.thinkerstar.com/psi/shi-01.html', 0, 365, '1320470497505');
+INSERT INTO `bookmark` VALUES (6805, 'new', '19980', '19584', '自己開喇叭鎖、喇叭鎖開鎖 - 東勢鎖匙大王 - Yahoo!奇摩部落格', 'http://tw.myblog.yahoo.com/lock5050/article?mid=971&sc=1', 0, 363, '1320470497505');
+INSERT INTO `bookmark` VALUES (6804, 'new', '19979', '19584', '開鎖大全教學 - Google 搜尋', 'http://www.google.com.tw/#hl=zh-TW&source=hp&q=%E9%96%8B%E9%8E%96%E5%A4%A7%E5%85%A8%E6%95%99%E5%AD%B8&oq=%E9%96%8B%E9%8E%96%E5%A4%A7%E5%85%A8%E6%95%99%E5%AD%B8&aq=f&aqi=&aql=&gs_sm=e&gs_upl=0l0l1l0l0l0l0l0l0l0l0l0ll0l0&bav=on.2,or.r_gc.r_pw.&fp=72f1db509492a26f&biw=1280&bih=699', 0, 362, '1320470497505');
+INSERT INTO `bookmark` VALUES (6802, 'new', '19977', '19584', '鎖匠必備開鎖大全', 'http://www.cp1897.com.hk/product_info.php?BookId=9623880758', 0, 360, '1320470497505');
+INSERT INTO `bookmark` VALUES (6803, 'new', '19978', '19584', '萬能開鎖工具包組+開鎖技術大全 - 鎖匙.遙控器討論區 - cuteftp 中文版免費下載', 'http://www.cuteftp.tw/thread-2681-1-1.html', 0, 361, '1320470497505');
+INSERT INTO `bookmark` VALUES (6801, 'new', '19975', '19584', '圖解開鎖大全 - Google 搜尋', 'http://www.google.com.tw/search?hl=zh-TW&biw=1280&bih=699&q=%E5%9C%96%E8%A7%A3%E9%96%8B%E9%8E%96%E5%A4%A7%E5%85%A8&revid=1644232686&sa=X&ei=sN1hTqqFL8KgmQWf6sy2Cg&ved=0CIwBENUCKAI', 0, 358, '1320470497505');
+INSERT INTO `bookmark` VALUES (6800, 'new', '19976', '19584', '鎖匠必備開鎖大全', 'http://www.hklegendbook.com/index.php?route=product/product&product_id=965', 0, 359, '1320470497505');
+INSERT INTO `bookmark` VALUES (6799, 'new', '5130', '5122', '"圖解～開鎖大全" 中文繁體光碟正式版', 'http://www.ipobar.com/read.php?tid-494263.html', 0, 667, '1320376924275');
+INSERT INTO `bookmark` VALUES (6798, 'new', '19974', '19584', '圖解簡易開鎖大全 - Google 圖書', 'http://books.google.com/books/about/%E5%9C%96%E8%A7%A3%E7%B0%A1%E6%98%93%E9%96%8B%E9%8E%96%E5%A4%A7%E5%85%A8.html?id=mjppHAAACAAJ', 0, 357, '1320470497505');
+INSERT INTO `bookmark` VALUES (6796, 'new', '19972', '19584', '74年 鎖匠大全 劉健星 Yahoo! 奇摩拍賣', 'http://tw.page.bid.yahoo.com/tw/auction/d55423578', 0, 355, '1320470497505');
+INSERT INTO `bookmark` VALUES (6797, 'new', '19973', '19584', '博客來簡體館>開鎖破鎖工具及其痕跡勘驗大全', 'http://www.books.com.tw/exep/prod/china/chinafile.php?item=CN10762404', 0, 356, '1320470497505');
+INSERT INTO `bookmark` VALUES (6795, 'new', '19971', '19584', '阿騰哥二手書坊**早期民國74年出版劉健星--鎖匠大全 - 露天拍賣--簡單、好玩、免費、安全', 'http://goods.ruten.com.tw/item/show?21102125359179', 0, 354, '1320470497505');
+INSERT INTO `bookmark` VALUES (6794, 'new', '19969', '19584', '[酷喔] 開鎖技巧 @ Spitfire Lab. 史畢特實驗室 :: 痞客邦 PIXNET ::', 'http://spitfire.pixnet.net/blog/post/21616377-%5B%E9%85%B7%E5%96%94%5D-%E9%96%8B%E9%8E%96%E6%8A%80%E5%B7%A7', 0, 352, '1320470497505');
+INSERT INTO `bookmark` VALUES (6793, 'new', '19970', '19584', '鎖匠大全[上]||劉健星~508W-6[821224] - 露天拍賣--簡單、好玩、免費、安全', 'http://goods.ruten.com.tw/item/show?21108193226342', 0, 353, '1320470497505');
+INSERT INTO `bookmark` VALUES (6791, 'new', '19584', '19366', '開鎖', '', 0, 350, '1320470497505');
+INSERT INTO `bookmark` VALUES (6792, 'new', '19968', '19584', '萬能開鎖大法！ “夜不閉戶”的時代即將來臨..', 'http://briian.com/?p=875', 0, 351, '1320470497505');
+INSERT INTO `bookmark` VALUES (6790, 'new', '19583', '19366', '射擊訓練場-台北市射擊協會於製造並以 服務銷售', 'http://tw.ttnet.net/ttnet/gotoprd/OC107/999/0/054303033333531323.htm', 0, 349, '1320470497505');
+INSERT INTO `bookmark` VALUES (6788, 'new', '19581', '19366', '爆破 - 维基百科，自由的百科全书', 'http://zh.wikipedia.org/wiki/%E7%88%86%E7%A0%B4', 0, 347, '1320470497505');
+INSERT INTO `bookmark` VALUES (6789, 'new', '19582', '19366', '歡迎對射擊有興趣的各位到新竹縣射擊委員會練習場', 'http://www.wretch.cc/blog/hsc20080808/10057393', 0, 348, '1320470497505');
+INSERT INTO `bookmark` VALUES (6787, 'new', '21157', '20989', '技術', '', 0, 216, '1320470860430');
+INSERT INTO `bookmark` VALUES (6786, 'new', '19580', '19365', '內政部營建署--建築物公共安全檢查資訊系統', 'http://sercpa.cpami.gov.tw/bmdec/owa/pubacc.acc3?f2mix_pg=1&f2max_pg=15&f2ipg=1&f2idecpas=G00&f2idecare=111&f2idecad1=&f2idecnam=&f2isort=&idecpas=G00&idecnum=0000007261', 0, 345, '1320470497505');
+INSERT INTO `bookmark` VALUES (6785, 'new', '19579', '19365', ':: 臺灣軍情局對局長以下所有人員進行全面測謊 ::', 'http://big5.xinhuanet.com/gate/big5/news.xinhuanet.com/mil/2003-12/05/content_1215135.htm', 0, 344, '1320470497505');
+INSERT INTO `bookmark` VALUES (6783, 'new', '19577', '19365', 'jack327529 的無名名片 - 無名小站', 'http://www.wretch.cc/user/jack327529', 0, 342, '1320470497505');
+INSERT INTO `bookmark` VALUES (6784, 'new', '19578', '19365', '定期清除分享資料夾內的檔案 @ MIS情報站 :: 痞客邦 PIXNET ::', 'http://mcp0313.pixnet.net/blog/post/2289197', 0, 343, '1320470497505');
+INSERT INTO `bookmark` VALUES (6781, 'new', '21156', '20989', 'MIS', '', 0, 215, '1320470860430');
+INSERT INTO `bookmark` VALUES (6782, 'new', '19576', '19365', '山竹營區', 'http://www.wretch.cc/blog/leonids7288/21606712', 0, 341, '1320470497505');
+INSERT INTO `bookmark` VALUES (6780, 'new', '19575', '19364', '法務部調查局', 'http://www.mjib.gov.tw/', 0, 339, '1320470497505');
+INSERT INTO `bookmark` VALUES (6779, 'new', '19574', '19364', '法務部調查局 - 维基百科，自由的百科全书', 'http://zh.wikipedia.org/wiki/%E6%B3%95%E5%8B%99%E9%83%A8%E8%AA%BF%E6%9F%A5%E5%B1%80', 0, 338, '1320470497505');
+INSERT INTO `bookmark` VALUES (6778, 'new', '19573', '19364', '法務部調查局', 'http://www.mjib.gov.tw/cgi-bin/mojnbi?/newworkitem/science/science-2-11.html', 0, 337, '1320470497505');
+INSERT INTO `bookmark` VALUES (6777, 'new', '19570', '19364', '調查局特考高手經驗談', 'http://www.get.com.tw/goldensun/exam/experience/98exp/T04.shtml', 0, 334, '1320470497505');
+INSERT INTO `bookmark` VALUES (6776, 'new', '19571', '19364', '調查局特考 考試介紹 _公職王', 'http://info.public.com.tw/ExamName_Content.aspx?tid=2&nid=30', 0, 335, '1320470497505');
+INSERT INTO `bookmark` VALUES (6775, 'new', '19572', '19364', '調查局特考 分發與工作內容_公職王', 'http://info.public.com.tw/ExamName_Content.aspx?tid=2&nid=30&rid=65', 0, 336, '1320470497505');
+INSERT INTO `bookmark` VALUES (6774, 'new', '19569', '19364', '行銷管理 - 【調查局特考】陳仁泓：「會考試」比「會讀書」重要！ - PChome 新聞', 'http://news.pchome.com.tw/magazine/report/sa/career/1834/126737280079950062003.htm', 0, 333, '1320470497505');
+INSERT INTO `bookmark` VALUES (6773, 'new', '21155', '20989', 'MJIB', '', 0, 214, '1320470860430');
+INSERT INTO `bookmark` VALUES (6772, 'new', '19568', '19363', '質詢吳揆 潘孟安憂鼎新成國安漏洞 - YouTube', 'http://www.youtube.com/watch?v=KaT9bW-MwBg', 0, 331, '1320470497505');
+INSERT INTO `bookmark` VALUES (6770, 'new', '21154', '20989', 'NSB', '', 0, 213, '1320470860430');
+INSERT INTO `bookmark` VALUES (6771, 'new', '19567', '19363', '中華民國國家安全局', 'http://www.nsb.gov.tw/page10_19.htm', 0, 330, '1320470497505');
+INSERT INTO `bookmark` VALUES (6768, 'new', '19565', '19363', '三民補習班-國安局特考介紹', 'http://www.3people.com.tw/Government/NSB/base/main.aspx', 0, 328, '1320470497505');
+INSERT INTO `bookmark` VALUES (6769, 'new', '19566', '19363', '國安局特考 國安局人員考試介紹 _公職王', 'http://info.public.com.tw/ExamName_Content.aspx?tid=2&nid=53', 0, 329, '1320470497505');
+INSERT INTO `bookmark` VALUES (6767, 'new', '19564', '19363', '阿B福利社2 - [注意]一為國安局人士的心聲', 'http://www.fulisir.us/forums/archive/index.php/t-4079.html', 0, 327, '1320470497505');
+INSERT INTO `bookmark` VALUES (6766, 'new', '19563', '19362', '針孔攝影機發現器-防止偷拍偵測器,其他保全用品,防盜保全監視系統,DV攝影機 - Yahoo!奇摩購物中心', 'http://buy.yahoo.com.tw/gdsale/gdsale.asp?gdid=1125013', 0, 325, '1320470497505');
+INSERT INTO `bookmark` VALUES (6765, 'new', '19562', '19362', '【SCJ】經濟型反偷拍反監聽偵測器/無線全頻偵測器(K0000006),其他保全用品,防盜保全監視系統,DV攝影機 - Yahoo!奇摩購物中心', 'http://buy.yahoo.com.tw/gdsale/gdsale.asp?gdid=2634853', 0, 324, '1320470497505');
+INSERT INTO `bookmark` VALUES (6764, 'new', '19561', '19362', '【SCJ】無線竊聽無線監聽器探測筆偵測筆(K0000001),其他保全用品,防盜保全監視系統,DV攝影機 - Yahoo!奇摩購物中心', 'http://buy.yahoo.com.tw/gdsale/gdsale.asp?gdid=2625411', 0, 323, '1320470497505');
+INSERT INTO `bookmark` VALUES (6763, 'new', '21153', '20989', '神奇設備', '', 0, 212, '1320470860430');
+INSERT INTO `bookmark` VALUES (6762, 'new', '19560', '19361', '國中生的英文作文', 'http://www.hgjh.hlc.edu.tw/fudh/spc/culver/juniorstwork.htm', 0, 321, '1320470497505');
+INSERT INTO `bookmark` VALUES (6761, 'new', '19559', '19361', '【分享】台灣大學入學作文題目 - 深藍學生論壇', 'http://www.student.tw/db/showthread.php?t=75982', 0, 320, '1320470497505');
+INSERT INTO `bookmark` VALUES (6760, 'new', '19558', '19361', 'Mo-Mo-Paradise', 'http://www.humaxasia.com.tw/momo/info/', 0, 319, '1320470497505');
+INSERT INTO `bookmark` VALUES (6759, 'new', '19557', '19361', '就是資安 :: 痞客邦 PIXNET ::', 'http://cyrilwang.pixnet.net/blog', 0, 318, '1320470497505');
+INSERT INTO `bookmark` VALUES (6758, 'new', '19556', '19361', 'Findbook > 商品簡介 > 大學英語四級作文：必背模板10天速記速成（附光盤）', 'http://findbook.tw/book/9787806848715/basic', 0, 317, '1320470497505');
+INSERT INTO `bookmark` VALUES (6757, 'new', '19555', '19361', '名师点睛:考研英语图表、情景作文模板', 'http://kaoyan.eol.cn/article/20051118/3161435.shtml', 0, 316, '1320470497505');
+INSERT INTO `bookmark` VALUES (6756, 'new', '19554', '19361', 'toefl考試_toefl考試報名_toefl考試中心_什麼是toefl考試_toefl考試內容_toefl考試費用_托福考試_toefl考試報名時間_托福作文模板', 'http://www.21abroad.net/toefl/1104100.html', 0, 315, '1320470497505');
+INSERT INTO `bookmark` VALUES (6755, 'new', '19553', '19361', '台灣飛利浦(股)公司高雄分公司 @ 高雄市電器商業同業公會', 'http://www.ecaok.org.tw/app/eip.asp?dblabel=ecaok&apid=message.asp&act=detail&dept_id=405_300&fno=904&dsn=&sort=a&seo=%A5x%C6W%AD%B8%A7Q%AE%FA(%AA%D1)%A4%BD%A5q%B0%AA%B6%AF%A4%C0%A4%BD%A5q', 0, 314, '1320470497505');
+INSERT INTO `bookmark` VALUES (6754, 'new', '19552', '19361', '飯統專業快餐(澄清店)介紹,中式料理 複合式 簡餐 平價 餐廳推薦,各式餐廳名錄都在 – 一訂OK', 'http://www.dingok.com/DingOkShop.aspx?Rest=A2801110&Dep=001', 0, 313, '1320470497505');
+INSERT INTO `bookmark` VALUES (6753, 'new', '19551', '19361', '考友社', 'http://www.examiner.com.tw/style/content/CN-022a/quality.asp?lang=1&customer_id=1218&name_id=22030&fid=451', 0, 312, '1320470497505');
+INSERT INTO `bookmark` VALUES (6751, 'new', '19549', '19361', '鼎文公職題庫網【鼎文文化集團】', 'http://www.11exam.com/', 0, 310, '1320470497505');
+INSERT INTO `bookmark` VALUES (6752, 'new', '19550', '19361', '國軍人才招募', 'http://www.tajen.edu.tw/~military/military/rdrc-mnd.htm', 0, 311, '1320470497505');
+INSERT INTO `bookmark` VALUES (6750, 'new', '19548', '19361', '三民區 公所 - Google 搜尋', 'http://www.google.com.tw/#hl=zh-TW&biw=1280&bih=699&q=%E4%B8%89%E6%B0%91%E5%8D%80+%E5%85%AC%E6%89%80&aq=f&aqi=&aql=&oq=&fp=66b8e19545c34954', 0, 309, '1320470497505');
+INSERT INTO `bookmark` VALUES (6748, 'new', '19546', '19361', '鼎文網路書店', 'https://www.ting-wen.com/store.asp', 0, 307, '1320470497505');
+INSERT INTO `bookmark` VALUES (6749, 'new', '19547', '19361', '科學人雜誌網站', 'http://sa.ylib.com/news/newsshow.asp?FDocNo=133&CL=15', 0, 308, '1320470497505');
+INSERT INTO `bookmark` VALUES (6747, 'new', '19545', '19361', 'Google 地圖', 'http://maps.google.com.tw/maps/place?hl=zh-TW&biw=1280&bih=699&um=1&ie=UTF-8&q=%E9%AB%98%E9%9B%84%E5%B8%82%E5%BB%BA%E5%9C%8B%E4%BA%8C%E8%B7%AF220%E8%99%9F&fb=1&gl=tw&hnear=%E5%8F%B0%E6%9D%B1%E5%B8%82&cid=7447449818757793180', 0, 306, '1320470497505');
+INSERT INTO `bookmark` VALUES (6746, 'new', '19544', '19361', '鼎文網路書店－圖書簡介', 'https://www.ting-wen.com/book_show.asp?bno=2408', 0, 305, '1320470497505');
+INSERT INTO `bookmark` VALUES (6745, 'new', '19543', '19361', '考友社', 'http://www.examiner.com.tw/style/content/CN-022a/quality.asp?lang=1&customer_id=1218&name_id=22030&fid=290', 0, 304, '1320470497505');
+INSERT INTO `bookmark` VALUES (6744, 'new', '19542', '19361', '98年軍情局專軍班招生(報名：98/3/23 ~ 98/5/15) - 鼎文書局嘉義店( 感恩回饋價75折) - Yahoo!奇摩部落格', 'http://tw.myblog.yahoo.com/tingwency/article?mid=286&sc=1', 0, 303, '1320470497505');
+INSERT INTO `bookmark` VALUES (6743, 'new', '19541', '19361', '軍事情報局工作幹部考試分享', 'http://homepage19.seed.net.tw/web@1/aneshiw/html/ann.htm', 0, 302, '1320470497505');
+INSERT INTO `bookmark` VALUES (6741, 'new', '21152', '20989', 'MIS_test', '', 0, 211, '1320470860430');
+INSERT INTO `bookmark` VALUES (6742, 'new', '19540', '19361', '軍情局Q&A', 'http://homepage19.seed.net.tw/web@1/aneshiw/html/ann-2.htm', 0, 301, '1320470497505');
+INSERT INTO `bookmark` VALUES (6740, 'new', '21151', '20989', '涉及國家安全或重大利益公務人員特殊查核辦法', 'http://www.6law.idv.tw/6law/law3/%E6%B6%89%E5%8F%8A%E5%9C%8B%E5%AE%B6%E5%AE%89%E5%85%A8%E6%88%96%E9%87%8D%E5%A4%A7%E5%88%A9%E7%9B%8A%E5%85%AC%E5%8B%99%E4%BA%BA%E5%93%A1%E7%89%B9%E6%AE%8A%E6%9F%A5%E6%A0%B8%E8%BE%A6%E6%B3%95.htm', 0, 210, '1320470860430');
+INSERT INTO `bookmark` VALUES (6739, 'new', '21150', '20989', '國家情報工作人員安全查核辦法', 'http://www.6law.idv.tw/6law/law3/%E5%9C%8B%E5%AE%B6%E6%83%85%E5%A0%B1%E5%B7%A5%E4%BD%9C%E4%BA%BA%E5%93%A1%E5%AE%89%E5%85%A8%E6%9F%A5%E6%A0%B8%E8%BE%A6%E6%B3%95.htm', 0, 209, '1320470860430');
+INSERT INTO `bookmark` VALUES (6738, 'new', '21149', '20989', '國防部參謀本部 - 维基百科，自由的百科全书', 'http://zh.wikipedia.org/zh/%E4%B8%AD%E8%8F%AF%E6%B0%91%E5%9C%8B%E5%8F%83%E8%AC%80%E7%B8%BD%E9%95%B7', 0, 208, '1320470860430');
+INSERT INTO `bookmark` VALUES (6737, 'new', '21148', '20989', 'www.ascc.sinica.edu.tw/liaison/noteconnect/AA020.pdf', 'http://www.ascc.sinica.edu.tw/liaison/noteconnect/AA020.pdf', 0, 207, '1320470860430');
+INSERT INTO `bookmark` VALUES (6736, 'new', '21147', '20989', 'SYSTEX精誠資訊 - IT Services, Business Solutions & Outsourcing', 'http://www.systex.com.tw/solution/solution_1_2_2.asp?Bkey=847&SC1=22&SC2=38', 0, 206, '1320470860430');
+INSERT INTO `bookmark` VALUES (6735, 'new', '21146', '20989', '摩斯密碼 - 维基百科，自由的百科全书', 'http://zh.wikipedia.org/wiki/%E6%91%A9%E6%96%AF%E9%9B%BB%E7%A2%BC', 0, 205, '1320470860430');
+INSERT INTO `bookmark` VALUES (6734, 'new', '21145', '20989', '國家通訊傳播委員會 全球資訊網', 'http://www.ncc.gov.tw/', 0, 204, '1320470860430');
+INSERT INTO `bookmark` VALUES (6733, 'new', '21144', '20989', '【軟體】WinFast PVR2 軟體 (2.0.3.39) - 麗臺商品館 - 貿易代理商品 - 哲楓小站 - Powered by Discuz!', 'http://forum.zhe-feng.com.tw/viewthread.php?tid=514', 0, 203, '1320470860430');
+INSERT INTO `bookmark` VALUES (6732, 'new', '21143', '20989', '國家情報工作法', 'http://www.6law.idv.tw/6law/law/%E5%9C%8B%E5%AE%B6%E6%83%85%E5%A0%B1%E5%B7%A5%E4%BD%9C%E6%B3%95.htm', 0, 202, '1320470860430');
+INSERT INTO `bookmark` VALUES (6731, 'new', '21142', '20989', '從法制面探討我國情工人員身分掩護問題__臺灣博碩士論文知識加值系統', 'http://ndltd.ncl.edu.tw/cgi-bin/gs32/gsweb.cgi/login?o=dnclcdr&s=id=%22098CPU05053005%22.&searchmode=basic', 0, 201, '1320470860430');
+INSERT INTO `bookmark` VALUES (6730, 'new', '21141', '20989', 'www.rmi.nccu.edu.tw/modules/faculty/yjhsieh/powerpoint/982/financial/technique-SE.pdf', 'http://www.rmi.nccu.edu.tw/modules/faculty/yjhsieh/powerpoint/982/financial/technique-SE.pdf', 0, 200, '1320470860430');
+INSERT INTO `bookmark` VALUES (6729, 'new', '21139', '20989', '情報機構 - 维基百科，自由的百科全书', 'http://zh.wikipedia.org/wiki/%E6%83%85%E6%8A%A5%E6%9C%BA%E6%9E%84', 0, 198, '1320470860430');
+INSERT INTO `bookmark` VALUES (6728, 'new', '21140', '20989', 'nccur.lib.nccu.edu.tw/bitstream/140.119/33094/8/41012108.pdf', 'http://nccur.lib.nccu.edu.tw/bitstream/140.119/33094/8/41012108.pdf', 0, 199, '1320470860430');
+INSERT INTO `bookmark` VALUES (6727, 'new', '21138', '20989', 'FBI — Homepage', 'http://www.fbi.gov/', 0, 197, '1320470860430');
+INSERT INTO `bookmark` VALUES (6726, 'new', '21137', '20989', '聯邦調查局 - 维基百科，自由的百科全书', 'http://zh.wikipedia.org/wiki/%E8%81%AF%E9%82%A6%E8%AA%BF%E6%9F%A5%E5%B1%80', 0, 196, '1320470860430');
+INSERT INTO `bookmark` VALUES (6724, 'new', '20989', '1', '資料收集', '', 0, 194, '1320470860430');
+INSERT INTO `bookmark` VALUES (6725, 'new', '21135', '20988', '系統整合專家', 'http://www.mbatec.com.tw/mbatec.php', 0, 193, '1320470860430');
+INSERT INTO `bookmark` VALUES (6723, 'new', '21136', '20989', 'Welcome to the CIA Web Site — Central Intelligence Agency', 'https://www.cia.gov/', 0, 195, '1320470860430');
+INSERT INTO `bookmark` VALUES (6722, 'new', '21133', '20988', 'Amazon.com: CISSP All-in-One Exam Guide, Third Edition (9780072257120): Shon Harris: Books', 'http://www.amazon.com/exec/obidos/tg/detail/-/0072257121/qid=1128045273/sr=1-3/ref=sr_1_3/102-1337707-4972919?v=glance&s=books', 0, 191, '1320470860430');
+INSERT INTO `bookmark` VALUES (6721, 'new', '21134', '20988', 'Hacks in Taiwan Conference: HITCON 2011 Call For Paper', 'http://blog.hitcon.org/2011/03/hit-2011-call-for-paper.html', 0, 192, '1320470860430');
+INSERT INTO `bookmark` VALUES (6720, 'new', '21132', '20988', 'sqlninja - a SQL Server injection & takeover tool', 'http://sqlninja.sourceforge.net/', 0, 190, '1320470860430');
+INSERT INTO `bookmark` VALUES (6719, 'new', '21131', '20988', '資安人科技網 Information Security', 'http://www.informationsecurity.com.tw/main/index.aspx', 0, 189, '1320470860430');
+INSERT INTO `bookmark` VALUES (6718, 'new', '21130', '20988', '追求神乎其技的程式設計之道（番外篇） | vgod’s blog', 'http://blog.vgod.tw/2011/02/23/divine-code-extra/', 0, 188, '1320470860430');
+INSERT INTO `bookmark` VALUES (6717, 'new', '21129', '20988', 'Wargame !!? 7025 Database Hijacking CarGame Challenge : Hacking-Lab.com', 'http://www.hacking-lab.com/cases/7025-database-hijack-cargame-challenge/index.html', 0, 187, '1320470860430');
+INSERT INTO `bookmark` VALUES (6716, 'new', '21128', '20988', '網路資訊雜誌 » [資安普拿疼] PC將死？', 'http://news.networkmagazine.com.tw/magazine/2011/02/24/22734/', 0, 186, '1320470860430');
+INSERT INTO `bookmark` VALUES (6715, 'new', '21127', '20988', 'Gmail Xss漏洞可以导致用户被劫持 | WooYun-2011-01474 | WooYun.org', 'http://www.wooyun.org/bugs/wooyun-2010-01474', 0, 185, '1320470860430');
+INSERT INTO `bookmark` VALUES (6714, 'new', '21126', '20988', 'Sethioz • View topic - [HTS] hackthissite Application missions 1-6 [tutorial]', 'http://sethioz.co.uk/forum/viewtopic.php?f=47&t=565', 0, 184, '1320470860430');
+INSERT INTO `bookmark` VALUES (6713, 'new', '21125', '20988', 'Hack This Site - Kyle Anderson - Notebook - xKyle.com', 'https://wiki.xkyle.com/Hack_This_Site', 0, 183, '1320470860430');
+INSERT INTO `bookmark` VALUES (6712, 'new', '21124', '20988', '介紹畫面', 'http://www.csie.ntu.edu.tw/~b94102/game/game.htm', 0, 182, '1320470860430');
+INSERT INTO `bookmark` VALUES (6711, 'new', '21123', '20988', 'biblio.l0t3k.net/b0f/en/bofs4kids2.txt', 'http://biblio.l0t3k.net/b0f/en/bofs4kids2.txt', 0, 181, '1320470860430');
+INSERT INTO `bookmark` VALUES (6710, 'new', '21122', '20988', 'Writing buffer overflow exploits - a tutorial for beginners', 'http://mixter.void.ru/exploit.html', 0, 180, '1320470860430');
+INSERT INTO `bookmark` VALUES (6709, 'new', '21121', '20988', 'hackertest.net level 1 – 20 « 許 祿 煒 的 熊 猫 Blog – PandaZen blog', 'http://pandazen.wordpress.com/2009/05/14/hackertest-net-level-1-20/', 0, 179, '1320470860430');
+INSERT INTO `bookmark` VALUES (6708, 'new', '21120', '20988', 'Hacker Test: A site to test and learn about web hacking', 'http://www.hackertest.net/', 0, 178, '1320470860430');
+INSERT INTO `bookmark` VALUES (6707, 'new', '21119', '20988', '台灣冒險家俱樂部', 'http://hackerslab.cna.ccu.edu.tw/index.php', 0, 177, '1320470860430');
+INSERT INTO `bookmark` VALUES (6706, 'new', '21118', '20988', '::[ www.try2hack.nl ]::', 'http://www.try2hack.nl/levels/', 0, 176, '1320470860430');
+INSERT INTO `bookmark` VALUES (6705, 'new', '21117', '20988', 'YouTube - 教你做電腦病毒!!!', 'http://www.youtube.com/watch?v=U8YtsPa78Ec&feature=player_embedded', 0, 175, '1320470860430');
+INSERT INTO `bookmark` VALUES (6704, 'new', '21116', '20988', 'View HTTP Request and Response Header', 'http://web-sniffer.net/?url=http://www.itis.tw/&gzip=yes&uak=4', 0, 174, '1320470860430');
+INSERT INTO `bookmark` VALUES (6702, 'new', '21114', '20988', 'Hacking the Kinect - How to hack USB device drivers', 'http://ladyada.net/learn/diykinect/', 0, 172, '1320470860430');
+INSERT INTO `bookmark` VALUES (6703, 'new', '21115', '20988', 'PDF Password Remover Tool 解除PDF密碼，還原禁止編輯、禁止列印、禁止複製文字等限制', 'http://briian.com/?p=7445', 0, 173, '1320470860430');
+INSERT INTO `bookmark` VALUES (6701, 'new', '21113', '20988', 'dll export - Google 搜尋', 'http://www.google.com/search?q=dll+export&ie=utf-8&oe=utf-8&aq=t&rls=org.debian:zh-TW:unofficial&client=iceweasel-a', 0, 171, '1320470860430');
+INSERT INTO `bookmark` VALUES (6700, 'new', '21112', '20988', '反組譯程式 Reflector - Jeff 隨手記- 點部落', 'http://www.dotblogs.com.tw/jeff-yeh/archive/2008/08/04/4770.aspx', 0, 170, '1320470860430');
+INSERT INTO `bookmark` VALUES (6699, 'new', '21111', '20988', '師資介紹 - 中央警察大學-資訊管理學系', 'http://im.cpu.edu.tw/files/11-1002-73.php', 0, 169, '1320470860430');
+INSERT INTO `bookmark` VALUES (6698, 'new', '21110', '20988', '中央警察大學資訊管理學系', 'http://dfc.cpu.edu.tw/', 0, 168, '1320470860430');
+INSERT INTO `bookmark` VALUES (6697, 'new', '21109', '20988', 'app 5 » Anger Fist', 'http://rage.freedom-uplink.net/blog/?tag=app-5', 0, 167, '1320470860430');
+INSERT INTO `bookmark` VALUES (6695, 'new', '21107', '20988', 'YouTube - idletester 的頻道', 'http://www.youtube.com/user/idletester#p/f', 0, 165, '1320470860430');
+INSERT INTO `bookmark` VALUES (6696, 'new', '21108', '20988', 'YouTube - iExploitTube 的頻道', 'http://www.youtube.com/user/iExploitTube', 0, 166, '1320470860430');
+INSERT INTO `bookmark` VALUES (6693, 'new', '21105', '20988', '中央大學選課系統外掛', 'http://140.115.70.18/~zero/course_plugin/', 0, 163, '1320470860430');
+INSERT INTO `bookmark` VALUES (6694, 'new', '21106', '20988', 'HIT Wargame', 'http://www.hitcon.org/hit2010/wargame/level.htm', 0, 164, '1320470860430');
+INSERT INTO `bookmark` VALUES (6692, 'new', '21104', '20988', 'Level 1', 'http://www.hack-test.com/', 0, 162, '1320470860430');
+INSERT INTO `bookmark` VALUES (6690, 'new', '21102', '20988', 'www.blackhat.com/presentations/bh-usa-06/BH-US-06-Grossman.pdf', 'http://www.blackhat.com/presentations/bh-usa-06/BH-US-06-Grossman.pdf', 0, 160, '1320470860430');
+INSERT INTO `bookmark` VALUES (6691, 'new', '21103', '20988', '網頁闖關遊戲', 'http://www.wretch.cc/blog/belief259/15424389', 0, 161, '1320470860430');
+INSERT INTO `bookmark` VALUES (6689, 'new', '21101', '20988', 'YouTube - How To Hack;; Any Password On Any Site Using Javascript', 'http://www.youtube.com/watch?v=-NX9XzDcAS4', 0, 159, '1320470860430');
+INSERT INTO `bookmark` VALUES (6687, 'new', '21100', '20988', 'YouTube - How To Hack;; Any Password On Any Site Using Javascript', 'http://www.youtube.com/watch?v=ZCKM5BD4o2U', 0, 158, '1320470860430');
+INSERT INTO `bookmark` VALUES (6688, 'new', '21099', '20988', 'YouTube - javascript hack password', 'http://www.youtube.com/results?search_query=javascript+hack+password&aq=0', 0, 157, '1320470860430');
+INSERT INTO `bookmark` VALUES (6686, 'new', '21098', '20988', 'YouTube - Hack this site basic 5', 'http://www.youtube.com/watch?v=pCsrC4pR_iQ&feature=related', 0, 156, '1320470860430');
+INSERT INTO `bookmark` VALUES (6685, 'new', '21097', '20988', 'NCTU @ WarGame大亂鬥 :: 痞客邦 PIXNET ::', 'http://wargamez.pixnet.net/blog/category/list/338550', 0, 155, '1320470860430');
+INSERT INTO `bookmark` VALUES (6684, 'new', '21096', '20988', '鳥哥的 Linux 私房菜 -- 鳥哥的 Linux 私房菜檔案下載中心', 'http://linux.vbird.org/download/index.php?action=detail&fileid=69', 0, 154, '1320470860430');
+INSERT INTO `bookmark` VALUES (6683, 'new', '21095', '20988', 'linux.vbird.org/download/linux_server/nat_ipchains/readme', 'http://linux.vbird.org/download/linux_server/nat_ipchains/readme', 0, 153, '1320470860430');
+INSERT INTO `bookmark` VALUES (6682, 'new', '21094', '20988', 'linux.vbird.org/download/linux_security/iptables.rule', 'http://linux.vbird.org/download/linux_security/iptables.rule', 0, 152, '1320470860430');
+INSERT INTO `bookmark` VALUES (6681, 'new', '21093', '20988', 'linux.vbird.org/download/linux_security/hosts.deny', 'http://linux.vbird.org/download/linux_security/hosts.deny', 0, 151, '1320470860430');
+INSERT INTO `bookmark` VALUES (6679, 'new', '21091', '20988', 'TCP Wrappers', 'http://www.freebsd.org/doc/zh_TW/books/handbook/tcpwrappers.html', 0, 149, '1320470860430');
+INSERT INTO `bookmark` VALUES (6680, 'new', '21092', '20988', 'linux.vbird.org/download/linux_security/iptables.allow', 'http://linux.vbird.org/download/linux_security/iptables.allow', 0, 150, '1320470860430');
+INSERT INTO `bookmark` VALUES (6678, 'new', '21090', '20988', '有反追蹤部份', 'http://linux.vbird.org/linux_basic/0560daemons.php', 0, 148, '1320470860430');
+INSERT INTO `bookmark` VALUES (6675, 'new', '20988', '1', '20110304hacker', '', 0, 146, '1320470860430');
+INSERT INTO `bookmark` VALUES (6676, 'new', '21088', '20987', '鍾詩鎧', 'http://www.facebook.com/profile.php?id=100000193714615&ref=pymk', 0, 145, '1320470860430');
+INSERT INTO `bookmark` VALUES (6677, 'new', '21089', '20988', 'TWNIC 100 年度 網路安全教育訓練', 'http://dns-security.twnic.net.tw/SEC100/index_1.php', 0, 147, '1320470860430');
+INSERT INTO `bookmark` VALUES (6674, 'new', '21087', '20987', 'rita6221@hotmail.com - Google 搜尋', 'http://www.google.com.tw/#hl=zh-TW&source=hp&q=rita6221%40hotmail.com&oq=rita6221%40hotmail.com&aq=f&aqi=&aql=&gs_sm=e&gs_upl=290l290l0l1l1l0l0l0l0l118l118l0.1l1&bav=on.2,or.r_gc.r_pw.&fp=47f04657aec638a2&biw=1280&bih=699', 0, 144, '1320470860430');
+INSERT INTO `bookmark` VALUES (6672, 'new', '21085', '20987', '保經科技有限公司', 'http://www.prokey.com.tw/company02.aspx', 0, 142, '1320470860430');
+INSERT INTO `bookmark` VALUES (6673, 'new', '21086', '20987', 'me22662003 - Google 搜尋', 'http://www.google.com.tw/#hl=zh-TW&source=hp&q=me22662003&oq=me22662003&aq=f&aqi=&aql=&gs_sm=e&gs_upl=589l6082l0l12l12l0l7l0l0l195l583l2.3l5&bav=on.2,or.r_gc.r_pw.&fp=47f04657aec638a2&biw=1280&bih=699', 0, 143, '1320470860430');
+INSERT INTO `bookmark` VALUES (6670, 'new', '21083', '20987', '0xDA (0xDA) 在噗浪', 'http://www.plurk.com/0xDA', 0, 140, '1320470860430');
+INSERT INTO `bookmark` VALUES (6671, 'new', '21084', '20987', '邱小山', 'http://www.facebook.com/profile.php?id=832525453', 0, 141, '1320470860430');
+INSERT INTO `bookmark` VALUES (6669, 'new', '21082', '20987', '↙　戀　紫 ”　↖: History ＊ COS歷 - 飛輪少年 - 候鳥希姆 ( 長髮ver. ) - yam天空部落', 'http://album.blog.yam.com/show.php?a=onlyfushi&f=8753802&i=17587885&p=6', 0, 139, '1320470860430');
+INSERT INTO `bookmark` VALUES (6668, 'new', '21081', '20987', 'outian.net', 'http://outian.net/', 0, 138, '1320470860430');
+INSERT INTO `bookmark` VALUES (6666, 'new', '21079', '20987', 'Zeng Jhih-Ping', 'http://www.facebook.com/jhihping?ref=nf_fr', 0, 136, '1320470860430');
+INSERT INTO `bookmark` VALUES (6667, 'new', '21080', '20987', 'Jeffxx Online Plurk - Jeffxx (Jeffxx) 在噗浪', 'http://www.plurk.com/Jeffoo', 0, 137, '1320470860430');
+INSERT INTO `bookmark` VALUES (6663, 'new', '21077', '20987', '吳俊億', 'http://www.facebook.com/profile.php?id=100000095006293&ref=nf_fr', 0, 134, '1320470860430');
+INSERT INTO `bookmark` VALUES (6664, 'new', '21076', '20987', '胡祖康', 'http://www.facebook.com/pinex666', 0, 133, '1320470860430');
+INSERT INTO `bookmark` VALUES (6665, 'new', '21078', '20987', 'Franky Lin', 'http://www.facebook.com/liangshu.lin?ref=nf_fr', 0, 135, '1320470860430');
+INSERT INTO `bookmark` VALUES (6661, 'new', '21074', '20987', 'zha0 (zha0) 在噗浪', 'http://www.plurk.com/zha0', 0, 131, '1320470860430');
+INSERT INTO `bookmark` VALUES (6662, 'new', '21075', '20987', '阮憨慢讀冊, 但是阮金實在 - kenny (kenny) 在噗浪', 'http://www.plurk.com/bfchen', 0, 132, '1320470860430');
+INSERT INTO `bookmark` VALUES (6660, 'new', '21073', '20987', 'mrmoneyc 的個人資料', 'http://phorum.study-area.org/index.php?action=profile;u=21707', 0, 130, '1320470860430');
+INSERT INTO `bookmark` VALUES (6659, 'new', '21072', '20987', 'steven5538 的日記本 - 地圖日記', 'http://www.atlaspost.com/user-1507946.htm', 0, 129, '1320470860430');
+INSERT INTO `bookmark` VALUES (6658, 'new', '21071', '20987', 'Steven5538 Said :: Heaven , Hell ?', 'http://steven5538.hack-stuff.com/2011/02/heaven-hell.html', 0, 128, '1320470860430');
+INSERT INTO `bookmark` VALUES (6657, 'new', '21070', '20987', 'steven5538的空間 - 奇樂論壇 - Powered by Discuz!', 'http://kerobbs.net/space-uid-73482.html', 0, 127, '1320470860430');
+INSERT INTO `bookmark` VALUES (6656, 'new', '21069', '20987', 'steven5538 的小屋 - 巴哈姆特', 'http://home.gamer.com.tw/homeindex.php?owner=steven5538', 0, 126, '1320470860430');
+INSERT INTO `bookmark` VALUES (6655, 'new', '21068', '20987', '使用者:RJking - Ubuntu 正體中文 Wiki', 'http://wiki.ubuntu-tw.org/index.php?title=%E4%BD%BF%E7%94%A8%E8%80%85:RJking', 0, 125, '1320470860430');
+INSERT INTO `bookmark` VALUES (6654, 'new', '21067', '20987', 'lovean @ lovean的相簿 :: 痞客邦 PIXNET ::', 'http://lovean.pixnet.net/album/set/1583601', 0, 124, '1320470860430');
+INSERT INTO `bookmark` VALUES (6653, 'new', '21066', '20987', 'Vagrant Story - 無名小站-Vagrant Story-無名小站網誌', 'http://www.wretch.cc/blog/shadowcrow', 0, 123, '1320470860430');
+INSERT INTO `bookmark` VALUES (6651, 'new', '21064', '20987', '魏嘉男', 'http://www.facebook.com/garnett207', 0, 121, '1320470860430');
+INSERT INTO `bookmark` VALUES (6652, 'new', '21065', '20987', '張家豪', 'http://www.facebook.com/panda0722', 0, 122, '1320470860430');
+INSERT INTO `bookmark` VALUES (6650, 'new', '21062', '20987', '才人', 'http://www.facebook.com/abc3060623', 0, 119, '1320470860430');
+INSERT INTO `bookmark` VALUES (6647, 'new', '21060', '20987', '潘金聰', 'http://www.facebook.com/profile.php?id=1329379944&ref=nf_fr', 0, 117, '1320470860430');
+INSERT INTO `bookmark` VALUES (6648, 'new', '21061', '20987', '利瑋修', 'http://www.facebook.com/weixiul?ref=pb', 0, 118, '1320470860430');
+INSERT INTO `bookmark` VALUES (6649, 'new', '21063', '20987', '洪芳茹', 'http://www.facebook.com/profile.php?id=100000195945648&sk=photos', 0, 120, '1320470860430');
+INSERT INTO `bookmark` VALUES (6645, 'new', '21059', '20986', './', 'http://gnacktrack.blogspot.com/', 0, 115, '1320470860430');
+INSERT INTO `bookmark` VALUES (6646, 'new', '20987', '1', '個資', '', 0, 116, '1320470860430');
+INSERT INTO `bookmark` VALUES (6644, 'new', '21057', '20986', '饭客安全论坛 - 黑客安全技术交流论坛', 'http://bbs.hackfans.com.cn/', 0, 113, '1320470860430');
+INSERT INTO `bookmark` VALUES (6642, 'new', '21058', '20986', '財團法人台灣網路資訊中心-網路論壇 - 論壇首頁', 'http://forum.twnic.net.tw/', 0, 114, '1320470860430');
+INSERT INTO `bookmark` VALUES (6643, 'new', '21056', '20986', '社区 - 甲壳虫安全技术社区 编程 建站 逆向脱壳 安全反病毒 数码电脑 娱乐 - Powered by Discuz!', 'http://bbs.jkcing.com/forum.php', 0, 112, '1320470860430');
+INSERT INTO `bookmark` VALUES (6641, 'new', '21055', '20986', '暗组技术论坛 - 集思广益 群策群力', 'http://forum.darkst.com/', 0, 111, '1320470860430');
+INSERT INTO `bookmark` VALUES (6640, 'new', '21054', '20986', '免殺XOR異或運算 - ASM - Program Development - Hack.Stuff Technology', 'http://bbs.hack-stuff.com/thread-189-1-1.html', 0, 110, '1320470860430');
+INSERT INTO `bookmark` VALUES (6639, 'new', '21053', '20986', 'HOOK和Inline-HOOK進程隱藏技術全面解析 - Program Development - Hack.Stuff Technology', 'http://bbs.hack-stuff.com/thread-1575-1-1.html', 0, 109, '1320470860430');
+INSERT INTO `bookmark` VALUES (6638, 'new', '21052', '20986', '97年Mekka ’97 - Google 搜尋', 'http://www.google.com.tw/search?sourceid=chrome&ie=UTF-8&q=97%E5%B9%B4Mekka+%E2%80%9997', 0, 108, '1320470860430');
+INSERT INTO `bookmark` VALUES (6636, 'new', '21050', '20986', 'HackGame No', 'http://www.80vul.com/hackgame/', 0, 106, '1320470860430');
+INSERT INTO `bookmark` VALUES (6637, 'new', '21051', '20986', '手工構造典型PE文件 - Program Development - Hack.Stuff Technology', 'http://bbs.hack-stuff.com/thread-2373-1-1.html', 0, 107, '1320470860430');
+INSERT INTO `bookmark` VALUES (6635, 'new', '21049', '20986', '網路 @ HarlemHsu :: 痞客邦 PIXNET ::', 'http://harlemhsu.pixnet.net/blog/category/1264239', 0, 105, '1320470860430');
+INSERT INTO `bookmark` VALUES (6633, 'new', '21047', '20986', '.::Welcome To INFOR 23RD of CK::.', 'http://infor.org/', 0, 103, '1320470860430');
+INSERT INTO `bookmark` VALUES (6634, 'new', '21048', '20986', 'http://alphonse.gotdns.com/kevin/hacker/teachtxt/A駭客第于步.txt', 'http://alphonse.gotdns.com/kevin/hacker/teachtxt/A%C0b%AB%C8%B2%C4%A4_%A8B.txt', 0, 104, '1320470860430');
+INSERT INTO `bookmark` VALUES (6632, 'new', '21046', '20986', 'Shedding Bikes: Programming Culture And Philosophy', 'http://sheddingbikes.com/posts/1275989245.html', 0, 102, '1320470860430');
+INSERT INTO `bookmark` VALUES (6631, 'new', '21045', '20986', 'fshDisplayConnect', 'http://map.twnic.net.tw/bwimages/dirFDCy2009s2m4/pageDisplayConnect.htm', 0, 101, '1320470860430');
+INSERT INTO `bookmark` VALUES (6628, 'new', '21042', '20986', 'Picasa 網路相簿 - 星夜如雨', 'http://picasaweb.google.com.tw/dslrxx', 0, 98, '1320470860430');
+INSERT INTO `bookmark` VALUES (6629, 'new', '21043', '20986', 'extern blog SensePost;', 'http://www.sensepost.com/blog/5091.html', 0, 99, '1320470860430');
+INSERT INTO `bookmark` VALUES (6630, 'new', '21044', '20986', 'P-003-P-870H-51硬撥教學! - 歡迎來到AK47 diy教學部落格 - Yahoo!奇摩部落格', 'http://tw.myblog.yahoo.com/jw!bjLnQk6TSEeoUAtuK0V7/article?mid=268', 0, 100, '1320470860430');
+INSERT INTO `bookmark` VALUES (6627, 'new', '21040', '20986', 'Taiwan Developers on Github', 'http://c9s.me/github-taiwan/', 0, 96, '1320470860430');
+INSERT INTO `bookmark` VALUES (6626, 'new', '21041', '20986', '海洋大學電子商務跨領域學程網', 'http://sirius.cs.ntou.edu.tw/EC/ecsecurity_labs/ecsecurity_labs_09.php', 0, 97, '1320470860430');
+INSERT INTO `bookmark` VALUES (6625, 'new', '21039', '20986', 'synflood.c程序代码 - Linux系统管理 - 西苑LINUX狂笑轩', 'http://blog.chinaunix.net/u1/40349/showart_312730.html', 0, 95, '1320470860430');
+INSERT INTO `bookmark` VALUES (6624, 'new', '21038', '20986', 'The Story of the PING Program', 'http://ftp.arl.mil/~mike/ping.html', 0, 94, '1320470860430');
+INSERT INTO `bookmark` VALUES (6622, 'new', '21036', '20986', 'HelloGcc Working Group - 博客大巴', 'http://hellogcc.blogbus.com/', 0, 92, '1320470860430');
+INSERT INTO `bookmark` VALUES (6623, 'new', '21037', '20986', '今天的 Tetralet 又在唧唧喳喳了 | GNU/Linux 在 Console 下的一些小技巧', 'http://tetralet.luna.com.tw/index.php?op=ViewArticle&articleId=194', 0, 93, '1320470860430');
+INSERT INTO `bookmark` VALUES (6621, 'new', '21035', '20986', 'Google ReCAPTCHA Cracked - Slashdot', 'http://tech.slashdot.org/story/11/01/11/1411254/Google-ReCAPTCHA-Cracked', 0, 91, '1320470860430');
+INSERT INTO `bookmark` VALUES (6620, 'new', '21034', '20986', 'Taiwan Radio Tuner', 'http://fourdollars.github.com/taiwan-radio-tuner/', 0, 90, '1320470860430');
+INSERT INTO `bookmark` VALUES (6619, 'new', '21033', '20986', 'Create a new Fiddle - jsFiddle - Online Editor for the Web (JavaScript, MooTools, jQuery, Prototype, YUI, Glow and Dojo, HTML, CSS)', 'http://www.jsfiddle.net/', 0, 89, '1320470860430');
+INSERT INTO `bookmark` VALUES (6618, 'new', '21032', '20986', 'Inside Facebook Offices', 'http://izismile.com/2010/12/23/inside_facebook_offices_46_pics.html', 0, 88, '1320470860430');
+INSERT INTO `bookmark` VALUES (6617, 'new', '21031', '20986', '如何恢復MSN被微軟取消的對話框網址超連結？ | 就是教不落', 'http://steachs.com/archives/1810', 0, 87, '1320470860430');
+INSERT INTO `bookmark` VALUES (6616, 'new', '21029', '20986', '首頁 - LXDE.org', 'http://wiki.lxde.org/zh/index.php?title=%E9%A6%96%E9%A1%B5&variant=zh-tw', 0, 85, '1320470860430');
+INSERT INTO `bookmark` VALUES (6615, 'new', '21030', '20986', 'Welcome to HackingThursday - Hacking Thursday', 'http://hack.ingday.org/', 0, 86, '1320470860430');
+INSERT INTO `bookmark` VALUES (6614, 'new', '19539', '19237', '山賊老巢', 'http://www.kingbig.idv.tw/', 0, 173, '1320470497505');
+INSERT INTO `bookmark` VALUES (6613, 'new', '19537', '19237', 'A1Pass的风清月朗居 - A1Pass - 网易博客', 'http://a1pass.blog.163.com/', 0, 171, '1320470497505');
+INSERT INTO `bookmark` VALUES (6611, 'new', '19536', '19237', '[ 破片 × Piece ] ♥ 假奢華', 'http://blog.piece.tw/', 0, 170, '1320470497505');
+INSERT INTO `bookmark` VALUES (6612, 'new', '19538', '19237', '逐風者', 'http://tfeng.org/', 0, 172, '1320470497505');
+INSERT INTO `bookmark` VALUES (6610, 'new', '19535', '19237', '不自量力 の Weithenn: 首頁', 'http://www.weithenn.org/cgi-bin/wiki.pl?%e9%a6%96%e9%a0%81', 0, 169, '1320470497505');
+INSERT INTO `bookmark` VALUES (6609, 'new', '19534', '19237', '艾克索夫實驗室: 二月 2006', 'http://blog.x-solve.com/2006_02_01_archive.html', 0, 168, '1320470497505');
+INSERT INTO `bookmark` VALUES (6608, 'new', '19532', '19237', 'Steven5538 Said :', 'http://blog.hackv.net/', 0, 166, '1320470497505');
+INSERT INTO `bookmark` VALUES (6606, 'new', '21028', '20986', '專業人士', '', 0, 84, '1320470860430');
+INSERT INTO `bookmark` VALUES (6607, 'new', '19533', '19237', 'About vgod | vgod’s blog', 'http://blog.vgod.tw/about-vgod/', 0, 167, '1320470497505');
+INSERT INTO `bookmark` VALUES (6605, 'new', '19531', '19236', 'Hack-books | Google Groups', 'http://groups.google.com/group/hack-books', 0, 164, '1320470497505');
+INSERT INTO `bookmark` VALUES (6603, 'new', '19529', '19236', '獎金獵人 BHuntr | 比賽賺獎金', 'http://bhuntr.com/', 0, 162, '1320470497505');
+INSERT INTO `bookmark` VALUES (6604, 'new', '19530', '19236', '大高雄Linux使用者協會', 'http://kalug.linux.org.tw/', 0, 163, '1320470497505');
+INSERT INTO `bookmark` VALUES (6602, 'new', '19528', '19236', '邪恶八进制信息安全团队技术讨论组 努力为祖国的信息安全撑起一片蓝天', 'https://forum.eviloctal.com/', 0, 161, '1320470497505');
+INSERT INTO `bookmark` VALUES (6601, 'new', '19527', '19236', 'ZDNet Taiwan', 'http://www.zdnet.com.tw/', 0, 160, '1320470497505');
+INSERT INTO `bookmark` VALUES (6600, 'new', '19526', '19236', '蓝森林-自由软件 Linux, FreeBSD WebSite!', 'http://www.lslnet.com/linux/', 0, 159, '1320470497505');
+INSERT INTO `bookmark` VALUES (6599, 'new', '19525', '19236', 'iThome online : : 首頁', 'http://www.ithome.com.tw/', 0, 158, '1320470497505');
+INSERT INTO `bookmark` VALUES (6598, 'new', '19524', '19236', 'T客邦 - 我只推薦好東西', 'http://www.techbang.com.tw/', 0, 157, '1320470497505');
+INSERT INTO `bookmark` VALUES (6597, 'new', '19523', '19236', 'KaLUG | KaLUG / HomePage', 'http://kalug.linux.org.tw/pmwiki/', 0, 156, '1320470497505');
+INSERT INTO `bookmark` VALUES (6596, 'new', '19521', '19236', 'EnjoyHack-入侵不是目的；而是享受过程', 'http://www.enjoyhack.com/', 0, 154, '1320470497505');
+INSERT INTO `bookmark` VALUES (6595, 'new', '19522', '19236', 'HIT Wargame', 'http://www.hitcon.org/hit2010/wargame/ans.htm', 0, 155, '1320470497505');
+INSERT INTO `bookmark` VALUES (6594, 'new', '19520', '19236', '酷！學園 - 論壇首頁', 'http://phorum.study-area.org/index.php?PHPSESSID=067d30940da0e866f9388defbaba11e5&', 0, 153, '1320470497505');
+INSERT INTO `bookmark` VALUES (6593, 'new', '19519', '19236', '酷壳 – CoolShell.cn', 'http://coolshell.cn/', 0, 152, '1320470497505');
+INSERT INTO `bookmark` VALUES (6592, 'new', '19517', '19236', 'Black Hat ® Technical Security Conference: DC 2011 // Home', 'http://www.blackhat.com/html/bh-dc-11/bh-dc-11-home.html', 0, 150, '1320470497505');
+INSERT INTO `bookmark` VALUES (6590, 'new', '20986', '1', '資訊管道', '', 0, 82, '1320470860430');
+INSERT INTO `bookmark` VALUES (6591, 'new', '21027', '20986', '各大網站', '', 0, 83, '1320470860430');
+INSERT INTO `bookmark` VALUES (6588, 'new', '14681', '14584', 'Hacker Typer', 'http://hackertyper.net/130913215136', 0, 424, '1320412559941');
+INSERT INTO `bookmark` VALUES (6589, 'new', '14682', '14584', '遠端遙控擴充套件「Chrome Remote Desktop」， 直接用 Chrome 遙控遠端電腦 | 硬是要學', 'http://www.soft4fun.net/tools/%E9%81%A0%E7%AB%AF%E9%81%99%E6%8E%A7%E6%93%B4%E5%85%85%E5%A5%97%E4%BB%B6-chrome-remote-desktop.htm', 0, 425, '1320412559941');
+INSERT INTO `bookmark` VALUES (6587, 'new', '14680', '14584', '蔡一郎的部落格: 惡意程式分析技術概觀', 'http://blog.yilang.org/2011/10/blog-post.html', 0, 423, '1320412559941');
+INSERT INTO `bookmark` VALUES (6586, 'new', '14679', '14584', '非。法。入。侵(Ver3): 七月 2009', 'http://mycck.blogspot.com/2009_07_01_archive.html', 0, 422, '1320412559941');
+INSERT INTO `bookmark` VALUES (6585, 'new', '15171', '14678', '破解Mysql root密码的方法--国内--资讯--Sec120', 'http://www.sec120.com/news/internal/2008-3-28/7596.html', 0, 421, '1320412559941');
+INSERT INTO `bookmark` VALUES (6584, 'new', '15170', '14678', 'windows与linux下的mysql密码破解方法! - 六點鈡 - 刘小雨|lxy|四博互联|西部互联|IDC技术|电脑技术|网络技术 - Powered by Sablog-X', 'http://blog.6yip.com/archives/26/', 0, 420, '1320412559941');
+INSERT INTO `bookmark` VALUES (6583, 'new', '15167', '14678', 'mysql密码暴力破解代码实现-学院-黑客基地', 'http://www.hackbase.com/tech/2009-08-21/55216.html', 0, 417, '1320412559941');
+INSERT INTO `bookmark` VALUES (6582, 'new', '15168', '14678', 'MYSQL暴力破解密码 - 红客加密解密 - 齐虎吧团队 - 非黑客论坛 维护 建站 逆向脱壳 反病毒查杀 数码电脑 - Powered by Discuz!', 'http://www.qihuba.com/redirect.php?tid=29120&goto=lastpost', 0, 418, '1320412559941');
+INSERT INTO `bookmark` VALUES (6581, 'new', '15169', '14678', '[PHP][討論] MySQL 傳遭受 IRC bot 攻擊 - MyChat 數位男女 網站架設', 'http://bbs-mychat.com/sindex.php?t115714.html', 0, 419, '1320412559941');
+INSERT INTO `bookmark` VALUES (6580, 'new', '15166', '14678', 'MYSQL暴力破解密码', 'http://www.520hack.com/Article/Text8/200910/16098.html', 0, 416, '1320412559941');
+INSERT INTO `bookmark` VALUES (6579, 'new', '15165', '14678', 'MYsql躇鎢賤馱撿 - 窪諦璃埶', 'http://www.3389safe.com/ruqin/2008122612532291.html', 0, 415, '1320412559941');
+INSERT INTO `bookmark` VALUES (6578, 'new', '14678', '14584', 'MySQL', '', 0, 414, '1320412559941');
+INSERT INTO `bookmark` VALUES (6576, 'new', '15162', '14676', 'ping不見路: 悠遊卡改卡　當事人已不是駭客', 'http://pingyeh.blogspot.com/2011/09/blog-post.html', 0, 410, '1320412559941');
+INSERT INTO `bookmark` VALUES (6577, 'new', '15164', '14677', '博客來書籍館>30天打造OS！作業系統自作入門(附光碟)', 'http://www.books.com.tw/exep/prod/booksfile.php?item=0010464142', 0, 413, '1320412559941');
+INSERT INTO `bookmark` VALUES (6575, 'new', '15163', '14676', '莫比烏斯帶 - 维基百科，自由的百科全书', 'http://zh.wikipedia.org/wiki/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%B8%A6', 0, 411, '1320412559941');
+INSERT INTO `bookmark` VALUES (6574, 'new', '14677', '14584', 'OS核心研究', '', 0, 412, '1320412559941');
+INSERT INTO `bookmark` VALUES (6573, 'new', '15161', '14676', '小狼的學習筆記: WAREZ--0day介紹', 'http://snowwolf725.blogspot.com/2009/04/warez-0day.html', 0, 409, '1320412559941');
+INSERT INTO `bookmark` VALUES (6572, 'new', '15160', '14676', 'Defcon 19 CTF Quals - Google 搜尋', 'http://www.google.com.tw/search?sourceid=chrome&ie=UTF-8&q=Defcon+19+CTF+Quals', 0, 408, '1320412559941');
+INSERT INTO `bookmark` VALUES (6571, 'new', '15159', '14676', 'CIH病毒 - 维基百科，自由的百科全书', 'http://zh.wikipedia.org/wiki/CIH%E7%97%85%E6%AF%92', 0, 407, '1320412559941');
+INSERT INTO `bookmark` VALUES (6570, 'new', '15157', '14676', 'OWASP - Wikipedia, the free encyclopedia', 'http://en.wikipedia.org/wiki/OWASP', 0, 405, '1320412559941');
+INSERT INTO `bookmark` VALUES (6569, 'new', '15158', '14676', 'SQL資料隱碼攻擊 - 維基百科，自由的百科全書', 'http://zh.wikipedia.org/zh-hant/SQL%E8%B3%87%E6%96%99%E9%9A%B1%E7%A2%BC%E6%94%BB%E6%93%8A', 0, 406, '1320412559941');
+INSERT INTO `bookmark` VALUES (6568, 'new', '15156', '14676', 'PNG - 維基百科，自由的百科全書', 'http://zh.wikipedia.org/zh-tw/Portable_Network_Graphics', 0, 404, '1320412559941');
+INSERT INTO `bookmark` VALUES (6566, 'new', '14675', '14584', 'Hacked By 0xlc', 'http://www.zhjsedu.org.cn/index.html', 0, 402, '1320412559941');
+INSERT INTO `bookmark` VALUES (6567, 'new', '14676', '14584', '名詞定義', '', 0, 403, '1320412559941');
+INSERT INTO `bookmark` VALUES (6565, 'new', '14674', '14584', 'Heroku & Wordpress | Just another WordPress site', 'http://evening-beach-7140.herokuapp.com/', 0, 401, '1320412559941');
+INSERT INTO `bookmark` VALUES (6564, 'new', '14672', '14584', '柏林黑客年会成果详解 » 華人資安論壇與資安認知教育網誌', 'http://podcast.isvoc.com/archives/276417?utm_source=Infosec+Podcast&utm_medium=facebook', 0, 399, '1320412559941');
+INSERT INTO `bookmark` VALUES (6563, 'new', '14673', '14584', '黑客組職正式研究 iOS 5 完美 JB | New MobileLife X 限時免費 iPhone Apps 集中營', 'http://www.newmobilelife.com/2011/09/15/ios5-jb-greenpois0n/', 0, 400, '1320412559941');
+INSERT INTO `bookmark` VALUES (6562, 'new', '14671', '14584', 'Kelp Code', 'http://kelp.phate.org/', 0, 398, '1320412559941');
+INSERT INTO `bookmark` VALUES (6561, 'new', '14670', '14584', 'Xinkuan’s Weblog', 'http://sinkwung.blogspot.com/', 0, 397, '1320412559941');
+INSERT INTO `bookmark` VALUES (6558, 'new', '14667', '14584', 'COG 信息安全论坛会议', 'http://www.chowngroup.com/', 0, 394, '1320412559941');
+INSERT INTO `bookmark` VALUES (6559, 'new', '14668', '14584', '《黑客自律公约》草案公布 向全社会征集意见_DOIT安全频道', 'http://security.doit.com.cn/article/2011/0916/7170577_2.shtml', 0, 395, '1320412559941');
+INSERT INTO `bookmark` VALUES (6560, 'new', '14669', '14584', 'Invisible Man: WinHex 15.2 繁體中文版', 'http://jay-fva.blogspot.com/2010/01/winhex-152_26.html', 0, 396, '1320412559941');
+INSERT INTO `bookmark` VALUES (6557, 'new', '14666', '14584', '[原創] 組合最棒的暴力破解字典檔產生器 Fast_ProducePass.EXE @ Ebola777 & VB :: 痞客邦 PIXNET ::', 'http://ebola777.pixnet.net/blog/post/355993', 0, 393, '1320412559941');
+INSERT INTO `bookmark` VALUES (6556, 'new', '14665', '14584', 'YouTube - 網路攻防戰之手機防護(13分鐘剪輯版)', 'http://www.youtube.com/watch?v=CYXZNAC06Y0&hd=1', 0, 392, '1320412559941');
+INSERT INTO `bookmark` VALUES (6555, 'new', '14664', '14584', 'joeyta備忘記: DOS command 備忘記', 'http://joeyta.blogspot.com/2007/08/dos-command.html', 0, 391, '1320412559941');
+INSERT INTO `bookmark` VALUES (6554, 'new', '14662', '14584', '利用dos指令入侵II - 駭客初學手扎 - Yahoo!奇摩部落格', 'http://tw.myblog.yahoo.com/a38168863/article?mid=-2&next=26&l=d&fid=5', 0, 389, '1320412559941');
+INSERT INTO `bookmark` VALUES (6552, 'new', '14661', '14584', '深入阐述WPA-PSK-TKIP及AES的破解_Linux安全网 - Linux操作系统_Linux入门_Linux教程_脚本入侵_Linux黑客 > 精品Linux学习网站', 'http://www.linuxso.com/a/jiaobenruqin/616.html', 0, 388, '1320412559941');
+INSERT INTO `bookmark` VALUES (6553, 'new', '14663', '14584', 'DOS命令字典 @ 阿宅一生 :: 痞客邦 PIXNET ::', 'http://midxnqx.pixnet.net/blog/post/5631797', 0, 390, '1320412559941');
+INSERT INTO `bookmark` VALUES (6551, 'new', '14658', '14584', 'Hacking an SQL Server', 'http://www.windowsecurity.com/articles/Hacking_an_SQL_Server.html', 0, 385, '1320412559941');
+INSERT INTO `bookmark` VALUES (6550, 'new', '14659', '14584', '管理员密码,FTP,SQL服务器三合一密码破解软件 〓 华西安全联盟 华西黑客联盟 〓 —— 这是一个遵循互联网精神的站点: 免费 自由 平等 共享 互助', 'http://www.hx99.net/Soft/Crack/200906/22412.html', 0, 386, '1320412559941');
+INSERT INTO `bookmark` VALUES (6548, 'new', '14656', '14584', 'Hacking Firefox - MDN Docs', 'https://developer.mozilla.org/en/Hacking_Firefox', 0, 383, '1320412559941');
+INSERT INTO `bookmark` VALUES (6549, 'new', '14657', '14584', 'Hack Tool Repository - Download rdp-brute-force', 'http://www.hacktoolrepository.com/tool/80/rdp-brute-force', 0, 384, '1320412559941');
+INSERT INTO `bookmark` VALUES (6546, 'new', '14660', '14584', '訊陞科技股份有限公司-產品說明(網路Man-in-Middle攻擊及探測工具組)', 'http://www.sicps.com/product_MITM.html', 0, 387, '1320412559941');
+INSERT INTO `bookmark` VALUES (6547, 'new', '14655', '14584', '重燃你的PHP安全分析之火 - InSun的日志 - 网易博客', 'http://yxmhero1989.blog.163.com/blog/static/11215795620116127358816/', 0, 382, '1320412559941');
+INSERT INTO `bookmark` VALUES (6545, 'new', '14654', '14584', '資安人科技網 Information Security', 'http://www.isecutech.com.tw/answers/answer_detail.aspx?tid=47#ixzz1Y15C7Kce', 0, 381, '1320412559941');
+INSERT INTO `bookmark` VALUES (6544, 'new', '15155', '14653', '台灣駭客年會 HIT2011 - HIT CON - Picasa 網路相簿', 'http://picasaweb.google.com/101764185454794939106/HIT2011?gsessionid=LxEyDGqjRmiwRz5Ip9BFbg#5639237308762370882', 0, 380, '1320412559941');
+INSERT INTO `bookmark` VALUES (6543, 'new', '15154', '14653', '台灣駭客年會 HIT2011 - HIT CON - Picasa 網路相簿', 'http://picasaweb.google.com/101764185454794939106/HIT2011?gsessionid=LxEyDGqjRmiwRz5Ip9BFbg#5639237240060044514', 0, 379, '1320412559941');
+INSERT INTO `bookmark` VALUES (6542, 'new', '15153', '14653', '台灣駭客年會 HIT2011 - HIT CON - Picasa 網路相簿', 'http://picasaweb.google.com/101764185454794939106/HIT2011?gsessionid=LxEyDGqjRmiwRz5Ip9BFbg#5639242640232811186', 0, 378, '1320412559941');
+INSERT INTO `bookmark` VALUES (6540, 'new', '15151', '14653', '台灣駭客年會 HIT2011 - HIT CON - Picasa 網路相簿', 'http://picasaweb.google.com/101764185454794939106/HIT2011?gsessionid=LxEyDGqjRmiwRz5Ip9BFbg#5639239469636868738', 0, 376, '1320412559941');
+INSERT INTO `bookmark` VALUES (6541, 'new', '15152', '14653', '台灣駭客年會 HIT2011 - HIT CON - Picasa 網路相簿', 'http://picasaweb.google.com/101764185454794939106/HIT2011?gsessionid=LxEyDGqjRmiwRz5Ip9BFbg#5639242565766119058', 0, 377, '1320412559941');
+INSERT INTO `bookmark` VALUES (6539, 'new', '15150', '14653', 'Yahoo!奇摩房地產', 'http://tw.house.yahoo.com/knowledge/home_living/view/1206111404667/', 0, 375, '1320412559941');
+INSERT INTO `bookmark` VALUES (6537, 'new', '15148', '14653', 'Complexity, Cryptography, and Information Security Lab', 'http://ccis.cs.nctu.edu.tw/', 0, 373, '1320412559941');
+INSERT INTO `bookmark` VALUES (6538, 'new', '15149', '14653', 'Oops! Google Chrome could not connect to dsns.csie.nctu.edu.tw', 'http://dsns.csie.nctu.edu.tw/', 0, 374, '1320412559941');
+INSERT INTO `bookmark` VALUES (6536, 'new', '15147', '14653', '魔指仙境舒壓會館 - Google 搜尋', 'http://www.google.com.tw/#hl=zh-TW&source=hp&q=%E9%AD%94%E6%8C%87%E4%BB%99%E5%A2%83%E8%88%92%E5%A3%93%E6%9C%83%E9%A4%A8&oq=%E9%AD%94%E6%8C%87%E4%BB%99%E5%A2%83&aq=1&aqi=g10&aql=1&gs_sm=e&gs_upl=713l12621l0l14311l10l10l1l2l0l0l212l628l5.1.1l7&bav=on.2,or.r_gc.r_pw.&fp=55cc24f9137019be&biw=1280&bih=688', 0, 372, '1320412559941');
+INSERT INTO `bookmark` VALUES (6534, 'new', '15145', '14653', 'Konami Code Sites', 'http://konamicodesites.com/', 0, 370, '1320412559941');
+INSERT INTO `bookmark` VALUES (6535, 'new', '15146', '14653', 'Konami大絕！上上下下左右左右BA', 'http://jas9.blogspot.com/2009/05/konamiba.html', 0, 371, '1320412559941');
+INSERT INTO `bookmark` VALUES (6533, 'new', '15144', '14653', '科樂美秘技 - 维基百科，自由的百科全书', 'http://zh.wikipedia.org/wiki/%E7%A7%91%E4%B9%90%E7%BE%8E%E7%A7%98%E6%8A%80', 0, 369, '1320412559941');
+INSERT INTO `bookmark` VALUES (6532, 'new', '15143', '14653', '攻性防壁 - Google 搜尋', 'http://www.google.com.tw/#hl=zh-TW&source=hp&q=%E6%94%BB%E6%80%A7%E9%98%B2%E5%A3%81&oq=%E6%94%BB%E6%80%A7%E9%98%B2%E5%A3%81&aq=f&aqi=g1&aql=1&gs_sm=e&gs_upl=643l643l0l861l1l1l0l0l0l0l11l11l1l1&bav=on.2,or.r_gc.r_pw.&fp=55cc24f9137019be&biw=1280&bih=688', 0, 368, '1320412559941');
+INSERT INTO `bookmark` VALUES (6531, 'new', '15142', '14653', '‪人生ｵﾜﾀ＼(^o^)／の大冒険 4 樹海最後決戰‬‏ - YouTube', 'http://www.youtube.com/watch?v=tNCCDRiwj8U', 0, 367, '1320412559941');
+INSERT INTO `bookmark` VALUES (6530, 'new', '15141', '14653', '人生大冒险（人生ｵﾜﾀ＼(^o^)／の大冒険）图文攻略+录像（通过第一关，正K第二关boss_咪啪啪_百度空间', 'http://hi.baidu.com/liugenga/blog/item/ae18084cd49ba2fcd62afc1e.html', 0, 366, '1320412559941');
+INSERT INTO `bookmark` VALUES (6528, 'new', '15139', '14653', 'www.tanasinn.org', 'http://www.tanasinn.org/', 0, 364, '1320412559941');
+INSERT INTO `bookmark` VALUES (6529, 'new', '15140', '14653', '(重發) 人生ｵﾜﾀ＼(^o^)／の大冒険(頁 1) - 其他遊戲 - 任天堂玩家網 - Powered by Discuz! Archiver', 'http://www.ngamer.net/forum/archiver/?tid-8477.html', 0, 365, '1320412559941');
+INSERT INTO `bookmark` VALUES (6527, 'new', '15138', '14653', 'AVTOKYO2010 - EN', 'http://en.avtokyo.org/avtokyo2010', 0, 363, '1320412559941');
+INSERT INTO `bookmark` VALUES (6526, 'new', '15137', '14653', 'UTF-8.jp', 'http://utf-8.jp/', 0, 362, '1320412559941');
+INSERT INTO `bookmark` VALUES (6524, 'new', '15133', '14653', 'CSQR - Google 搜尋', 'http://www.google.com.tw/search?sourceid=chrome&ie=UTF-8&q=CSQR', 0, 358, '1320412559941');
+INSERT INTO `bookmark` VALUES (6523, 'new', '15134', '14653', 'Fun2D QR Code Reader for Windows - 方碼科技 Funcode Technology. QR code/2D Barcode Mobile Barcode 手機條碼/二維條碼應用與服務提供', 'http://www.funcode-tech.com/Fun2D_Windows.html', 0, 359, '1320412559941');
+INSERT INTO `bookmark` VALUES (6520, 'new', '15130', '14653', 'Xecure Deezer', 'http://aptdeezer.xecure-lab.com/', 0, 355, '1320412559941');
+INSERT INTO `bookmark` VALUES (6521, 'new', '15131', '14653', 'Linux x86 egghunt shellcode', 'http://www.exploit-db.com/exploits/17559/', 0, 356, '1320412559941');
+INSERT INTO `bookmark` VALUES (6522, 'new', '15132', '14653', '給資訊人的朋友們 - Shinyo- 點部落', 'http://www.dotblogs.com.tw/shinyo.her/archive/2011/07/14/31613.aspx', 0, 357, '1320412559941');
+INSERT INTO `bookmark` VALUES (6519, 'new', '15129', '14653', 'Advanced Persistent Threat - Wikipedia, the free encyclopedia', 'http://en.wikipedia.org/wiki/Advanced_Persistent_Threat', 0, 354, '1320412559941');
+INSERT INTO `bookmark` VALUES (6517, 'new', '15127', '14653', 'Dalvik opcodes', 'http://pallergabor.uw.hu/androidblog/dalvik_opcodes.html', 0, 352, '1320412559941');
+INSERT INTO `bookmark` VALUES (6518, 'new', '15128', '14653', 'Pentagon: Online Cyber Attacks Can Count as Acts of War - WSJ.com', 'http://online.wsj.com/article/SB10001424052702304563104576355623135782718.html', 0, 353, '1320412559941');
+INSERT INTO `bookmark` VALUES (6516, 'new', '15126', '14653', 'キュゥべえTシャツ [魔法少女まどか☆マギカ] | キャラクターグッズ＆アパレル製作販売のコスパ', 'http://www.cospa.com/detail/id/00000038220', 0, 351, '1320412559941');
+INSERT INTO `bookmark` VALUES (6515, 'new', '15125', '14653', 'Thinker - 2009.01.18', 'http://www.codemud.net/~thinker/GinGin_CGI.py', 0, 350, '1320412559941');
+INSERT INTO `bookmark` VALUES (6514, 'new', '15124', '14653', 'vim 打开文件 16进制 2进制 - 好文共享 - 资源下载地址分享交流 让我们把资源地址在这里集体共享吧 - Powered by Discuz!', 'http://fenxiangdizhi.5d6d.com/thread-59-1-1.html', 0, 349, '1320412559941');
+INSERT INTO `bookmark` VALUES (6513, 'new', '15123', '14653', 'Invisible Man: swf文件逆向工程工具 - SWFRETools', 'http://jay-fva.blogspot.com/2011/05/swf-swfretools.html', 0, 348, '1320412559941');
+INSERT INTO `bookmark` VALUES (6512, 'new', '15122', '14653', 'CWSandBox - Google 搜尋', 'http://www.google.com.tw/search?hl=zh-TW&q=CWSandBox&oq=CWSandBox&aq=f&aqi=g4&aql=1&gs_sm=e&gs_upl=1545l1733l0l1962l2l2l0l0l0l0l73l119l2l2', 0, 347, '1320412559941');
+INSERT INTO `bookmark` VALUES (6511, 'new', '15121', '14653', '3721流氓软件 - Google 搜尋', 'http://www.google.com.tw/#hl=zh-TW&q=3721%E6%B5%81%E6%B0%93%E8%BD%AF%E4%BB%B6&oq=3721%E6%B5%81%E6%B0%93&aq=0&aqi=g1&aql=1&gs_sm=e&gs_upl=0l0l2l1999l1l1l0l0l0l0l95l95l1l1&bav=on.2,or.r_gc.r_pw.&fp=f75f141327e27b33&biw=1280&bih=688', 0, 346, '1320412559941');
+INSERT INTO `bookmark` VALUES (6510, 'new', '15120', '14653', 'The IDA Pro book 第5章---IDA DATA DISPLAY - CandyZone', 'http://blog.candyzone.net/post-42.html', 0, 345, '1320412559941');
+INSERT INTO `bookmark` VALUES (6509, 'new', '15119', '14653', 'PChome線上購物 - ３Ｃ《RAT08AG 3D 立體 電視 電子快門 眼鏡》', 'http://shopping.pchome.com.tw/?m=item&f=exhibit&IT_NO=AHAD1L-A55549387&SR_NO=AHAD1L', 0, 344, '1320412559941');
+INSERT INTO `bookmark` VALUES (6508, 'new', '15118', '14653', 'HIT 2011 梗全集 - Google Docs', 'https://docs.google.com/document/d/10uV8VyUSM7rdZkiWkmpTXnamBBDSs8TpAa8jWXPxp20/edit?pli=1&hl=zh_TW', 0, 343, '1320412559941');
+INSERT INTO `bookmark` VALUES (6507, 'new', '15117', '14653', 'LINUX的砍站指令 wget - Unix Like - 酷米資訊筆記', 'http://www.kume.idv.tw/read-216.html', 0, 342, '1320412559941');
+INSERT INTO `bookmark` VALUES (6506, 'new', '15116', '14653', 'Diutinus Defense Techonologies Corp. / Home', 'http://ddtek.biz/', 0, 341, '1320412559941');
+INSERT INTO `bookmark` VALUES (6505, 'new', '15115', '14653', 'PChome線上購物 - 24小時專區《Nikon SportLite 10x25 DCF 雙筒望遠鏡 (公司貨)》', 'http://shopping.pchome.com.tw/?mod=item&func=exhibit&IT_NO=DGBG1M-A49718001&c=A05', 0, 340, '1320412559941');
+INSERT INTO `bookmark` VALUES (6504, 'new', '15114', '14653', '自 製 光 劍 教 學', 'http://chinese-starwars.com/custom.htm', 0, 339, '1320412559941');
+INSERT INTO `bookmark` VALUES (6503, 'new', '15113', '14653', 'PChome線上購物 - 24小時專區《光劍星傳1-9 DVD》', 'http://shopping.pchome.com.tw/?mod=item&func=exhibit&IT_NO=DNAA3L-A41348073&c=A10', 0, 338, '1320412559941');
+INSERT INTO `bookmark` VALUES (6502, 'new', '15112', '14653', 'Anti Powerpoint Party', 'http://www.anti-powerpoint-party.com/en', 0, 337, '1320412559941');
+INSERT INTO `bookmark` VALUES (6500, 'new', '15110', '14653', 'Free online Barcode decoder', 'http://www.onlinebarcodereader.com/', 0, 335, '1320412559941');
+INSERT INTO `bookmark` VALUES (6501, 'new', '15111', '14653', '[ubuntu]設定簡易防火牆與NAT(iptables) @ 隨手亂記 :: 痞客邦 PIXNET ::', 'http://ljhuang.pixnet.net/blog/post/15029442', 0, 336, '1320412559941');
+INSERT INTO `bookmark` VALUES (6499, 'new', '15135', '14653', 'Best 5 Free Online QR Code Readers', 'http://freenuts.com/best-5-free-online-qr-code-readers/', 0, 360, '1320412559941');
+INSERT INTO `bookmark` VALUES (6525, 'new', '15136', '14653', 'Generate and decode QR-codes online', 'http://www.patrick-wied.at/static/qrgen/', 0, 361, '1320412559941');
+INSERT INTO `bookmark` VALUES (6498, 'new', '15109', '14653', '研究人員：蘋果筆電電池也可以駭！ | 即時新聞 | iThome online', 'http://www.ithome.com.tw/itadm/article.php?c=68865', 0, 334, '1320412559941');
+INSERT INTO `bookmark` VALUES (6497, 'new', '15108', '14653', 'Steven5538 Said :: HITCON2011 Wargame 解題文章整理', 'http://steven5538.hack-stuff.com/2011/07/hitcon2011-wargame.html', 0, 333, '1320412559941');
+INSERT INTO `bookmark` VALUES (6495, 'new', '15106', '14653', '60qsA.png (843×805)', 'http://i.imgur.com/60qsA.png', 0, 331, '1320412559941');
+INSERT INTO `bookmark` VALUES (6496, 'new', '15107', '14653', 'HITCON2011 WEB1 — GOCR | 神父 神棍', 'http://wordintoro.wordpress.com/2011/07/26/hitcon2011-web1-gocr/#more-117', 0, 332, '1320412559941');
+INSERT INTO `bookmark` VALUES (6494, 'new', '15105', '14653', 'Foreign ', 'http://www.pcpro.co.uk/news/security/368851/foreign-spy-masters-could-infiltrate-hacker-groups', 0, 330, '1320412559941');
+INSERT INTO `bookmark` VALUES (6492, 'new', '15103', '14653', 'vpn设置方法 iphone越狱vpn vpn代理 美国vpn 免费vpn试用 VPNONLY 唯一vpn', 'http://www.vpnonly.org/misc/help', 0, 328, '1320412559941');
+INSERT INTO `bookmark` VALUES (6493, 'new', '15104', '14653', 'Jeremy Chang (mrmoneyc) on about.me', 'http://about.me/mrmoneyc', 0, 329, '1320412559941');
+INSERT INTO `bookmark` VALUES (6491, 'new', '15102', '14653', '虛擬私人網路 - 维基百科，自由的百科全书', 'http://zh.wikipedia.org/wiki/%E8%99%9B%E6%93%AC%E7%A7%81%E4%BA%BA%E7%B6%B2%E8%B7%AF', 0, 327, '1320412559941');
+INSERT INTO `bookmark` VALUES (6490, 'new', '15101', '14653', 'Universal ROP shellcode for OS X x64 « GDTR', 'http://gdtr.wordpress.com/2011/07/23/universal-rop-shellcode-for-os-x-x64/', 0, 326, '1320412559941');
+INSERT INTO `bookmark` VALUES (6489, 'new', '15100', '14653', 'Black Hat ® Technical Security Conference // Home', 'http://blackhat.com/', 0, 325, '1320412559941');
+INSERT INTO `bookmark` VALUES (6488, 'new', '15099', '14653', 'Hacks In Taiwan Conference', 'http://www.hitcon.org/download.htm', 0, 324, '1320412559941');
+INSERT INTO `bookmark` VALUES (6487, 'new', '19518', '19236', 'Hack.Stuff Technology', 'http://bbs.hack-stuff.com/', 0, 151, '1320470497505');
+INSERT INTO `bookmark` VALUES (6486, 'new', '15098', '14653', 'Orange: 台灣駭客年會 HITCON2011，Wargame Web 3出題心得 & 解法', 'http://orange-tw.blogspot.com/2011/07/hitcon2011wargame-web-3.html', 0, 323, '1320412559941');
+INSERT INTO `bookmark` VALUES (6485, 'new', '15097', '14653', 'What a Spider Man: Facebook惡意連結分析- 蜘蛛活在女生皮膚?', 'http://windwielder.blogspot.com/2011/07/facebook.html', 0, 322, '1320412559941');
+INSERT INTO `bookmark` VALUES (6484, 'new', '15096', '14653', '全球各國紛紛“備戰”網絡 可能引發軍備競賽_國際頻道_新華網', 'http://big5.xinhuanet.com/gate/big5/news.xinhuanet.com/world/2011-07/20/c_121693857.htm', 0, 321, '1320412559941');
+INSERT INTO `bookmark` VALUES (6483, 'new', '15095', '14653', '分散式系統與網路安全實驗室', 'http://dsns.cs.nctu.edu.tw/blog/', 0, 320, '1320412559941');
+INSERT INTO `bookmark` VALUES (6482, 'new', '15094', '14653', 'Orange: 台灣駭客年會 HITCON2011，Wargame Binary 3出題心得 & 解法', 'http://orange-tw.blogspot.com/2011/07/hitcon2011wargame-binary-3.html', 0, 319, '1320412559941');
+INSERT INTO `bookmark` VALUES (6481, 'new', '15093', '14653', '[精彩] vmware 网络配置实例二 windows xp host + linux guest - ChinaUnix.net', 'http://www.chinaunix.net/jh/4/374483.html', 0, 318, '1320412559941');
+INSERT INTO `bookmark` VALUES (6480, 'new', '15092', '14653', 'Orange: 台灣駭客年會 HITCON2011，Wargame Web 4出題心得 & 解法', 'http://orange-tw.blogspot.com/2011/07/hitcon2011wargame-web-4.html', 0, 317, '1320412559941');
+INSERT INTO `bookmark` VALUES (6479, 'new', '15091', '14653', 'Steven5538 Said :: HIT Wargame Misc 1,4,6 解題過程', 'http://steven5538.hack-stuff.com/2011/07/hit-wargame-misc-146.html', 0, 316, '1320412559941');
+INSERT INTO `bookmark` VALUES (6478, 'new', '15090', '14653', 'Novice - Google 搜尋', 'http://www.google.com.tw/#hl=zh-TW&source=hp&q=Novice&btnG=Google+%E6%90%9C%E5%B0%8B&oq=Novice&aq=f&aqi=&aql=&gs_sm=s&gs_upl=0l0l1l1455l0l0l0l0l0l0l0l0ll0&bav=on.2,or.r_gc.r_pw.&fp=55cc24f9137019be&biw=1280&bih=699', 0, 315, '1320412559941');
+INSERT INTO `bookmark` VALUES (6476, 'new', '14653', '14584', 'HIT2011', '', 0, 313, '1320412559941');
+INSERT INTO `bookmark` VALUES (6477, 'new', '15089', '14653', 'HIT 2011 Wargame', 'http://rsghost.web.fc2.com/HIT201_wargame/10.0.15.1/', 0, 314, '1320412559941');
+INSERT INTO `bookmark` VALUES (6475, 'new', '15088', '14652', '資安論壇 • 檢視主題 - [教學] Metasploit 3.1滲透工具應用', 'http://forum.icst.org.tw/phpbb/viewtopic.php?f=14&t=15834', 0, 312, '1320412559941');
+INSERT INTO `bookmark` VALUES (6474, 'new', '15086', '14652', 'Exploit-Me Firefox XSS and SQL scanning addon - Hack a Day', 'http://hackaday.com/2008/06/14/exploit-me-firefox-xss-and-sql-scanning-addon/', 0, 310, '1320412559941');
+INSERT INTO `bookmark` VALUES (6473, 'new', '15087', '14652', '將Firefox變成黑客工具的七個插件 - 浮雲cnc - 浮雲cnc - 和訊博客', 'http://cncok.blog.hexun.com.tw/64455632_d.html', 0, 311, '1320412559941');
+INSERT INTO `bookmark` VALUES (6472, 'new', '15085', '14652', 'HackBar - Firefox plugin for XSS, SQL Injection and Webapp Pentest | SecGuru', 'http://www.secguru.com/link/hackbar_firefox_plugin_xss_sql_injection_and_webapp_pentest', 0, 309, '1320412559941');
+INSERT INTO `bookmark` VALUES (6471, 'new', '15084', '14652', '電腦魔法大師之電腦手記 (2010 alpha): Firefox XSS 及 SQL 注入漏洞', 'http://magiccs.blogspot.com/2008/10/firefox-xss-sql.html', 0, 308, '1320412559941');
+INSERT INTO `bookmark` VALUES (6470, 'new', '14652', '14584', 'Hack_web_tool', '', 0, 307, '1320412559941');
+INSERT INTO `bookmark` VALUES (6468, 'new', '15082', '14651', 'Mac出現新木馬，恐竊取個人資料|AppleLife', 'http://www.applelife.tw/node/1561', 0, 305, '1320412559941');
+INSERT INTO `bookmark` VALUES (6469, 'new', '15083', '14651', '槍砲與鍵鼠之戰的序幕 - 駭客為了救出同伴，向墨西哥黑道宣戰 | 科新聞', 'http://nccc.cool3c.com/article/52411', 0, 306, '1320412559941');
+INSERT INTO `bookmark` VALUES (6467, 'new', '15081', '14651', 'Facebook發表新資安工具 | 即時新聞 | iThome online', 'http://www.ithome.com.tw/itadm/article.php?c=70519', 0, 304, '1320412559941');
+INSERT INTO `bookmark` VALUES (6466, 'new', '15080', '14651', '不解决DNS污染，还是会被墙 | Hello from FradSer', 'http://www.fradser.info/if-dns-pollution-is-not-resolved-it-also-will-be-gfwed/', 0, 303, '1320412559941');
+INSERT INTO `bookmark` VALUES (6464, 'new', '15077', '14651', 'DOS病毒复活 穿越者轻松突破主流杀毒软件 - 产品和技术 - 赛迪网', 'http://tech.ccidnet.com/art/1099/20111025/3003173_1.html', 0, 300, '1320412559941');
+INSERT INTO `bookmark` VALUES (6465, 'new', '15079', '14651', '51websec新增功能“在线漏洞扫描” - 产品和技术 - 赛迪网', 'http://tech.ccidnet.com/art/234/20111028/3025673_1.html', 0, 302, '1320412559941');
+INSERT INTO `bookmark` VALUES (6463, 'new', '15078', '14651', '惡意程式新手法：下載時無毒 更新後再變病毒 | 網路衝浪 | 線上漫遊 | udn數位資訊', 'http://mag.udn.com/mag/digital/storypage.jsp?f_ART_ID=351007', 0, 301, '1320412559941');
+INSERT INTO `bookmark` VALUES (6462, 'new', '15076', '14651', '駭客攻擊 台發生率第一 | 頭條要聞 | 蘋果日報', 'http://tw.nextmedia.com/applenews/article/art_id/33767555/IssueID/20111026', 0, 299, '1320412559941');
+INSERT INTO `bookmark` VALUES (6461, 'new', '15075', '14651', 'APT攻擊與法規加持 SIEM前景看好,Information Security 資安人科技網', 'http://www.isecutech.com.tw/article/article_detail.aspx?aid=6397', 0, 298, '1320412559941');
+INSERT INTO `bookmark` VALUES (6460, 'new', '15074', '14651', 'QR Code：惡意軟體新溫床 - 數位時代－台灣最具影響力的科技媒體', 'http://www.bnext.com.tw/article/view/cid/125/id/20558', 0, 297, '1320412559941');
+INSERT INTO `bookmark` VALUES (6459, 'new', '15073', '14651', '哈佛醫學院從端到雲：門鎖只解決一成問題，記得鎖門需花九成功夫,Information Security 資安人科技網', 'https://www.informationsecurity.com.tw/article/article_detail.aspx?tv&aid=6417&pages=3', 0, 296, '1320412559941');
+INSERT INTO `bookmark` VALUES (6458, 'new', '15072', '14651', '北京市政一卡通被指暴露用户位置信息_通讯与电讯_科技时代_新浪网', 'http://tech.sina.com.cn/t/2011-10-10/16316157539.shtml', 0, 295, '1320412559941');
+INSERT INTO `bookmark` VALUES (6457, 'new', '15070', '14651', 'ZDNet Taiwan - TCP瑕疵危及網路資料傳輸 - 企業應用 - 主題中心', 'http://www.zdnet.com.tw/enterprise/topic/security/0,2000085717,20089028,00.htm', 0, 293, '1320412559941');
+INSERT INTO `bookmark` VALUES (6456, 'new', '15069', '14651', '消息人士：駭客入侵Nasdaq 上市企業董事訊息已遭竊_新聞_鉅亨網_投資全球 讓你鉅亨', 'http://news.cnyes.com/Content/20111021/KDZTS4XTJE8TI.shtml?c=headline_sitehead', 0, 292, '1320412559941');
+INSERT INTO `bookmark` VALUES (6455, 'new', '15071', '14651', 'WordPress用戶注意：三外掛有後門，盡速重設密碼 | 即時新聞 | iThome online', 'http://www.ithome.com.tw/itadm/article.php?c=68317', 0, 294, '1320412559941');
+INSERT INTO `bookmark` VALUES (6454, 'new', '15068', '14651', 'HTC多款手機被發現有官方預留的後門程式 | 即時新聞 | iThome online', 'http://www.ithome.com.tw/itadm/article.php?c=70135', 0, 291, '1320412559941');
+INSERT INTO `bookmark` VALUES (6453, 'new', '15067', '14651', 'Those high-security swipe cards that secure your front door may be no good | ITworld', 'http://www.itworld.com/security/211721/those-high-security-swipe-cards-secure-your-front-door-may-be-no-good', 0, 290, '1320412559941');
+INSERT INTO `bookmark` VALUES (6452, 'new', '15066', '14651', 'Facebook content restrictions bypass Vulnerability ~ THN : The Hacker News', 'http://thehackernews.com/2011/10/facebook-content-restrictions-bypass.html', 0, 289, '1320412559941');
+INSERT INTO `bookmark` VALUES (6451, 'new', '15065', '14651', 'Apache killer exploit modified for better Results ~ THN : The Hacker News', 'http://thehackernews.com/2011/10/apache-killer-exploit-modified-for.html?utm_source=feedburner&utm_medium=feed&utm_campaign=Feed%3A+TheHackersNews+%28The+Hackers+News+-+Daily+Cyber+News+Updates%29&utm_content=FaceBook', 0, 288, '1320412559941');
+INSERT INTO `bookmark` VALUES (6450, 'new', '15063', '14651', '網站被攻擊了 網頁被植入一大串script- 藍色小舖 BlueShop', 'http://www.blueshop.com.tw/board/FUM20041006161839LRJ/BRD20111005000229AI3.html', 0, 286, '1320412559941');
+INSERT INTO `bookmark` VALUES (6449, 'new', '15064', '14651', 'Apache Patch released for Reverse proxy Bypass Vulnerability ~ THN : The Hacker News', 'http://thehackernews.com/2011/10/apache-patch-released-for-reverse-proxy.html', 0, 287, '1320412559941');
+INSERT INTO `bookmark` VALUES (6448, 'new', '15061', '14651', '駭客入侵 大學網站 貼賣春訊息-Yahoo!奇摩新聞', 'http://tw.news.yahoo.com/article/url/d/a/111004/11/2zvtf.html', 0, 284, '1320412559941');
+INSERT INTO `bookmark` VALUES (6447, 'new', '15062', '14651', 'qnrq» Blog Archive » 0day Full disclosure: American Express', 'http://qnrq.se/full-disclosure-american-express/', 0, 285, '1320412559941');
+INSERT INTO `bookmark` VALUES (6445, 'new', '15060', '14651', '4.康熙來了-你想都沒想過的新發明2010.11.19 - YouTube', 'http://www.youtube.com/watch?v=LQuXy3GNQSU&feature=related#t=3m38s', 0, 283, '1320412559941');
+INSERT INTO `bookmark` VALUES (6446, 'new', '15059', '14651', 'Qualys：大部分瀏覽器及其擴充程式未更新 易遭攻擊 | 即時新聞 | iThome online', 'http://www.ithome.com.tw/itadm/article.php?c=66014', 0, 282, '1320412559941');
+INSERT INTO `bookmark` VALUES (6444, 'new', '15058', '14651', '控訴人腦駭客，自備犯罪解析！ - 電子精神(腦控)、心理(洗腦)控制武器 - Yahoo!奇摩部落格', 'http://tw.myblog.yahoo.com/jsh-jsh/article?mid=482&prev=483&next=481', 0, 281, '1320412559941');
+INSERT INTO `bookmark` VALUES (6443, 'new', '15055', '14651', 'Facebook承認登出後持續追蹤用戶| CNET Taiwan Crave 科技瘋', 'http://taiwan.cnet.com/crave/0,2000088746,20151430,00.htm', 0, 278, '1320412559941');
+INSERT INTO `bookmark` VALUES (6441, 'new', '15056', '14651', '誰是陳俊成？ - roamer - Yahoo!奇摩部落格', 'http://tw.myblog.yahoo.com/roamer-tw/article?mid=7263', 0, 279, '1320412559941');
+INSERT INTO `bookmark` VALUES (6442, 'new', '15057', '14651', '鄭振牟助理教授的個人資料 - Profile of Chen-Mou Cheng', 'http://www.ee.ntu.edu.tw/profile?id=754', 0, 280, '1320412559941');
+INSERT INTO `bookmark` VALUES (6440, 'new', '15054', '14651', 'Mifare Hack - YouTube', 'http://www.youtube.com/watch?v=NW3RGbQTLhE&feature=player_embedded#!', 0, 277, '1320412559941');
+INSERT INTO `bookmark` VALUES (6438, 'new', '15052', '14651', '让苹果恨之入骨的天才黑客少年：我是合法的-搜狐IT', 'http://it.sohu.com/20110803/n315348903.shtml', 0, 275, '1320412559941');
+INSERT INTO `bookmark` VALUES (6439, 'new', '15053', '14651', '专题：网络致命大杀器——历届黑帽大会记录_51CTO.COM', 'http://netsecurity.51cto.com/art/201108/283482.htm', 0, 276, '1320412559941');
+INSERT INTO `bookmark` VALUES (6437, 'new', '15051', '14651', '駭客再爆 Linux 內核高危漏洞，一個命令可以攻擊所有 Linux 系統（轉載） @ 暉獲無度的步烙閣 :: 隨意窩 Xuite日誌', 'http://blog.xuite.net/jyoutw/xtech/26131290', 0, 274, '1320412559941');
+INSERT INTO `bookmark` VALUES (6435, 'new', '15050', '14651', '警政署刑事局偵九隊公布的基本快速發現及移除惡意程式方法', 'http://www.chihlee.edu.tw/virus/cib.htm', 0, 273, '1320412559941');
+INSERT INTO `bookmark` VALUES (6436, 'new', '15049', '14651', 'VPN provider helped track down alleged LulzSec member - The H Security: News and Features', 'http://www.h-online.com/security/news/item/VPN-provider-helped-track-down-alleged-LulzSec-member-1349666.html', 0, 272, '1320412559941');
+INSERT INTO `bookmark` VALUES (6433, 'new', '15047', '14651', '16 hackers arrested over cyber crimes:FBI | BBC News Update', 'http://www.bbcnewsupdate.com/16-hackers-arrested-over-cyber-crimesfbi.html', 0, 270, '1320412559941');
+INSERT INTO `bookmark` VALUES (6434, 'new', '15048', '14651', '駭客收假　農曆年小心垃圾郵件及網路釣魚', 'http://www.eettaiwan.com/ART_8800632981_876045_NT_a50f0838.HTM', 0, 271, '1320412559941');
+INSERT INTO `bookmark` VALUES (6432, 'new', '15046', '14651', '網路有鬼 APT陰魂不散,Information Security 資安人科技網', 'http://www.isecutech.com.tw/article/article_detail.aspx?tv=&aid=6252&pages=1', 0, 269, '1320412559941');
+INSERT INTO `bookmark` VALUES (6431, 'new', '15045', '14651', '微軟修補20年之久的POD漏洞 | 即時新聞 | iThome online', 'http://www.ithome.com.tw/itadm/article.php?c=69161', 0, 268, '1320412559941');
+INSERT INTO `bookmark` VALUES (6429, 'new', '15043', '14651', '2011 Black Hat：包藏禍心的文件攻擊 ,Information Security 資安人科技網', 'http://www.isecutech.com.tw/article/article_detail.aspx?tv=12&aid=6289', 0, 266, '1320412559941');
+INSERT INTO `bookmark` VALUES (6430, 'new', '15044', '14651', '駭客組織Anonymous揚言毀掉Facebook - 數位時代－台灣最具影響力的科技媒體', 'http://www.bnext.com.tw/Article/view/cid/103/id/19673', 0, 267, '1320412559941');
+INSERT INTO `bookmark` VALUES (6428, 'new', '15042', '14651', '大紀元 - 日本建反間諜網絡 防中共病毒郵件', 'http://www.epochtimes.com/b5/11/8/7/n3336995.htm%E6%97%A5%E6%9C%AC%E5%BB%BA%E5%8F%8D%E9%96%93%E8%AB%9C%E7%B6%B2%E7%B5%A1-%E9%98%B2%E4%B8%AD%E5%85%B1%E7%97%85%E6%AF%92%E9%83%B5%E4%BB%B6', 0, 265, '1320412559941');
+INSERT INTO `bookmark` VALUES (6427, 'new', '15041', '14651', '上網手機不安全？傳德破解加密-Yahoo!奇摩新聞', 'http://tw.news.yahoo.com/article/url/d/a/110811/16/2woc3.html', 0, 264, '1320412559941');
+INSERT INTO `bookmark` VALUES (6426, 'new', '15040', '14651', '調查：40%的百大行動程式未能通過安全測試 | 即時新聞 | iThome online', 'http://www.ithome.com.tw/itadm/article.php?c=69135', 0, 263, '1320412559941');
+INSERT INTO `bookmark` VALUES (6425, 'new', '15039', '14651', '臉書末日？駭客團體 Anonymous 將在11月5日攻擊臉書 | T客邦 - 我只推薦好東西', 'http://www.techbang.com.tw/posts/6684-hacker-attacks-kill-face-book-group-anonymous-november-5', 0, 262, '1320412559941');
+INSERT INTO `bookmark` VALUES (6424, 'new', '15038', '14651', '10歲小女孩發現遊戲內零時差漏洞| CNET Taiwan Crave 科技瘋', 'http://taiwan.cnet.com/crave/0,2000088746,20150825,00.htm', 0, 261, '1320412559941');
+INSERT INTO `bookmark` VALUES (6423, 'new', '15037', '14651', '駭客攻擊蔡總部 選戰機密曝光-Yahoo!奇摩新聞', 'http://tw.news.yahoo.com/article/url/d/a/110809/4/2wjdr.html', 0, 260, '1320412559941');
+INSERT INTO `bookmark` VALUES (6422, 'new', '15036', '14651', '除錯時面臨的心理障礙 | 專欄 | iThome online', 'http://www.ithome.com.tw/itadm/article.php?c=68969', 0, 259, '1320412559941');
+INSERT INTO `bookmark` VALUES (6421, 'new', '15035', '14651', 'AntiSec攻陷美國警察資料庫 取得10GB資料 | 即時新聞 | iThome online', 'http://www.ithome.com.tw/itadm/article.php?c=69093', 0, 258, '1320412559941');
+INSERT INTO `bookmark` VALUES (6420, 'new', '15034', '14651', '10歲少女黑客公布iOS和Android遊戲漏洞(圖)_新華it_新華網', 'http://big5.xinhuanet.com/gate/big5/news.xinhuanet.com/it/2011-08/08/c_121826062.htm', 0, 257, '1320412559941');
+INSERT INTO `bookmark` VALUES (6419, 'new', '15033', '14651', '世界新聞網-北美華文新聞、華商資訊 - 糖尿病人遠端掌控 也被駭', 'http://www.worldjournal.com/view/full_news/14970644/article-%E7%B3%96%E5%B0%BF%E7%97%85%E4%BA%BA%E9%81%A0%E7%AB%AF%E6%8E%8C%E6%8E%A7-%E4%B9%9F%E8%A2%AB%E9%A7%AD-?instance=news_pics', 0, 256, '1320412559941');
+INSERT INTO `bookmark` VALUES (6418, 'new', '15032', '14651', '學毛澤東 陸網路藍軍善打游擊戰｜焦點新聞｜中時電子報', 'http://news.chinatimes.com/focus/11050104/112011080500106.html', 0, 255, '1320412559941');
+INSERT INTO `bookmark` VALUES (6417, 'new', '15031', '14651', '大紀元 - 駭客雲端搶錢 遭網警破獲', 'http://www.epochtimes.com/b5/11/9/5/n3364183.htm%E9%A7%AD%E5%AE%A2%E9%9B%B2%E7%AB%AF%E6%90%B6%E9%8C%A2--%E9%81%AD%E7%B6%B2%E8%AD%A6%E7%A0%B4%E7%8D%B2', 0, 254, '1320412559941');
+INSERT INTO `bookmark` VALUES (6416, 'new', '15030', '14651', 'Zuso on GTV News - 2006-01-16 - YouTube', 'http://www.youtube.com/watch?v=gRWdzKEc9M0', 0, 253, '1320412559941');
+INSERT INTO `bookmark` VALUES (6415, 'new', '15029', '14651', '商業周刊-專欄部落格-科技報橘-政府部門別再用Gmail好嗎 (1/1)', 'http://www.businessweekly.com.tw/blog/article.php?id=384', 0, 252, '1320412559941');
+INSERT INTO `bookmark` VALUES (6414, 'new', '15028', '14651', '美國黑客大會！iOS 黑客大合照！ | Free Apps 100 X 限時免費 iPhone Apps 集中營', 'http://www.freeapps100.com/2011/08/06/jb-hacker/', 0, 251, '1320412559941');
+INSERT INTO `bookmark` VALUES (6412, 'new', '15026', '14651', '以暴制暴 美加速資助駭客計畫-Yahoo!奇摩新聞', 'http://tw.news.yahoo.com/article/url/d/a/110805/16/2wc4h.html', 0, 249, '1320412559941');
+INSERT INTO `bookmark` VALUES (6413, 'new', '15027', '14651', '防駭 美今年砸756億美元-Yahoo!奇摩新聞', 'http://tw.news.yahoo.com/article/url/d/a/110804/4/2w9hc.html', 0, 250, '1320412559941');
+INSERT INTO `bookmark` VALUES (6411, 'new', '15025', '14651', '駭客鎖定osCommerce架站平台　大量網頁被植入惡意iFrame | 即時新聞 | iThome online', 'http://www.ithome.com.tw/itadm/article.php?c=68942', 0, 248, '1320412559941');
+INSERT INTO `bookmark` VALUES (6410, 'new', '15024', '14651', '史上最大駭客行動：暗鼠攻擊，台灣也受駭 | T客邦 - 我只推薦好東西', 'http://www.techbang.com.tw/posts/6616-the-history-of-the-largest-terrorist-attacks-hackers-operation-shady-rat-taiwan-victims', 0, 247, '1320412559941');
+INSERT INTO `bookmark` VALUES (6409, 'new', '15023', '14651', '史上最大駭客攻擊 國防部：完全掌握 - Yahoo! 新聞', 'http://beta.tw.news.yahoo.com/%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%A4%A7%E9%A7%AD%E5%AE%A2%E6%94%BB%E6%93%8A-%E5%9C%8B%E9%98%B2%E9%83%A8-%E5%AE%8C%E5%85%A8%E6%8E%8C%E6%8F%A1-033100280.html', 0, 246, '1320412559941');
+INSERT INTO `bookmark` VALUES (6408, 'new', '15022', '14651', '台大選課疑遭駭 李嗣涔被惡搞 - Yahoo! 新聞', 'http://beta.tw.news.yahoo.com/%E5%8F%B0%E5%A4%A7%E9%81%B8%E8%AA%B2%E7%96%91%E9%81%AD%E9%A7%AD-%E6%9D%8E%E5%97%A3%E6%B6%94%E8%A2%AB%E6%83%A1%E6%90%9E-085211198.html', 0, 245, '1320412559941');
+INSERT INTO `bookmark` VALUES (6407, 'new', '15021', '14651', '打網路戰爭 美政府搶駭客 - Yahoo! 新聞', 'http://beta.tw.news.yahoo.com/%E6%89%93%E7%B6%B2%E8%B7%AF%E6%88%B0%E7%88%AD-%E7%BE%8E%E6%94%BF%E5%BA%9C%E6%90%B6%E9%A7%AD%E5%AE%A2-141927426.html', 0, 244, '1320412559941');
+INSERT INTO `bookmark` VALUES (6406, 'new', '15020', '14651', '新Android 木馬能錄下通話內容 | Androidnoodles 速食資訊', 'http://www.androidnoodles.com/2011/08/android-trojan-records-phone-calls/?utm_source=feedburner&utm_medium=feed&utm_campaign=Feed%3A+androidnoodlesfeed+%28Androidnoodles+%E9%80%9F%E9%A3%9F%E8%B3%87%E8%A8%8A%29', 0, 243, '1320412559941');
+INSERT INTO `bookmark` VALUES (6405, 'new', '15019', '14651', '‪AVTOKYO (tessy) in HIT2011‬‏ - YouTube', 'http://www.youtube.com/watch?v=RvkrWsHV9UA', 0, 242, '1320412559941');
+INSERT INTO `bookmark` VALUES (6404, 'new', '15017', '14651', '駭客變身網路“黑社會” 牟利7000萬-科技頻道-金融界', 'http://big5.jrj.com.cn/gate/big5/tech.jrj.com.cn/2011/07/25150410531675.shtml', 0, 240, '1320412559941');
+INSERT INTO `bookmark` VALUES (6402, 'new', '14651', '14584', '新聞類報導', '', 0, 239, '1320412559941');
+INSERT INTO `bookmark` VALUES (6403, 'new', '15018', '14651', '台湾のハッカーイベントで日本人が2位に（HIT2011） （Scan） - Yahoo!ニュース', 'http://headlines.yahoo.co.jp/hl?a=20110726-00000001-scan-secu', 0, 241, '1320412559941');
+INSERT INTO `bookmark` VALUES (6401, 'new', '14650', '14584', 'IEFD Ep 6 Phone Phreaking Beige Box - YouTube', 'http://www.youtube.com/watch?v=RZwvJze1vJ8', 0, 238, '1320412559941');
+INSERT INTO `bookmark` VALUES (6400, 'new', '14649', '14584', 'IEFD ep. 7 - Phone Phreaking/Network Hacking - Sniffing VOIP - YouTube', 'http://www.youtube.com/watch?v=MBNRviXJtTU', 0, 237, '1320412559941');
+INSERT INTO `bookmark` VALUES (6399, 'new', '14648', '14584', 'Phreaking - Wikipedia, the free encyclopedia', 'http://en.wikipedia.org/wiki/Phreaking', 0, 236, '1320412559941');
+INSERT INTO `bookmark` VALUES (6398, 'new', '14647', '14584', '谁说使用Python你就写不出混乱的代码？', 'http://www.aqee.net/penrose-tiling-in-obfuscated-python/', 0, 235, '1320412559941');
+INSERT INTO `bookmark` VALUES (6394, 'new', '14643', '14584', 'WikiLeaks', 'http://wikileaks.org/', 0, 231, '1320412559941');
+INSERT INTO `bookmark` VALUES (6395, 'new', '14644', '14584', '[UglyCode] 重開Vim/gVim時，回復關閉前所開啟的檔案 @ 吳草兒．技術分享 :: 隨意窩 Xuite日誌', 'http://blog.xuite.net/grassboy/Tech/51059612', 0, 232, '1320412559941');
+INSERT INTO `bookmark` VALUES (6396, 'new', '14645', '14584', 'PHP Easter Egg', 'http://www.0php.com/php_easter_egg.php', 0, 233, '1320412559941');
+INSERT INTO `bookmark` VALUES (6397, 'new', '14646', '14584', '噗浪_噗浪_噗浪 噗浪 | My Blog', 'http://xn--46rw05c.net/?p=5', 0, 234, '1320412559941');
+INSERT INTO `bookmark` VALUES (6393, 'new', '14642', '14584', '程序员技术练级攻略 | 酷壳 - CoolShell.cn', 'http://coolshell.cn/articles/4990.html', 0, 230, '1320412559941');
+INSERT INTO `bookmark` VALUES (6392, 'new', '14641', '14584', 'YouTube - H34dcr4b 的頻道', 'http://www.youtube.com/profile?annotation_id=annotation_484261&user=H34dcr4b&feature=iv', 0, 229, '1320412559941');
+INSERT INTO `bookmark` VALUES (6391, 'new', '14640', '14584', 'CRETIX Security - Downloads - ????', 'http://www.hacker.org.tw/?c=download&sortid=6', 0, 228, '1320412559941');
+INSERT INTO `bookmark` VALUES (6389, 'new', '14639', '14584', 'wells.hk Computer Toolbox 電腦工具箱', 'http://www.wells.hk/ws_toolsse.php', 0, 227, '1320412559941');
+INSERT INTO `bookmark` VALUES (6390, 'new', '14638', '14584', '神不知，鬼不覺，你的帳號密碼是如何被竊聽的？─中間人攻擊〈Man-in-the-middle Attack〉初探 – MMDays', 'http://mmdays.com/2008/11/10/mitm/', 0, 226, '1320412559941');
+INSERT INTO `bookmark` VALUES (6387, 'new', '14636', '14584', 'Plurk paste: Paste #647872', 'http://paste.plurk.com/show/647872/', 0, 224, '1320412559941');
+INSERT INTO `bookmark` VALUES (6388, 'new', '14637', '14584', 'Plurk paste: Paste #647820', 'http://paste.plurk.com/show/647820/', 0, 225, '1320412559941');
+INSERT INTO `bookmark` VALUES (6385, 'new', '14634', '14584', 'The Hacker Academy - Chrome 線上應用程式商店', 'https://chrome.google.com/webstore/detail/cgepgpaeklahkgmbmmkbgiogkmliadcd?hl=zh-TW', 0, 222, '1320412559941');
+INSERT INTO `bookmark` VALUES (6386, 'new', '14635', '14584', 'Heat from Fingertips Could Help ATM Hackers - Technology Review', 'http://www.technologyreview.com/computing/38455/?p1=A2', 0, 223, '1320412559941');
+INSERT INTO `bookmark` VALUES (6383, 'new', '14632', '14584', '計算中心-資安服務-', 'http://security.sinica.edu.tw/infosec-web/topicdetail.jsp?id=&f=8&t=1740', 0, 220, '1320412559941');
+INSERT INTO `bookmark` VALUES (6384, 'new', '14633', '14584', '登入', 'http://dsns.cs.nctu.edu.tw/blog/index.php?option=com_user&view=login&return=aHR0cDovL2RzbnMuY3MubmN0dS5lZHUudHcvYmxvZy9pbmRleC5waHA/b3B0aW9uPWNvbV9jb250ZW50JnZpZXc9YXJ0aWNsZSZpZD0xNzMmSXRlbWlkPTEzNQ==', 0, 221, '1320412559941');
+INSERT INTO `bookmark` VALUES (6382, 'new', '14631', '14584', '行政院國家資通安全會報技術服務中心', 'http://www.icst.org.tw/icst_page.aspx?par=520070007400490044003D0056005F007200730073006900740065006D006E00650077005F0056003100260070006100720032003D006100260070006100720034003D003500260070006100720035003D003100260070006100720036003D0031002600660069006C007400650072003D009E8AFB7C20003D00200027002D4E87652700200061006E006400200052005300530006525E9820003D0020002700E55D7751DF8ED49A2700200061006E0064002000505B0598EE7606525E9820003D0020002700385E2875E55D775127002000200061006E0064002000720061006E006B0073006500710020003C003E002000300026006D0073003D00310036003200', 0, 219, '1320412559941');
+INSERT INTO `bookmark` VALUES (6381, 'new', '14630', '14584', 'FHScan－網路設備掃描工具', 'http://120.114.52.240/~G970Q013/blog?node=000100621', 0, 218, '1320412559941');
+INSERT INTO `bookmark` VALUES (6380, 'new', '14629', '14584', 'Linux核心開發團隊網站遭駭 | 即時新聞 | iThome online', 'http://www.ithome.com.tw/itadm/article.php?c=69506', 0, 217, '1320412559941');
+INSERT INTO `bookmark` VALUES (6379, 'new', '14628', '14584', 'How to Hack and Deface a website - YouTube', 'http://www.youtube.com/watch?v=bqQ8vBw4tts&feature=related', 0, 216, '1320412559941');
+INSERT INTO `bookmark` VALUES (6376, 'new', '15014', '14627', 's4676930.jpg (312×426)', 'http://img3.douban.com/lpic/s4676930.jpg', 0, 213, '1320412559941');
+INSERT INTO `bookmark` VALUES (6377, 'new', '15015', '14627', 'monster | Metasploit 原文書 X2', 'http://zet.hack-stuff.com/blog/?p=2#more-2', 0, 214, '1320412559941');
+INSERT INTO `bookmark` VALUES (6378, 'new', '15016', '14627', '若水堂大陸圖書>大中型網絡入侵要案直擊與防禦/肖遙', 'http://www.waterlike.com.tw/bookdata.asp?NO=TP3C10B091', 0, 215, '1320412559941');
+INSERT INTO `bookmark` VALUES (6375, 'new', '15013', '14627', '程式設計師應讀的十本好書 - Inside', 'http://www.inside.com.tw/2011/03/03/books-programmer-must-read', 0, 212, '1320412559941');
+INSERT INTO `bookmark` VALUES (6374, 'new', '15012', '14627', '20100201 Web 安全測試錦囊妙計 - aNobii', 'http://www.anobii.com/books/Web_%E5%AE%89%E5%85%A8%E6%B8%AC%E8%A9%A6%E9%8C%A6%E5%9B%8A%E5%A6%99%E8%A8%88/9789866840319/018febe11b3e419593/', 0, 211, '1320412559941');
+INSERT INTO `bookmark` VALUES (6372, 'new', '15010', '14627', '特級釣魚師-小飛機 [低調] Practical Packet Analysis - #dbe14x', 'http://www.plurk.com/p/dbe14x', 0, 209, '1320412559941');
+INSERT INTO `bookmark` VALUES (6373, 'new', '15011', '14627', '天瓏網路書店 | 網站入侵與腳本攻防修煉', 'http://www.tenlong.com.tw/items/9861991689?item_id=52829', 0, 210, '1320412559941');
+INSERT INTO `bookmark` VALUES (6371, 'new', '15009', '14627', '特級釣魚師-小飛機 http://samwu.tw/dl/securisite.7z - #dbl31k', 'http://www.plurk.com/p/dbl31k', 0, 208, '1320412559941');
+INSERT INTO `bookmark` VALUES (6370, 'new', '15008', '14627', 'Index of /biblioteca', 'http://www.securisite.org/biblioteca/', 0, 207, '1320412559941');
+INSERT INTO `bookmark` VALUES (6368, 'new', '15006', '14627', 'The Rootkit Arsenal - aNobii', 'http://www.anobii.com/books/010fd2acb8742987bc', 0, 205, '1320412559941');
+INSERT INTO `bookmark` VALUES (6369, 'new', '15007', '14627', '茶不思飯不想的工程師們 @ 成功Project背後的小小團隊 :: 痞客邦 PIXNET ::', 'http://tmfreshman.pixnet.net/blog/post/72621215', 0, 206, '1320412559941');
+INSERT INTO `bookmark` VALUES (6367, 'new', '15005', '14627', '博客來書籍館>駭客來了--攻防300招', 'http://www.books.com.tw/exep/prod/booksfile.php?item=0010445468', 0, 204, '1320412559941');
+INSERT INTO `bookmark` VALUES (6366, 'new', '15004', '14627', '$275【博悅 網路007PT】台灣現貨 暗戰亮劍—駭客滲透與防禦全程實錄 2010年最新版暢銷書 Yahoo! 奇摩拍賣', 'http://tw.page.bid.yahoo.com/tw/auction/b56211996', 0, 203, '1320412559941');
+INSERT INTO `bookmark` VALUES (6365, 'new', '15003', '14627', '網路安全與密碼學概論 - aNobii', 'http://www.anobii.com/books/%E7%B6%B2%E8%B7%AF%E5%AE%89%E5%85%A8%E8%88%87%E5%AF%86%E7%A2%BC%E5%AD%B8%E6%A6%82%E8%AB%96/9789861574783/01ec4435c0a564c2c6/', 0, 202, '1320412559941');
+INSERT INTO `bookmark` VALUES (6364, 'new', '15002', '14627', '駭客現形 - aNobii', 'http://www.anobii.com/books/%E9%A7%AD%E5%AE%A2%E7%8F%BE%E5%BD%A2/9789861571393/01a063e362d77a0435/', 0, 201, '1320412559941');
+INSERT INTO `bookmark` VALUES (6362, 'new', '14627', '14584', '書單', '', 0, 199, '1320412559941');
+INSERT INTO `bookmark` VALUES (6363, 'new', '15001', '14627', '加密與解密 - aNobii', 'http://www.anobii.com/books/%E5%8A%A0%E5%AF%86%E8%88%87%E8%A7%A3%E5%AF%86/9789861816814/0187e2d2276b6b8efc/', 0, 200, '1320412559941');
+INSERT INTO `bookmark` VALUES (6361, 'new', '15000', '14626', 'XSS Vulnerability in Interactive YouTube API Demo Beta ~ THN : The Hacker News', 'http://thehackernews.com/2011/10/xss-vulnerability-in-interactive.html', 0, 198, '1320412559941');
+INSERT INTO `bookmark` VALUES (6359, 'new', '14998', '14626', 'iT人甘苦談─用競賽鍛鍊資安戰力的駭客任務 | IT人物 | iThome online', 'http://www.ithome.com.tw/itadm/article.php?c=65345', 0, 196, '1320412559941');
+INSERT INTO `bookmark` VALUES (6360, 'new', '14999', '14626', 'Free Software Foundation: Windows 8 secure boot requirement could lock out Linux - News - Linux for Devices', 'http://www.linuxfordevices.com/c/a/News/Free-Software-Foundation-frets-about-Windows-8-secure-boot-requirement/', 0, 197, '1320412559941');
+INSERT INTO `bookmark` VALUES (6358, 'new', '14995', '14626', '阿策歐泥: 我希望我女兒能當個駭客', 'http://atseowni.blogspot.com/2011/09/blog-post_24.html', 0, 193, '1320412559941');
+INSERT INTO `bookmark` VALUES (6357, 'new', '14996', '14626', '在 Google, 我們堅持的只是一種價值觀 – MMDays', 'http://mmdays.com/2011/06/28/google-value/#more-10987', 0, 194, '1320412559941');
+INSERT INTO `bookmark` VALUES (6355, 'new', '14994', '14626', '黑客攻破SSL加密 网络安全形势堪忧-IT168 安全专区', 'http://safe.it168.com/a2011/0921/1249/000001249433.shtml', 0, 192, '1320412559941');
+INSERT INTO `bookmark` VALUES (6356, 'new', '14997', '14626', '如何成為駭客', 'http://www.angelfire.com/ok/leekawo/hacker.htm', 0, 195, '1320412559941');
+INSERT INTO `bookmark` VALUES (6354, 'new', '14993', '14626', 'RUN!PC｜精選文章｜網管資安｜惡意程式的隱形斗蓬－rootkit', 'http://www.runpc.com.tw/content/content.aspx?id=103730', 0, 191, '1320412559941');
+INSERT INTO `bookmark` VALUES (6353, 'new', '14992', '14626', 'RUN!PC｜精選文章｜網管資安｜Kernel mode rootkit 技巧解析', 'http://www.runpc.com.tw/content/content.aspx?id=104004', 0, 190, '1320412559941');
+INSERT INTO `bookmark` VALUES (6352, 'new', '14991', '14626', 'RUN!PC｜精選文章｜網管資安｜Anti-rootkit工具介紹', 'http://www.runpc.com.tw/content/content.aspx?id=104217', 0, 189, '1320412559941');
+INSERT INTO `bookmark` VALUES (6351, 'new', '14990', '14626', 'RUN!PC｜精選文章｜網管資安｜淺談圖片木馬攻擊與防禦', 'http://www.runpc.com.tw/content/content.aspx?id=103602', 0, 188, '1320412559941');
+INSERT INTO `bookmark` VALUES (6350, 'new', '14989', '14626', 'RUN!PC｜精選文章｜網管資安｜為什麼老是被駭？', 'http://www.runpc.com.tw/content/content.aspx?id=108206', 0, 187, '1320412559941');
+INSERT INTO `bookmark` VALUES (6349, 'new', '14988', '14626', 'Hackers break SSL encryption used by millions of sites • The Register', 'http://www.theregister.co.uk/2011/09/19/beast_exploits_paypal_ssl/', 0, 186, '1320412559941');
+INSERT INTO `bookmark` VALUES (6347, 'new', '14986', '14626', '外人打不开的迷宫盒子 - DIY - 果壳网 guokr.com', 'http://www.guokr.com/article/62684/', 0, 184, '1320412559941');
+INSERT INTO `bookmark` VALUES (6348, 'new', '14987', '14626', '一位程式人PI在中研院 -- 陳昇瑋', 'http://www.iis.sinica.edu.tw/~swc/talk/a_programmer_pi.html', 0, 185, '1320412559941');
+INSERT INTO `bookmark` VALUES (6346, 'new', '14985', '14626', 'ZDNet Taiwan - 趨勢CEO陳怡樺：防毒產業騙了客戶20年 - 新聞 - 企業軟體', 'http://www.zdnet.com.tw/news/software/0,2000085678,20130359,00.htm', 0, 183, '1320412559941');
+INSERT INTO `bookmark` VALUES (6345, 'new', '14984', '14626', 'Hack, Everything! » Mr. Jamie 看網路與創投', 'http://mrjamie.cc/2011/05/14/hack-everything/', 0, 182, '1320412559941');
+INSERT INTO `bookmark` VALUES (6344, 'new', '14983', '14626', '為什麼搖滾樂團 Van Halen 不吃棕色的 M&M 巧克力？ » Mr. Jamie 看網路與創投', 'http://mrjamie.cc/2011/08/05/van-halen-mm/?utm_source=feedburner&utm_medium=feed&utm_campaign=Feed%3A+MrJamie+%28Mr.+Jamie+%E7%9C%8B%E7%B6%B2%E8%B7%AF%E8%88%87%E5%89%B5%E6%8A%95%29&utm_content=Google+Reader', 0, 181, '1320412559941');
+INSERT INTO `bookmark` VALUES (6343, 'new', '14982', '14626', 'self-modify - Google 搜尋', 'http://www.google.com.tw/search?sourceid=chrome&ie=UTF-8&q=self-modify', 0, 180, '1320412559941');
+INSERT INTO `bookmark` VALUES (6342, 'new', '14981', '14626', '懶人包幫你灌Hackintosh | 軟體教室 | 軟體學園 | udn數位資訊', 'http://mag.udn.com/mag/digital/storypage.jsp?f_ART_ID=296462', 0, 179, '1320412559941');
+INSERT INTO `bookmark` VALUES (6341, 'new', '14980', '14626', 'How To Become A Hacker', 'http://www.catb.org/~esr/faqs/hacker-howto.html', 0, 178, '1320412559941');
+INSERT INTO `bookmark` VALUES (6340, 'new', '14626', '14584', '文章', '', 0, 177, '1320412559941');
+INSERT INTO `bookmark` VALUES (6337, 'new', '14978', '14625', '軟體王-資訊網站 Teleport Pro 1.64', 'http://www.softking.com.tw/soft/clickcount.asp?fid3=7483', 0, 175, '1320412559941');
+INSERT INTO `bookmark` VALUES (6338, 'new', '14977', '14625', 'ZDNet Taiwan - iPhone另類功能：鍵盤側錄攻擊 - 新聞 - 數位產品', 'http://www.zdnet.com.tw/news/ce/0,2000085674,20151767,00.htm', 0, 174, '1320412559941');
+INSERT INTO `bookmark` VALUES (6339, 'new', '14979', '14625', 'ScrapBook 使用說明 - MoztwWiki', 'http://wiki.moztw.org/ScrapBook_%E4%BD%BF%E7%94%A8%E8%AA%AA%E6%98%8E', 0, 176, '1320412559941');
+INSERT INTO `bookmark` VALUES (6336, 'new', '14976', '14625', 'Splunk | 什麼是 Splunk？', 'http://zh-hant.splunk.com/product', 0, 173, '1320412559941');
+INSERT INTO `bookmark` VALUES (6335, 'new', '14974', '14625', 'Netcut 網路剪刀手：切斷佔用區網頻寬的奧客 + 防被剪（含辨識手機、平板電腦 IP 方法） | 硬是要學', 'http://www.soft4fun.net/network/netcut-%e7%b6%b2%e8%b7%af%e5%89%aa%e5%88%80%e6%89%8b.htm', 0, 171, '1320412559941');
+INSERT INTO `bookmark` VALUES (6330, 'new', '14970', '14625', 'lss實驗室beta: [自由軟體] Notepad++ 的 Hex Editor 外掛', 'http://lsslab.blogspot.com/2008/06/notepad-hex-editor.html', 0, 167, '1320412559941');
+INSERT INTO `bookmark` VALUES (6331, 'new', '14971', '14625', '六款不能不知道的免費網路安全工具', 'http://www.test104.com/tw/tech/4139.html', 0, 168, '1320412559941');
+INSERT INTO `bookmark` VALUES (6332, 'new', '14972', '14625', 'KeePass Password Safe', 'http://keepass.info/', 0, 169, '1320412559941');
+INSERT INTO `bookmark` VALUES (6333, 'new', '14973', '14625', '大步向前走: [Linux] PGP 流程及說明', 'http://antontw.blogspot.com/2008/02/linux-pgp.html', 0, 170, '1320412559941');
+INSERT INTO `bookmark` VALUES (6334, 'new', '14975', '14625', 'WifiKill 踼走其他用家，讓你獨佔 Wifi 網絡(有片示範) | Android-APK', 'http://www.android-apk.com/2011/10/wifikill-%E8%B8%BC%E8%B5%B0%E5%85%B6%E4%BB%96%E7%94%A8%E5%AE%B6%EF%BC%8C%E8%AE%93%E4%BD%A0%E7%8D%A8%E4%BD%94-wifi-%E7%B6%B2%E7%B5%A1/?utm_source=feedburner&utm_medium=feed&utm_campaign=Feed%3A+Android-apk+%28Android-APK%29', 0, 172, '1320412559941');
+INSERT INTO `bookmark` VALUES (6329, 'new', '14969', '14625', 'Free Tools | McAfee Downloads', 'http://www.mcafee.com/us/downloads/free-tools/index.aspx', 0, 166, '1320412559941');
+INSERT INTO `bookmark` VALUES (6328, 'new', '14968', '14625', 'Sniffjoke 反封包側錄', 'http://www.delirandom.net/sniffjoke/sniffjoke-howto-usage/', 0, 165, '1320412559941');
+INSERT INTO `bookmark` VALUES (6327, 'new', '14967', '14625', 'TCP Flags that can be used with Nmap --scanflags short Tutorial', 'http://www.backtrack-linux.org/forums/old-tutorials-guides/12439-tcp-flags-can-used-nmap-scanflags-short-tutorial.html?langid=9', 0, 164, '1320412559941');
+INSERT INTO `bookmark` VALUES (6326, 'new', '14966', '14625', 'SecurityKISS Tunnel 突破防火牆上網（GFW翻牆、匿蹤軟體，支援 Windows, Mac, Linux）', 'http://briian.com/?p=7781', 0, 163, '1320412559941');
+INSERT INTO `bookmark` VALUES (6325, 'new', '15636', '14965', '强荐远程控制软件PCshare--免费版，穿墙', 'http://down.jujumao.cn/downinfo/8963.html', 0, 162, '1320412559941');
+INSERT INTO `bookmark` VALUES (6324, 'new', '15635', '14965', 'Pcshare - Google 搜尋', 'http://www.google.com.tw/search?sourceid=chrome&ie=UTF-8&q=Pcshare', 0, 161, '1320412559941');
+INSERT INTO `bookmark` VALUES (6322, 'new', '14965', '14625', 'Pcshare', '', 0, 159, '1320412559941');
+INSERT INTO `bookmark` VALUES (6323, 'new', '15634', '14965', 'pcshare 黑色信鸽免杀版下载_pcshare 黑色信鸽免杀版下载专区-网络类-远程管理/登录-eNet下载频道_免费下载站', 'http://download.enet.com.cn/html/010062006010301.html', 0, 160, '1320412559941');
+INSERT INTO `bookmark` VALUES (6319, 'new', '15631', '14964', 'Remove HScan 1.0', 'http://www.spywaredb.com/remove-hscan-1-0/', 0, 156, '1320412559941');
+INSERT INTO `bookmark` VALUES (6320, 'new', '15632', '14964', '2.4.3 使用HScan获取信息案例(图)_丫丫网络_百度空间', 'http://hi.baidu.com/52hack/blog/item/1550dc2a893cb09c033bf6e9.html', 0, 157, '1320412559941');
+INSERT INTO `bookmark` VALUES (6321, 'new', '15633', '14964', 'HScan v1.20汉化版-博乐安全网-打造权威性的安全网站--漏洞分析--漏洞利用--安全防护-博乐网->安全工具', 'http://www.126nc.com/index.asp?module=tools&act=view&type=1&id=164', 0, 158, '1320412559941');
+INSERT INTO `bookmark` VALUES (6318, 'new', '15630', '14964', 'HScan v1.20 (含gui版) 下载 - 117下载乐园', 'http://www.down117.com/Soft_info/Soft_info_4855.html', 0, 155, '1320412559941');
+INSERT INTO `bookmark` VALUES (6316, 'new', '14964', '14625', 'Hscan', '', 0, 153, '1320412559941');
+INSERT INTO `bookmark` VALUES (6317, 'new', '15629', '14964', 'Hscan 1.2 - Forums', 'http://www.governmentsecurity.org/forum/index.php?showtopic=4446', 0, 154, '1320412559941');
+INSERT INTO `bookmark` VALUES (6315, 'new', '15628', '14963', '远程桌面密码破解_Remote Desktop PassView v1.01绿色版下载 - 飘荡软件', 'http://www.piaodown.com/soft/50623.htm', 0, 152, '1320412559941');
+INSERT INTO `bookmark` VALUES (6314, 'new', '15627', '14963', '『教學』  黑客之門 怎樣遠程通過3389端口破解登陸密碼 - PHP+MySQL - 程式設計 - 頂客論壇 - 台灣forum,Taiwan論壇bbs', 'http://www.dk101.com/Discuz/viewthread.php?tid=43765', 0, 151, '1320412559941');
+INSERT INTO `bookmark` VALUES (6313, 'new', '15626', '14963', 'RDP Brute - Google 搜尋', 'http://www.google.com.tw/search?hl=zh-TW&biw=1280&bih=662&q=RDP+Brute&oq=RDP+Brute&aq=f&aqi=g-m1&aql=&gs_sm=e&gs_upl=49640l49640l0l1l1l0l0l0l0l50l50l1', 0, 150, '1320412559941');
+INSERT INTO `bookmark` VALUES (6312, 'new', '15625', '14963', 'Securing Remote Desktop, Online Brute Forcing and Terminal... - Hak5', 'http://revision3.com/hak5/HackingRDP', 0, 149, '1320412559941');
+INSERT INTO `bookmark` VALUES (6311, 'new', '15624', '14963', 'Brute Force Hacking In Terminal Server Environments', 'http://www.virtualizationadmin.com/articles-tutorials/terminal-services/security/brute-force-hacking-terminal-server-environments.html', 0, 148, '1320412559941');
+INSERT INTO `bookmark` VALUES (6309, 'new', '19967', '19516', 'YouTube - rdprobe - Hacking windows server 2003 with rdprobe-0.9.6', 'http://www.youtube.com/watch?v=Vj8o4qqxN3U', 0, 147, '1320470497505');
+INSERT INTO `bookmark` VALUES (6310, 'new', '15623', '14963', 'Rdp Brute - Download', 'http://www.filecrop.com/rdp-brute.html', 0, 147, '1320412559941');
+INSERT INTO `bookmark` VALUES (6308, 'new', '19966', '19516', 'rdprobe - A Remote Desktop security auditing / brute force application for linux; Linux Security Forum', 'http://board.linuxsouthamerica.com/Linux_Security/rdprobe_A_Remote_Desktop_security_auditing_brute_force_application_for_linux', 0, 146, '1320470497505');
+INSERT INTO `bookmark` VALUES (6307, 'new', '19965', '19516', 'Terminal Server RDP Cracking by ChrisG', 'http://www.tubemirror.com/video/YLRRvDLG33U', 0, 145, '1320470497505');
+INSERT INTO `bookmark` VALUES (6306, 'new', '19964', '19516', 'YouTube - WIN2003 Hack Brute forcing RDP in GnackTrack with Rdesktop', 'http://www.youtube.com/watch?v=C42YkYPubjk', 0, 144, '1320470497505');
+INSERT INTO `bookmark` VALUES (6305, 'new', '19963', '19516', 'tscrack 2.0 - dictionary based password cracker for Microsoft Windows Terminal Services', 'http://classic-web.archive.org/web/20030405132642/bogonel.mirror.spacebitch.com/', 0, 143, '1320470497505');
+INSERT INTO `bookmark` VALUES (6304, 'new', '19962', '19516', 'Brute forcing RDP in Linux with Rdesktop | SOLDIERX.COM', 'http://www.soldierx.com/tutorials/Brute-forcing-RDP-Linux-Rdesktop', 0, 142, '1320470497505');
+INSERT INTO `bookmark` VALUES (6303, 'new', '19961', '19516', 'How to Hack Terminal Server using Tsgrinder, Tscrack & Rdesktop', 'http://www.dabcc.com/article.aspx?id=6696', 0, 141, '1320470497505');
+INSERT INTO `bookmark` VALUES (6302, 'new', '19960', '19516', '用軟件暴力破解終端服務的技巧－黑客軟件 - 王朝網絡 - wangchao.net.cn', 'http://tc.wangchao.net.cn/bbs/detail_2016386.html', 0, 140, '1320470497505');
+INSERT INTO `bookmark` VALUES (6301, 'new', '19958', '19516', '3389暴力破解 - 在线观看 - 56网视频 视频上传 视频搜索 视频观看 视频分享', 'http://www.56.com/u56/v_NDcxNTQ4NDU.html', 0, 138, '1320470497505');
+INSERT INTO `bookmark` VALUES (6300, 'new', '19959', '19516', '3389暴力破解工具－－－－Fast RDP Brute 1.1.2 - 老牌IT安全技术门户网，成就IT技术精英 - 黑吧启航 - 黑吧安全网', 'http://www.myhack58.com/Soft/html/15/41/2010/2010112620631.htm', 0, 139, '1320470497505');
+INSERT INTO `bookmark` VALUES (6299, 'new', '19957', '19516', 'YouTube - RDP Brute (work with RDPClient 5.1)', 'http://www.youtube.com/watch?v=SGUa5ueRycg', 0, 137, '1320470497505');
+INSERT INTO `bookmark` VALUES (6297, 'new', '19955', '19516', 'RD', 'http://www.foofus.net/~jmk/medusa/medusa.html', 0, 135, '1320470497505');
+INSERT INTO `bookmark` VALUES (6298, 'new', '19956', '19516', 'YouTube - RDP Brute-Hack', 'http://www.youtube.com/watch?v=h2HL--af07c', 0, 136, '1320470497505');
+INSERT INTO `bookmark` VALUES (6296, 'new', '19953', '19516', 'Tsgrinder - YouTube', 'http://www.youtube.com/watch?v=_AiaQTbWuro', 0, 133, '1320470497505');
+INSERT INTO `bookmark` VALUES (6295, 'new', '19954', '19516', 'TSgrinder: How to download and use TSgrinder. - YouTube', 'http://www.youtube.com/watch?v=uXuuy2ZBQRg', 0, 134, '1320470497505');
+INSERT INTO `bookmark` VALUES (6294, 'new', '19952', '19516', '如何利用遠程桌面控制他人電腦 - eric840 - eric840 - 和訊博客', 'http://eric840.blog.hexun.com.tw/23790589_d.html', 0, 132, '1320470497505');
+INSERT INTO `bookmark` VALUES (6293, 'new', '19951', '19516', '终端服务密码破解: tscrack.exe_加菲猫AND欧迪_百度空间', 'http://hi.baidu.com/kejin3221013/blog/item/4170c64ab416bd2708f7ef6e.html', 0, 131, '1320470497505');
+INSERT INTO `bookmark` VALUES (6292, 'new', '19950', '19516', 'tscrack .exe用法_林老乐_新浪博客', 'http://blog.sina.com.cn/s/blog_40cb0b1b010007rq.html', 0, 130, '1320470497505');
+INSERT INTO `bookmark` VALUES (6290, 'new', '19516', '19235', '3389暴利破解', '', 0, 128, '1320470497505');
+INSERT INTO `bookmark` VALUES (6291, 'new', '19949', '19516', 'tscrack.exe - Google 搜尋', 'http://www.google.com.tw/search?sourceid=chrome&ie=UTF-8&q=tscrack.exe', 0, 129, '1320470497505');
+INSERT INTO `bookmark` VALUES (6289, 'new', '19515', '19235', 'YouTube - Cain & Abel - Part 1: Cracker', 'http://www.youtube.com/watch?v=Ttm6hCOQYW4&feature=player_embedded#at=222', 0, 127, '1320470497505');
+INSERT INTO `bookmark` VALUES (6288, 'new', '19513', '19235', '電腦魔法大師之電腦手記 (2010 alpha): X-Scan 掃瞄報告解讀', 'http://magiccs.blogspot.com/2008/08/x-scan_17.html', 0, 125, '1320470497505');
+INSERT INTO `bookmark` VALUES (6286, 'new', '19511', '19235', '木馬OPTIX Pro教學', 'http://www.wretch.cc/blog/jack0725k/844867', 0, 123, '1320470497505');
+INSERT INTO `bookmark` VALUES (6287, 'new', '19514', '19235', '[間諜防禦者] SpyShelter Personal Free 5.42 - 抓出鍵盤及螢幕側錄程式 - 阿榮福利味', 'http://azo-freeware.blogspot.com/2011/08/spyshelter-personal-free-542.html?utm_source=feedburner&utm_medium=feed&utm_campaign=Feed:+azo-freeware+%28AZO+Freeware%29&utm_content=Google+Reader', 0, 126, '1320470497505');
+INSERT INTO `bookmark` VALUES (6285, 'new', '19510', '19235', '[FreeBSD]利用 DenyHosts 軟體擋掉暴力破解 ssh 的使用者 | 小惡魔 - 電腦技術 - 工作筆記 - AppleBOY', 'http://blog.wu-boy.com/2008/12/freebsd%E5%88%A9%E7%94%A8-denyhosts-%E8%BB%9F%E9%AB%94%E6%93%8B%E6%8E%89%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3-ssh-%E7%9A%84%E4%BD%BF%E7%94%A8%E8%80%85/', 0, 122, '1320470497505');
+INSERT INTO `bookmark` VALUES (6283, 'new', '19507', '19235', '隨意門剖析 - Google 搜尋', 'http://www.google.com.tw/search?sourceid=chrome&ie=UTF-8&q=%E9%9A%A8%E6%84%8F%E9%96%80%E5%89%96%E6%9E%90', 0, 119, '1320470497505');
+INSERT INTO `bookmark` VALUES (6284, 'new', '19509', '19235', 'Cain & Abel 4.9.36 破解密碼工具 4.9.36', 'http://big5.chinanews.com:89/gate/big5/itdownload.chinanews.cn/soft/utilitie/security/232/471232.shtml#xza', 0, 121, '1320470497505');
+INSERT INTO `bookmark` VALUES (6282, 'new', '19508', '19235', '成为顶级黑客(2009年)必备软件 (转自落伍) - 计算机安全相关 - 子非鱼职称培训论坛 子非鱼|职称计算机培训 - Powered by Discuz!', 'http://www.zcpxw.com/viewthread.php?tid=463', 0, 120, '1320470497505');
+INSERT INTO `bookmark` VALUES (6281, 'new', '19512', '19235', '各種駭客工具下載', 'http://www.freewebs.com/faqdiy/Download/hacker1.htm', 0, 124, '1320470497505');
+INSERT INTO `bookmark` VALUES (6280, 'new', '19506', '19235', '[偵殼工具]PEiD v0.95 繁中免安裝 @ 索的繁中化 :: 痞客邦 PIXNET ::', 'http://sorl.pixnet.net/blog/post/26908442-%5B%E5%81%B5%E6%AE%BC%E5%B7%A5%E5%85%B7%5Dpeid-v0.95-%E7%B9%81%E4%B8%AD%E5%85%8D%E5%AE%89%E8%A3%9D', 0, 118, '1320470497505');
+INSERT INTO `bookmark` VALUES (6279, 'new', '19505', '19235', '黑客工具之*掃描工具* - 白蘭地 讓人追的上靈魂 - snake0618 - 和訊博客', 'http://snake0618.blog.hexun.com.tw/15414965_d.html', 0, 117, '1320470497505');
+INSERT INTO `bookmark` VALUES (6278, 'new', '19504', '19235', '安全工具介紹：SuperScan使用詳解 - 史萊姆論壇', 'http://forum.slime.com.tw/thread70747.html', 0, 116, '1320470497505');
+INSERT INTO `bookmark` VALUES (6277, 'new', '19503', '19235', '【黑武器】Linux——BT4黑客手册（详细目录）+活动预告 - 新书发布{Magazine Related} - 非安全', 'http://bbs.nohack.me/thread-134200-1.html', 0, 115, '1320470497505');
+INSERT INTO `bookmark` VALUES (6275, 'new', '19501', '19235', 'Top 100 Network Security Tools', 'http://sectools.org/', 0, 113, '1320470497505');
+INSERT INTO `bookmark` VALUES (6276, 'new', '19502', '19235', 'Foofus Networking Services - RDP/Rdesktop Password Grinding', 'http://www.foofus.net/~jmk/rdesktop.html', 0, 114, '1320470497505');
+INSERT INTO `bookmark` VALUES (6273, 'new', '19946', '19500', 'GotoAndPlay(): 自己製作小遊戲(Flash工具介紹)', 'http://thought01.blogspot.com/2007/04/flash.html', 0, 110, '1320470497505');
+INSERT INTO `bookmark` VALUES (6274, 'new', '19948', '19500', 'Eltima Flash Decompiler 看透Flash動畫的製作元件 - PChome 下載', 'http://toget.pchome.com.tw/category/drawing/3133.html', 0, 112, '1320470497505');
+INSERT INTO `bookmark` VALUES (6271, 'new', '19945', '19500', 'Liatro SWF Tools - Google 搜尋', 'http://www.google.com.tw/search?hl=zh-TW&q=Liatro+SWF+Tools&oq=Liatro+SWF+Tools&aq=f&aqi=&aql=&gs_sm=e&gs_upl=3973l3973l0l4288l1l1l0l0l0l0l303l303l3-1l1l0', 0, 109, '1320470497505');
+INSERT INTO `bookmark` VALUES (6272, 'new', '19947', '19500', 'SWF Decompiler, Flash Decompiler, SWF to Flex, SWF To FLA Converter, Flash to HTML5, Flash Extract, Recover FLA', 'http://www.sothink.com/product/flashdecompiler/index.htm', 0, 111, '1320470497505');
+INSERT INTO `bookmark` VALUES (6269, 'new', '19500', '19235', 'Flash(swf)_Decoder', '', 0, 107, '1320470497505');
+INSERT INTO `bookmark` VALUES (6270, 'new', '19944', '19500', 'morgantseng: Potable Sothink SWF Decompiler 6.1.617 TW', 'http://morgantseng.blogspot.com/2011/04/potable-sothink-swf-decompiler-61617-tw.html', 0, 108, '1320470497505');
+INSERT INTO `bookmark` VALUES (6267, 'new', '19499', '19235', 'online decode', '', 0, 105, '1320470497505');
+INSERT INTO `bookmark` VALUES (6268, 'new', '19943', '19499', 'md5.rednoize.com - reverse engineer md5 hashes - powered by rednoize.com', 'http://md5.rednoize.com/', 0, 106, '1320470497505');
+INSERT INTO `bookmark` VALUES (6266, 'new', '19498', '19235', 'Ettetcap', '', 0, 104, '1320470497505');
+INSERT INTO `bookmark` VALUES (6265, 'new', '19942', '19497', '開放源碼的網路弱點掃描工具──Nikto - OpenFoundry', 'http://www.openfoundry.org/en/foss-projects/8450-open-source-web-security-scaning-tool-nikto', 0, 103, '1320470497505');
+INSERT INTO `bookmark` VALUES (6263, 'new', '19497', '19235', 'Nikto', '', 0, 101, '1320470497505');
+INSERT INTO `bookmark` VALUES (6264, 'new', '19941', '19497', 'CIRT.net | Suspicion Breeds Confidence', 'http://www.cirt.net/', 0, 102, '1320470497505');
+INSERT INTO `bookmark` VALUES (6261, 'new', '19496', '19235', 'Dsniff', '', 0, 100, '1320470497505');
+INSERT INTO `bookmark` VALUES (6262, 'new', '19495', '19235', 'Netcat', '', 0, 99, '1320470497505');
+INSERT INTO `bookmark` VALUES (6259, 'new', '19494', '19235', 'Nessus', '', 0, 97, '1320470497505');
+INSERT INTO `bookmark` VALUES (6260, 'new', '19940', '19494', 'Tenable Nessus | Tenable Network Security', 'http://www.tenable.com/products/nessus', 0, 98, '1320470497505');
+INSERT INTO `bookmark` VALUES (6258, 'new', '19939', '19493', 'Metasploit Framework Penetration Testing Software | Metasploit Project', 'http://metasploit.com/', 0, 96, '1320470497505');
+INSERT INTO `bookmark` VALUES (6256, 'new', '19493', '19235', 'Metasploit', '', 0, 94, '1320470497505');
+INSERT INTO `bookmark` VALUES (6257, 'new', '19938', '19493', '就是資安: Metasploit 初體驗', 'http://cyrilwang.blogspot.com/2008/12/metasploit.html', 0, 95, '1320470497505');
+INSERT INTO `bookmark` VALUES (6255, 'new', '19937', '19492', 'Linux_Downloads - VirtualBox', 'http://www.virtualbox.org/wiki/Linux_Downloads', 0, 93, '1320470497505');
+INSERT INTO `bookmark` VALUES (6254, 'new', '19935', '19492', '愛上琳娜絲: VirtualBox和VirtualBox OSE有別', 'http://linux-cisco.blogspot.com/2008/06/virtualboxvirtualbox-ose.html', 0, 91, '1320470497505');
+INSERT INTO `bookmark` VALUES (6253, 'new', '19936', '19492', 'BackTrack 4 - Login', 'http://forum.aircrack-ng.org/index.php?topic=5551.0', 0, 92, '1320470497505');
+INSERT INTO `bookmark` VALUES (6252, 'new', '19934', '19492', '手把手玩Ubuntu: 安裝新版VirtualBox解決無法增加USB設備問題 in ubuntu [all release]《錯誤更正》', 'http://playubuntu.blogspot.com/2010/06/virtualboxusb-in-ubuntu-hardy-jaunty.html', 0, 90, '1320470497505');
+INSERT INTO `bookmark` VALUES (6251, 'new', '19933', '19492', '【軟體】Ubuntu : VirtualBox - 使用 USB Device @ My Life :: 隨意窩 Xuite日誌', 'http://blog.xuite.net/chingwei/blog/26669232', 0, 89, '1320470497505');
+INSERT INTO `bookmark` VALUES (6250, 'new', '19931', '19492', 'ARGtek', 'http://goods.ruten.com.tw/item/show?21003311889499', 0, 87, '1320470497505');
+INSERT INTO `bookmark` VALUES (6249, 'new', '19930', '19492', '請問一下,有那些網卡有支援rfmon (raw monitor mode)呢? - Mobile01', 'http://www.mobile01.com/topicdetail.php?f=504&t=1911142&last=24526215', 0, 86, '1320470497505');
+INSERT INTO `bookmark` VALUES (6248, 'new', '19929', '19492', '17BT3 BT4 BT5 最新破解教學 - 中古輪胎 二手輪胎 台中卓越二手輪業-專營 德國馬牌 倍耐力 米其林 - Yahoo!奇摩部落格', 'http://tw.myblog.yahoo.com/kevin_tire168/photo?pid=254', 0, 85, '1320470497505');
+INSERT INTO `bookmark` VALUES (6247, 'new', '19928', '19492', 'VirtalBox 細部設定 - OSSLab::開放軟體實驗室(Open Source Software Lab)', 'http://wiki.osslab.org.tw/index.php?title=%E5%AF%A6%E9%A9%97%E5%B0%88%E6%A1%88/Crack_WEP/BackTrack', 0, 84, '1320470497505');
+INSERT INTO `bookmark` VALUES (6246, 'new', '19927', '19492', 'Install BackTrack 5 into Android phone @ 當厲害的人出現的時候 :: 痞客邦 PIXNET ::', 'http://fecbob.pixnet.net/blog/post/35833837', 0, 83, '1320470497505');
+INSERT INTO `bookmark` VALUES (6244, 'new', '19492', '19235', 'BackTrack', '', 0, 82, '1320470497505');
+INSERT INTO `bookmark` VALUES (6245, 'new', '19932', '19492', '華仔人生 : 將 Backtrack4 安裝到 usb 隨身碟超簡單 : namo Nblog', 'http://blog.ykjhs.tpc.edu.tw/jasmine/664', 0, 88, '1320470497505');
+INSERT INTO `bookmark` VALUES (6242, 'new', '21282', '21025', 'www.thc.org/thc-ssl-dos/', 'http://www.thc.org/thc-ssl-dos/', 0, 80, '1320470860430');
+INSERT INTO `bookmark` VALUES (6243, 'new', '21026', '20985', '工具教學', '', 0, 81, '1320470860430');
+INSERT INTO `bookmark` VALUES (6241, 'new', '21281', '21025', 'zergRush.c at master from revolutionary/zergRush - GitHub', 'https://github.com/revolutionary/zergRush/blob/master/zergRush.c', 0, 79, '1320470860430');
+INSERT INTO `bookmark` VALUES (6240, 'new', '21280', '21025', 'The Hacker’s Choice releases SSL DOS Tool ~ THN : The Hacker News', 'http://thehackernews.com/2011/10/hackers-choice-releases-ssl-ddos-tool.html?utm_source=feedburner&utm_medium=feed&utm_campaign=Feed%3A+TheHackersNews+(The+Hackers+News+-+Daily+Cyber+News+Updates)&utm_content=Google+Reader', 0, 78, '1320470860430');
+INSERT INTO `bookmark` VALUES (6238, 'new', '21278', '21025', '如何簡單攻破任何iPad 2的螢幕鎖密碼！ | iapp', 'http://iapp.com.tw/news.php?id=797?media=plurk', 0, 76, '1320470860430');
+INSERT INTO `bookmark` VALUES (6239, 'new', '21279', '21025', 'MS11-077 Win32k Null Pointer De-reference Vulnerability POC', 'http://www.exploit-db.com/exploits/18024/', 0, 77, '1320470860430');
+INSERT INTO `bookmark` VALUES (6237, 'new', '21276', '21025', 'Scariest IPv6 Attack Scenarios | PCWorld', 'http://www.pcworld.com/article/238848/scariest_ipv6_attack_scenarios.html#tk.hp_new', 0, 74, '1320470860430');
+INSERT INTO `bookmark` VALUES (6236, 'new', '21277', '21025', 'Threat Description: Trojan-Downloader:OSX/Flashback.C', 'http://www.f-secure.com/v-descs/trojan-downloader_osx_flashback_c.shtml', 0, 75, '1320470860430');
+INSERT INTO `bookmark` VALUES (6235, 'new', '21275', '21025', '编程真难啊 | 酷壳 - CoolShell.cn', 'http://coolshell.cn/articles/1391.html', 0, 73, '1320470860430');
+INSERT INTO `bookmark` VALUES (6234, 'new', '21274', '21025', 'Windows平台下的安全事件處理 - 網路攻防戰', 'http://anti-hacker.blogspot.com/2011/03/windows.html', 0, 72, '1320470860430');
+INSERT INTO `bookmark` VALUES (6233, 'new', '21273', '21025', '國際C語言混亂代碼大賽 - 维基百科，自由的百科全书', 'http://zh.wikipedia.org/wiki/%E5%9B%BD%E9%99%85C%E8%AF%AD%E8%A8%80%E6%B7%B7%E4%B9%B1%E4%BB%A3%E7%A0%81%E5%A4%A7%E8%B5%9B', 0, 71, '1320470860430');
+INSERT INTO `bookmark` VALUES (6232, 'new', '21272', '21025', 'telnet掛馬的方式 - Google 搜尋', 'http://www.google.com.tw/#hl=zh-TW&q=+telnet%E6%8E%9B%E9%A6%AC%E7%9A%84%E6%96%B9%E5%BC%8F&oq=+telnet%E6%8E%9B%E9%A6%AC%E7%9A%84%E6%96%B9%E5%BC%8F&aq=f&aqi=&aql=1&gs_sm=e&gs_upl=853194l857689l0l858037l7l6l0l0l0l1l352l1490l2-3.2l5l0&bav=on.2,or.r_gc.r_pw.,cf.osb&fp=b02cb68b0029552d&biw=1280&bih=626', 0, 70, '1320470860430');
+INSERT INTO `bookmark` VALUES (6231, 'new', '21269', '21025', '如何加密/混乱C源代码 | 酷壳 - CoolShell.cn', 'http://coolshell.cn/articles/933.html', 0, 67, '1320470860430');
+INSERT INTO `bookmark` VALUES (6230, 'new', '21271', '21025', '常见挂马方法有哪些-已解决 瑞星知道', 'http://zhidao.ikaka.com/Aspx/Html/StaticHtml/296/296622.html', 0, 69, '1320470860430');
+INSERT INTO `bookmark` VALUES (6229, 'new', '21270', '21025', 'SQL Injection Pocket Reference - Google Docs', 'https://docs.google.com/Doc?docid=0AZNlBave77hiZGNjanptbV84Z25yaHJmMjk&pli=1#Allowed_Intermediary_Character_30801873723976314', 0, 68, '1320470860430');
+INSERT INTO `bookmark` VALUES (6227, 'new', '21267', '21025', 'ssh tunnel - Google 搜尋', 'http://www.google.com.tw/search?gcx=w&ix=c2&sourceid=chrome&ie=UTF-8&q=ssh+tunnel', 0, 65, '1320470860430');
+INSERT INTO `bookmark` VALUES (6228, 'new', '21268', '21025', 'nginx文件类型错误解析漏洞 - 80sec', 'http://www.80sec.com/nginx-securit.html', 0, 66, '1320470860430');
+INSERT INTO `bookmark` VALUES (6225, 'new', '21266', '21025', 'Plurk paste: Paste #615437', 'http://paste.plurk.com/show/615437/', 0, 64, '1320470860430');
+INSERT INTO `bookmark` VALUES (6226, 'new', '21265', '21025', '一段Javascript的代码 | 酷壳 - CoolShell.cn', 'http://coolshell.cn/articles/3540.html', 0, 63, '1320470860430');
+INSERT INTO `bookmark` VALUES (6224, 'new', '21264', '21025', '阿碼外傳－阿碼科技非官方中文 Blog: mysql.com遭駭客入侵，導致瀏覽者感染惡意軟體', 'http://armorize-cht.blogspot.com/2011/09/mysqlcom.html', 0, 62, '1320470860430');
+INSERT INTO `bookmark` VALUES (6222, 'new', '21262', '21025', 'fshDisplayConnect', 'http://map.twnic.net.tw/bwimages/dirFDCy2011s3m7/pageDisplayConnect.htm', 0, 60, '1320470860430');
+INSERT INTO `bookmark` VALUES (6223, 'new', '21263', '21025', 'Explanation on new Facebook Worm - YouTube', 'http://www.youtube.com/watch?v=QcSAU16wjHQ&feature=player_embedded#!', 0, 61, '1320470860430');
+INSERT INTO `bookmark` VALUES (6221, 'new', '21261', '21025', '游擊式的SQL Injection攻擊 - 黑暗執行緒', 'http://blog.darkthread.net/post-2008-05-22-hit-and-run-sql-injection-attack.aspx', 0, 59, '1320470860430');
+INSERT INTO `bookmark` VALUES (6219, 'new', '21259', '21025', 'NOT ~ 娜特: shell命令 DOS入侵 - yam天空部落', 'http://blog.yam.com/notx/article/3860298', 0, 57, '1320470860430');
+INSERT INTO `bookmark` VALUES (6220, 'new', '21260', '21025', '(Demo)利用SQL Injection將惡意連結寫入資料庫 - 網路攻防戰', 'http://anti-hacker.blogspot.com/2007/04/demosql-injection.html', 0, 58, '1320470860430');
+INSERT INTO `bookmark` VALUES (6218, 'new', '21258', '21025', 'Hacking 的相片 - 「牆上相片」', 'http://www.facebook.com/photo.php?fbid=431898591004&set=a.431898586004.228512.55863406004&type=1', 0, 56, '1320470860430');
+INSERT INTO `bookmark` VALUES (6217, 'new', '21257', '21025', 'php backdoors with backtrack 5 - YouTube', 'http://www.youtube.com/watch?v=vcGw1XX-I94', 0, 55, '1320470860430');
+INSERT INTO `bookmark` VALUES (6216, 'new', '21256', '21025', '以駭客角度看端口入侵', 'http://www.wretch.cc/blog/whitehats/9455872', 0, 54, '1320470860430');
+INSERT INTO `bookmark` VALUES (6215, 'new', '21255', '21025', '教你破解Mysql root密码的方法_攻防知识_中国网管联盟bitsCN.com', 'http://www.bitscn.com/network/hack/200808/148992.html', 0, 53, '1320470860430');
+INSERT INTO `bookmark` VALUES (6214, 'new', '21254', '21025', '駭客教學網站 全站搜索', 'http://www.welcometag.com/search/%E9%A7%AD%E5%AE%A2%E6%95%99%E5%AD%B8%E7%B6%B2%E7%AB%99', 0, 52, '1320470860430');
+INSERT INTO `bookmark` VALUES (6213, 'new', '21252', '21025', '<Hacker教學>yuxin的黑客入門-----(交流篇2） @ My Life Going By My Style :: 痞客邦 PIXNET ::', 'http://javaneo.pixnet.net/blog/post/20493385-%3Chacker%E6%95%99%E5%AD%B8%3Eyuxin%E7%9A%84%E9%BB%91%E5%AE%A2%E5%85%A5%E9%96%80-----(%E4%BA%A4%E6%B5%81%E7%AF%872%EF%BC%89', 0, 50, '1320470860430');
+INSERT INTO `bookmark` VALUES (6212, 'new', '21253', '21025', '駭客教學', 'http://ad.pthc.chc.edu.tw/kevin/hacker/teach.htm', 0, 51, '1320470860430');
+INSERT INTO `bookmark` VALUES (6211, 'new', '21251', '21025', '<Hacker教學>netman教学(四) @ My Life Going By My Style :: 痞客邦 PIXNET ::', 'http://javaneo.pixnet.net/blog/post/20493390-%3Chacker%E6%95%99%E5%AD%B8%3Enetman%E6%95%99%E5%AD%A6(%E5%9B%9B)', 0, 49, '1320470860430');
+INSERT INTO `bookmark` VALUES (6210, 'new', '21249', '21025', 'Zet', 'http://zet.hack-stuff.com/', 0, 47, '1320470860430');
+INSERT INTO `bookmark` VALUES (6209, 'new', '21250', '21025', '<Hacker教學>netman教学(五) @ My Life Going By My Style :: 痞客邦 PIXNET ::', 'http://javaneo.pixnet.net/blog/post/20493391-%3Chacker%E6%95%99%E5%AD%B8%3Enetman%E6%95%99%E5%AD%A6(%E4%BA%94)', 0, 48, '1320470860430');
+INSERT INTO `bookmark` VALUES (6208, 'new', '21248', '21025', 'Hacks in your life.', 'http://len.hack-stuff.com/', 0, 46, '1320470860430');
+INSERT INTO `bookmark` VALUES (6207, 'new', '21247', '21025', 'OSSF_2011_7_Workshop_Nagios 網路監控_Lab3 - Google Docs', 'https://docs.google.com/document/d/18pieD1kSuDrv25Cr0OJGyycBGSQxIcD_bYTXx3k9Klk/edit?hl=zh_TW&pli=1', 0, 45, '1320470860430');
+INSERT INTO `bookmark` VALUES (6206, 'new', '21246', '21025', 'OSSF_2011_7_Workshop_Nagios 網路監控_Lab2 - Google Docs', 'https://docs.google.com/document/d/1_g3NbOpyk13QQGAzczAA8EVWq47zjVRE6bXd6ZZeyuo/edit?hl=zh_TW&pli=1', 0, 44, '1320470860430');
+INSERT INTO `bookmark` VALUES (6205, 'new', '21245', '21025', 'OSSF_2011_7_Workshop_Nagios 網路監控_Lab1 - Google Docs', 'https://docs.google.com/document/d/1NHvQ8BF4kT0vMQH-1CZJWoKmpdTAh8YT7n-YoBww3Sc/edit?hl=zh_TW&pli=1', 0, 43, '1320470860430');
+INSERT INTO `bookmark` VALUES (6204, 'new', '21244', '21025', 'OSSF_2011_7_Workshop_Nagios 網路監控', 'https://docs.google.com/present/view?id=0AZzDCWf7ew39ZGN6cDZyamNfNDQxNHh6d2JmZ3E&hl=zh_TW', 0, 42, '1320470860430');
+INSERT INTO `bookmark` VALUES (6203, 'new', '21243', '21025', '3389客客网站后台破解教程 在线观看 - 酷6视频', 'http://v.ku6.com/show/HKKjYyuxnRoGJj5Y.html', 0, 41, '1320470860430');
+INSERT INTO `bookmark` VALUES (6202, 'new', '21025', '20985', '技術教學', '', 0, 40, '1320470860430');
+INSERT INTO `bookmark` VALUES (6201, 'new', '21024', '20985', 'VKnow 影音知識網 - Ubuntu教學-安裝dos-deflate防範Dos及DDos攻擊', 'http://www.vknow.com.tw/video/5399/Ubuntu%E6%95%99%E5%AD%B8-%E5%AE%89%E8%A3%9Ddos-deflate%E9%98%B2%E7%AF%84Dos%E5%8F%8ADDos%E6%94%BB%E6%93%8A', 0, 39, '1320470860430');
+INSERT INTO `bookmark` VALUES (6200, 'new', '21023', '20985', '修改MS Windows 遠端桌面連接埠 port 3389 - 簡單分享 bel far niente', 'http://jnote.posterous.com/ms-windows-port-3389', 0, 38, '1320470860430');
+INSERT INTO `bookmark` VALUES (6199, 'new', '21022', '20985', 'oxid.it - Home', 'http://www.oxid.it/', 0, 37, '1320470860430');
+INSERT INTO `bookmark` VALUES (6198, 'new', '21021', '20985', 'just ping 從全球 57 台電腦，測試網站是否斷線、網路速度', 'http://briian.com/?p=7748', 0, 36, '1320470860430');
+INSERT INTO `bookmark` VALUES (6197, 'new', '21020', '20985', 'Backtrack DVD教學影片(頁 1) - B T 軟 體 - L A 討論區 - Powered by Discuz! Archiver', 'http://la-forum.org/archiver/tid-1734086.html', 0, 35, '1320470860430');
+INSERT INTO `bookmark` VALUES (6195, 'new', '21018', '20985', 'Traceroute, Ping, Domain Name Server (DNS) Lookup, WHOIS', 'http://network-tools.com/', 0, 33, '1320470860430');
+INSERT INTO `bookmark` VALUES (6196, 'new', '21019', '20985', 'FluxEye v1.02 - 流量之眼 :: 綠色工廠 Easylife Blog', 'http://portable.easylife.tw/1443', 0, 34, '1320470860430');
+INSERT INTO `bookmark` VALUES (6193, 'new', '21017', '20985', 'How to Enter', 'http://www.cyberlympics.org/TheGames/HowtoEnter.aspx', 0, 32, '1320470860430');
+INSERT INTO `bookmark` VALUES (6194, 'new', '21016', '20985', '4G and CDMA reportedly hacked at DEF CON | ExtremeTech', 'http://www.extremetech.com/computing/92370-4g-and-cdma-reportedly-hacked-at-def-con', 0, 31, '1320470860430');
+INSERT INTO `bookmark` VALUES (6192, 'new', '21015', '20985', 'Android 黑客開發板 | Android中文資源站', 'http://android.cool3c.com/%E8%A8%8E%E8%AB%96%E6%9D%BF/%E6%95%B8%E4%BD%8D%E8%88%87%E7%A7%91%E6%8A%80/android%E8%A8%8E%E8%AB%96%E5%B0%88%E5%8D%80/android-%E9%BB%91%E5%AE%A2%E9%96%8B%E7%99%BC%E6%9D%BF?page=4', 0, 30, '1320470860430');
+INSERT INTO `bookmark` VALUES (6191, 'new', '21014', '20985', '‪How to Penetration Testing with Blackbuntu‬‏ - YouTube', 'http://www.youtube.com/watch?v=ALG_Rdg7xZg&feature=player_embedded', 0, 29, '1320470860430');
+INSERT INTO `bookmark` VALUES (6190, 'new', '21013', '20985', '‪[How to] SET on Blackbuntu {Web browser exploit (win7,IE8)}‬‏ - YouTube', 'http://www.youtube.com/watch?v=g1-4VUfDAPA&feature=related', 0, 28, '1320470860430');
+INSERT INTO `bookmark` VALUES (6188, 'new', '21011', '20985', '‪[BT5] Sniffing Passwords With Ettercap & Hacking With Armitage [HD]‬‏ - YouTube', 'http://www.youtube.com/watch?v=LflHatThgro&feature=related', 0, 26, '1320470860430');
+INSERT INTO `bookmark` VALUES (6189, 'new', '21012', '20985', '‪DNS Spoofing + Social Engineering Toolkit (SET). Atacando máquinas en LAN‬‏ - YouTube', 'http://www.youtube.com/watch?v=AM5Rfz0gN-Q&feature=related', 0, 27, '1320470860430');
+INSERT INTO `bookmark` VALUES (6187, 'new', '21010', '20985', '‪How to boot backtrack 5 on Android phone‬‏ - YouTube', 'http://www.youtube.com/watch?v=QnqQpDnoCg4&feature=related', 0, 25, '1320470860430');
+INSERT INTO `bookmark` VALUES (6186, 'new', '21009', '20985', '2010/04/18 自由軟體技術充電站。Session 3：Wargame大亂鬥 – 網路安全與主機漏洞模擬系統 (2)。 | OSSF2010 on blip.tv', 'http://blip.tv/ossf2010/2010-04-18-%E8%87%AA%E7%94%B1%E8%BB%9F%E9%AB%94%E6%8A%80%E8%A1%93%E5%85%85%E9%9B%BB%E7%AB%99-session-3-wargame%E5%A4%A7%E4%BA%82%E9%AC%A5-%E7%B6%B2%E8%B7%AF%E5%AE%89%E5%85%A8%E8%88%87%E4%B8%BB%E6%A9%9F%E6%BC%8F%E6%B4%9E%E6%A8%A1%E6%93%AC%E7%B3%BB%E7%B5%B1-2-3529815', 0, 24, '1320470860430');
+INSERT INTO `bookmark` VALUES (6185, 'new', '21008', '20985', '2010/09/18 自由軟體技術分享工作坊 Session 3: 網頁安全分析-漏洞檢測入門(2) - VCenter:影音分享網站(Video Sharing Website)', 'http://vcenter.iis.sinica.edu.tw/watch.php?val=aWQ9TWw4ME5UVT0=', 0, 23, '1320470860430');
+INSERT INTO `bookmark` VALUES (6184, 'new', '21007', '20985', '2010/09/18 自由軟體技術分享工作坊 Session 2: 網頁安全分析-漏洞檢測入門(1) - VCenter:影音分享網站(Video Sharing Website)', 'http://vcenter.iis.sinica.edu.tw/watch.php?val=aWQ9TWw4ME5UUT0=', 0, 22, '1320470860430');
+INSERT INTO `bookmark` VALUES (6183, 'new', '21006', '20985', '2010/04/18 自由軟體技術充電站。Session 2：Wargame大亂鬥 – 網路安全與主機漏洞模擬系統 (1)。 | OSSF2010 on blip.tv', 'http://blip.tv/ossf2010/2010-04-18-%E8%87%AA%E7%94%B1%E8%BB%9F%E9%AB%94%E6%8A%80%E8%A1%93%E5%85%85%E9%9B%BB%E7%AB%99-session-2-wargame%E5%A4%A7%E4%BA%82%E9%AC%A5-%E7%B6%B2%E8%B7%AF%E5%AE%89%E5%85%A8%E8%88%87%E4%B8%BB%E6%A9%9F%E6%BC%8F%E6%B4%9E%E6%A8%A1%E6%93%AC%E7%B3%BB%E7%B5%B1-1-3529779', 0, 21, '1320470860430');
+INSERT INTO `bookmark` VALUES (6181, 'new', '21004', '20985', 'Hacker Karaoke', 'http://hackerkaraoke.org/', 0, 19, '1320470860430');
+INSERT INTO `bookmark` VALUES (6182, 'new', '21005', '20985', 'DEF CON day 1 – the talks I went to | Security Ninja', 'http://www.securityninja.co.uk/ninja-news-and-updates/def-con-day-1-the-talks-i-went-to/', 0, 20, '1320470860430');
+INSERT INTO `bookmark` VALUES (6180, 'new', '21003', '20985', 'A Trojan spying on your conversations - CA Security Advisor Research Blog - CA Technologies', 'http://community.ca.com/blogs/securityadvisor/archive/2011/08/01/a-trojan-spying-on-your-conversations.aspx', 0, 18, '1320470860430');
+INSERT INTO `bookmark` VALUES (6179, 'new', '21002', '20985', 'Download Metasploit Framework | Metasploit Project', 'http://www.metasploit.com/download/', 0, 17, '1320470860430');
+INSERT INTO `bookmark` VALUES (6178, 'new', '21001', '20985', 'Invisible Man: 一次使用多種鑑識程式 以交叉驗證提高證據公信力', 'http://jay-fva.blogspot.com/2011/07/blog-post_31.html', 0, 16, '1320470860430');
+INSERT INTO `bookmark` VALUES (6177, 'new', '21000', '20985', 'site:gov.tw inurl:Fckeditor - Google 搜尋', 'http://www.google.com.tw/search?sourceid=chrome&ie=UTF-8&q=site%3Agov.tw+inurl%3AFckeditor', 0, 15, '1320470860430');
+INSERT INTO `bookmark` VALUES (6176, 'new', '20999', '20985', '‪The Doors - The Spy‬‏ - YouTube', 'http://www.youtube.com/watch?v=BjVI8q0Sk2o', 0, 14, '1320470860430');
+INSERT INTO `bookmark` VALUES (6175, 'new', '20998', '20985', '手机病毒的感染及传播途径 » 華人資安論壇與資安認知教育網誌', 'http://podcast.isvoc.com/archives/248682?utm_source=Infosec+Podcast&utm_medium=facebook', 0, 13, '1320470860430');
+INSERT INTO `bookmark` VALUES (6174, 'new', '20997', '20985', 'Pwn2Own - Wikipedia, the free encyclopedia', 'http://en.wikipedia.org/wiki/Pwn2Own', 0, 12, '1320470860430');
+INSERT INTO `bookmark` VALUES (6173, 'new', '20996', '20985', '★☆♂Garena/vLan非官方認可外掛部落★☆: (7月27日)Garena平台GarenaM4ST3Rv78.08繁中包(開圖、踢人、擠房、Lag人、改名、過地圖檢測)', 'http://william8246510.blogspot.com/2011/07/76garenagarenam4st3r7700lag.html', 0, 11, '1320470860430');
+INSERT INTO `bookmark` VALUES (6172, 'new', '20994', '20985', 'Startup 需不需要一開始就注意 Scale 的問題？ | Blog.XDite.net', 'http://blog.xdite.net/?p=2775', 0, 9, '1320470860430');
+INSERT INTO `bookmark` VALUES (6171, 'new', '20995', '20985', 'Perfect Hideout: Finding your way in vim', 'http://stolowski.blogspot.com/2011/07/finding-your-way-in-vim.html', 0, 10, '1320470860430');
+INSERT INTO `bookmark` VALUES (6169, 'new', '20985', '1', 'Hacker', '', 0, 7, '1320470860430');
+INSERT INTO `bookmark` VALUES (6170, 'new', '20993', '20985', '談滲透測試服務品質的低落！！ - roamer - Yahoo!奇摩部落格', 'http://tw.myblog.yahoo.com/roamer-tw/article?mid=7242', 0, 8, '1320470860430');
+INSERT INTO `bookmark` VALUES (6168, 'new', '20983', '1', 'Samples - Google Chrome Extensions - Google Code', 'http://code.google.com/chrome/extensions/samples.html', 1, 5, '1320470860430');
+INSERT INTO `bookmark` VALUES (6167, 'new', '20981', '1', 'GreenWiki', 'http://jason3e7.no-ip.org/greenwiki/index.php/%E9%A6%96%E9%A0%81', 0, 3, '1320470860430');
+INSERT INTO `bookmark` VALUES (6166, 'new', '20982', '1', 'UVa', 'http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=25', 0, 4, '1320470860430');
+INSERT INTO `bookmark` VALUES (6164, 'new', '1', '0', '書籤列', '', 0, 1, '1320470860430');
+INSERT INTO `bookmark` VALUES (6165, 'new', '20980', '1', '書籤管理員', 'chrome-extension://eemcgdkfndhakfknompkggombfjjjeno/main.html#1', 0, 2, '1320470860430');
+INSERT INTO `bookmark` VALUES (8605, 'new', '20984', '1', 'aio愛ㄛ - 交友 正妹牆 型男網 健康陽光 心情日記 友誼足跡 青春回憶', 'http://www.aio.com.tw/', 0, 6, '1320470860430');
+INSERT INTO `bookmark` VALUES (8602, 'root', '22397', '22389', '20', '', 0, 6, '1320849919447');
+INSERT INTO `bookmark` VALUES (8603, 'root', '22398', '22389', '21', '', 0, 7, '1320849919447');
+INSERT INTO `bookmark` VALUES (8604, 'root', '22399', '22389', '22', '', 0, 8, '1320849919447');
+INSERT INTO `bookmark` VALUES (8600, 'root', '22400', '22389', '18', '', 0, 9, '1320849919447');
+INSERT INTO `bookmark` VALUES (8601, 'root', '22401', '22389', '19', '', 0, 10, '1320849919447');
+INSERT INTO `bookmark` VALUES (8598, 'root', '22402', '22389', '16', '', 0, 11, '1320849919447');
+INSERT INTO `bookmark` VALUES (8599, 'root', '22403', '22389', '17', '', 0, 12, '1320849919447');
+INSERT INTO `bookmark` VALUES (8596, 'root', '22404', '22389', '14', '', 0, 13, '1320849919447');
+INSERT INTO `bookmark` VALUES (8597, 'root', '22405', '22389', '15', '', 0, 14, '1320849919447');
+INSERT INTO `bookmark` VALUES (8594, 'root', '22406', '22389', '12', '', 0, 15, '1320849919447');
+INSERT INTO `bookmark` VALUES (8595, 'root', '22407', '22389', '13', '', 0, 16, '1320849919447');
+INSERT INTO `bookmark` VALUES (8592, 'root', '22408', '22389', '10', '', 0, 17, '1320849919447');
+INSERT INTO `bookmark` VALUES (8593, 'root', '22409', '22389', '11', '', 0, 18, '1320849919447');
+INSERT INTO `bookmark` VALUES (8590, 'root', '22410', '22389', '8', '', 0, 19, '1320849919447');
+INSERT INTO `bookmark` VALUES (8591, 'root', '22411', '22389', '9', '', 0, 20, '1320849919447');
+INSERT INTO `bookmark` VALUES (8586, 'root', '22412', '22389', '4', '', 0, 21, '1320849919447');
+INSERT INTO `bookmark` VALUES (8587, 'root', '22413', '22389', '5', '', 0, 22, '1320849919447');
+INSERT INTO `bookmark` VALUES (8588, 'root', '22414', '22389', '6', '', 0, 23, '1320849919447');
+INSERT INTO `bookmark` VALUES (8589, 'root', '22415', '22389', '7', '', 0, 24, '1320849919447');
+INSERT INTO `bookmark` VALUES (8582, 'root', '22396', '22387', 'Google', 'http://www.google.com.tw/', 3, 3, '1320849919447');
+INSERT INTO `bookmark` VALUES (8584, 'root', '22416', '22389', '3', '', 0, 25, '1320849919447');
+INSERT INTO `bookmark` VALUES (8585, 'root', '21905', '21877', '2', '', 0, 26, '1320485286578');
+INSERT INTO `bookmark` VALUES (8581, 'root', '22389', '1', 'limit', '', 0, 5, '1320849919447');
+INSERT INTO `bookmark` VALUES (8579, 'root', '22387', '1', 'test', '', 1, 2, '1320849919447');
+INSERT INTO `bookmark` VALUES (8580, 'root', '22390', '1', 'Samples - Google Chrome Extensions - Google Code', 'http://code.google.com/chrome/extensions/samples.html', 0, 26, '1320849919447');
+INSERT INTO `bookmark` VALUES (8577, 'root', '22391', '1', 'GreenWiki', 'http://jason3e7.no-ip.org/greenwiki/index.php/%E9%A6%96%E9%A0%81', 0, 27, '1320849919447');
+INSERT INTO `bookmark` VALUES (8578, 'root', '1', '0', '書籤列', '', 0, 1, '1320849919447');
+INSERT INTO `bookmark` VALUES (8583, 'root', '21906', '21877', '1', '', 0, 27, '1320485286578');
+INSERT INTO `bookmark` VALUES (8575, 'root', '22392', '1', 'UVa', 'http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=25', 0, 28, '1320849919447');
+INSERT INTO `bookmark` VALUES (8576, 'root', '22393', '1', '噗浪首頁', 'http://www.plurk.com/t/Taiwan#hot', 0, 29, '1320849919447');
+INSERT INTO `bookmark` VALUES (8573, 'root', '22394', '1', 'Yahoo!奇摩', 'http://tw.yahoo.com/?p=us', 0, 30, '1320849919447');
+INSERT INTO `bookmark` VALUES (8574, 'root', '22395', '1', '書籤管理員', 'chrome-extension://eemcgdkfndhakfknompkggombfjjjeno/main.html#1', 0, 31, '1320849919447');
+INSERT INTO `bookmark` VALUES (8606, 'root', '22388', '1', 'aio愛ㄛ - 交友 正妹牆 型男網 健康陽光 心情日記 友誼足跡 青春回憶', 'http://www.aio.com.tw/', 1, 4, '1320849919447');
 
 -- --------------------------------------------------------
 
---
+-- 
 -- 資料表格式： `user`
---
+-- 
 
-CREATE TABLE IF NOT EXISTS `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user` text COLLATE utf8_unicode_ci NOT NULL,
-  `password` text COLLATE utf8_unicode_ci NOT NULL,
-  `text` text COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL auto_increment,
+  `user` text collate utf8_unicode_ci NOT NULL,
+  `password` text collate utf8_unicode_ci NOT NULL,
+  `uptime` text collate utf8_unicode_ci NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
---
+-- 
 -- 列出以下資料庫的數據： `user`
---
+-- 
 
-INSERT INTO `user` (`id`, `user`, `password`, `text`) VALUES
-(1, 'root', 'root', '<?xml version="1.0"?><bookmarks version="1"><bookmark id="1" parentId="0" title="書籤列" ></bookmark><bookmark id="2388" parentId="1" url="http://www.google.com/" title="google"></bookmark><bookmark id="2389" parentId="1" url="http://webmeetup.org/what" title="webmeetup"></bookmark><bookmark id="2390" parentId="1" url="http://www.plurk.com/" title="plurk"></bookmark><bookmark id="2391" parentId="1" url="http://www.yahoo.com/" title="GOOD"></bookmark><bookmark id="2392" parentId="1" url="http://www.youtube.com/" title="youtube"></bookmark><bookmark id="2393" parentId="1" url="http://en.wikipedia.org/" title="Wikipedia, the free encyclopedia"></bookmark><bookmark id="2394" parentId="1" title="new" ></bookmark><bookmark id="2395" parentId="2394" title="test" ></bookmark><bookmark id="2396" parentId="2395" url="http://www.techbang.com.tw/" title="T客邦 - 我只推薦好東西"></bookmark></bookmarks>'),
-(2, 'test', 'test', 'true'),
-(3, 'hello', 'world', '<?xml version="1.0"?>\n<bookmarks version="1">\n<bookmark id="1" parentId="0" title="書籤列" ></bookmark>\n<bookmark id="7652" parentId="1" url="http://jason3e7.no-ip.org/greenwiki/index.php/%E9%A6%96%E9%A0%81" title="GreenWiki"></bookmark>\n<bookmark id="7654" parentId="1" url="http://code.google.com/chrome/extensions/samples.html" title="Samples - Google Chrome Extensions - Google Code"></bookmark>\n<bookmark id="9995" parentId="1" title="自己的事業" ></bookmark>\n<bookmark id="9360" parentId="1" url="http://www.facebook.com/profile.php?id=1329379944&amp;ref=nf_fr" title="潘金聰"></bookmark>\n<bookmark id="9361" parentId="1" url="http://www.facebook.com/weixiul?ref=pb" title="利瑋修"></bookmark>\n<bookmark id="9362" parentId="1" url="http://www.facebook.com/abc3060623" title="才人"></bookmark>\n<bookmark id="9363" parentId="1" url="http://www.facebook.com/profile.php?id=100000195945648&amp;sk=photos" title="洪芳茹"></bookmark>\n<bookmark id="9364" parentId="1" url="http://www.facebook.com/garnett207" title="魏嘉男"></bookmark>\n<bookmark id="9365" parentId="1" url="http://www.facebook.com/panda0722" title="張家豪"></bookmark>\n</bookmarks>'),
-(4, 'new', 'new', '<?xml version="1.0"?>\n<bookmarks version="1">\n<bookmark id="1" parentId="0" title="書籤列" ></bookmark>\n<bookmark id="2784" parentId="1" url="http://en.wikipedia.org/" title="Wikipedia, the free encyclopedia"></bookmark>\n<bookmark id="2785" parentId="1" url="http://www.google.com/" title="google"></bookmark>\n<bookmark id="2786" parentId="1" url="http://webmeetup.org/what" title="webmeetup"></bookmark>\n<bookmark id="2787" parentId="1" url="http://www.yahoo.com/" title="GOOD"></bookmark>\n<bookmark id="2788" parentId="1" url="http://www.plurk.com/" title="plurk"></bookmark>\n<bookmark id="2789" parentId="1" url="http://www.youtube.com/" title="youtube"></bookmark>\n<bookmark id="2790" parentId="1" title="new" ></bookmark>\n<bookmark id="2791" parentId="2790" title="test" ></bookmark>\n<bookmark id="2792" parentId="2791" url="http://www.techbang.com.tw/" title="T客邦 - 我只推薦好東西"></bookmark>\n</bookmarks>');
+INSERT INTO `user` VALUES (2, 'test', 'test', 'true');
+INSERT INTO `user` VALUES (5, 'root', 'root', 'true');
+INSERT INTO `user` VALUES (3, 'hello', 'world', '<?xml version="1.0"?>\n<bookmarks version="1">\n<bookmark id="1" parentId="0" title="書籤列" ></bookmark>\n<bookmark id="7652" parentId="1" url="http://jason3e7.no-ip.org/greenwiki/index.php/%E9%A6%96%E9%A0%81" title="GreenWiki"></bookmark>\n<bookmark id="7654" parentId="1" url="http://code.google.com/chrome/extensions/samples.html" title="Samples - Google Chrome Extensions - Google Code"></bookmark>\n<bookmark id="9995" parentId="1" title="自己的事業" ></bookmark>\n<bookmark id="9360" parentId="1" url="http://www.facebook.com/profile.php?id=1329379944&amp;ref=nf_fr" title="潘金聰"></bookmark>\n<bookmark id="9361" parentId="1" url="http://www.facebook.com/weixiul?ref=pb" title="利瑋修"></bookmark>\n<bookmark id="9362" parentId="1" url="http://www.facebook.com/abc3060623" title="才人"></bookmark>\n<bookmark id="9363" parentId="1" url="http://www.facebook.com/profile.php?id=100000195945648&amp;sk=photos" title="洪芳茹"></bookmark>\n<bookmark id="9364" parentId="1" url="http://www.facebook.com/garnett207" title="魏嘉男"></bookmark>\n<bookmark id="9365" parentId="1" url="http://www.facebook.com/panda0722" title="張家豪"></bookmark>\n</bookmarks>');
+INSERT INTO `user` VALUES (4, 'new', 'new', '<?xml version="1.0"?>\n<bookmarks version="1">\n<bookmark id="1" parentId="0" title="書籤列" ></bookmark>\n<bookmark id="2784" parentId="1" url="http://en.wikipedia.org/" title="Wikipedia, the free encyclopedia"></bookmark>\n<bookmark id="2785" parentId="1" url="http://www.google.com/" title="google"></bookmark>\n<bookmark id="2786" parentId="1" url="http://webmeetup.org/what" title="webmeetup"></bookmark>\n<bookmark id="2787" parentId="1" url="http://www.yahoo.com/" title="GOOD"></bookmark>\n<bookmark id="2788" parentId="1" url="http://www.plurk.com/" title="plurk"></bookmark>\n<bookmark id="2789" parentId="1" url="http://www.youtube.com/" title="youtube"></bookmark>\n<bookmark id="2790" parentId="1" title="new" ></bookmark>\n<bookmark id="2791" parentId="2790" title="test" ></bookmark>\n<bookmark id="2792" parentId="2791" url="http://www.techbang.com.tw/" title="T客邦 - 我只推薦好東西"></bookmark>\n</bookmarks>');

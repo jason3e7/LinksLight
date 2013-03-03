@@ -5,17 +5,8 @@
 <title>LinksLight</title>
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 </head>
-<body>
-<center>
-<br>
-<br>
-<br>
-<br>
-<a href="index.htm"><img src="logo_128.png" alt="LOGO" /></a>
-<br>
-<a href="register.htm">register</a>
-&nbsp;
-<a href="login.htm">login</a>
-</center>
-</body>
+<frameset rows="105,*">
+　　<frame src="member_title.php">
+　　<frame src="printBookmarks.php?id=<? echo $_GET['id'];?>&password=<? echo $_GET['password'];?>">
+</frameset>
 </html>

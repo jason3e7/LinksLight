@@ -13,7 +13,7 @@ $pw2 = $_POST['pw2'];
 if($user != null && $pw != null && $pw2 != null && $pw == $pw2)
 {
         //新增資料進資料庫語法
-        $sql = "insert into user (id, user, password, text) values ('null', '$user', '$pw', 'true')";
+        $sql = "insert into user (id, user, password, uptime) values ('null', '$user', '$pw', 'true')";
         if(mysql_query($sql))
         {
                 echo '新增成功!';

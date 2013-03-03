@@ -1,23 +1,32 @@
 {
-  "name": "LinksLight",
-  "version": "0.3",
-  "description": "Bookmarks Management",
-  "icons": {
+	"name": "LinksLight",
+	"version": "0.4",
+	"description": "Bookmarks Management",
+	"icons": {
 	    "16": "images/icon_16.png",
 		"32": "images/icon_32.png",
 		"64": "images/icon_64.png",	
 		"128": "images/icon_128.png"
-  },
-  "background_page": "background.html",
-  "options_page": "options.html",
-  "permissions": [
-    "tabs",
-	"bookmarks",
-	"http://jason3e7.no-ip.org/linkslight/cgi/*"
-  ],
-  "browser_action": {
+	},
+	"background_page": "background.html",
+	"options_page": "options.html",
+	"permissions": [
+		"tabs",
+		"bookmarks",
+		"http://jason3e7.no-ip.org/linkslight/cgi/*",
+		"http://localhost/linkslight/cgi/*"
+	],
+	"browser_action": {
 	  "default_icon": "images/loading.png",
       "default_title": "Disconnect"
-  }
+	},
+	"content_scripts": [{
+        "matches": ["http://www.google.com.tw/*"],
+        "js": [
+			"jquery.js",
+			"contentscript.js"
+        ],
+		"all_frames": true  
+	}]
 	
 }

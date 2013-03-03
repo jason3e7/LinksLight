@@ -6,16 +6,8 @@
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 </head>
 <body>
-<center>
-<br>
-<br>
-<br>
-<br>
-<a href="index.htm"><img src="logo_128.png" alt="LOGO" /></a>
-<br>
-<a href="register.htm">register</a>
-&nbsp;
-<a href="login.htm">login</a>
-</center>
+<a href="index.htm"><img src="logo_128.png" alt="LOGO" width="320" height="80" /></a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="logout.php">登出</a>
 </body>
 </html>

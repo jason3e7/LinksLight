@@ -17,45 +17,16 @@
 	{
 		echo "<?xml version=\"1.0\"?>\n";
 		echo "<bookmarks version=\"1\">\n";
-		$sql = "SELECT * FROM bookmark where user='".$_GET["id"]."' and parentId='1' order by orderNum ";
-		if($_GET["light"]=='true')
-		{
-			$sql=$sql."limit 11;";
-		}
-		else
-		{
-			$sql=$sql.";";
-		}		
+		$sql = "SELECT * FROM bookmark where user='".$_GET["id"]."' AND url != '' AND title Like '%".$_GET["keyword"]."%' ORDER by point LIMIT 13;";
 		//print $sql;
 		//echo "<br>";		
 		$result = mysql_query($sql);
 		while($row = mysql_fetch_array($result)){
 			echo "<bookmark id=\"".$row['id']."\" parentId=\"".$row['parentId']."\" title=\"".$row['title']."\" url=\"".$row['url']."\" />";
 			echo "</bookmark>\n";
-			folderTree($row['id']);
+			
     	}
 		echo "</bookmarks>";
-	}
-	function folderTree($bkid) 
-	{
-		global $username;		
-		$sql_ft = "SELECT * FROM bookmark where user='".$username."' and parentId='".$bkid."' order by orderNum ";
-		if($_GET["light"]=='true')
-		{
-			$sql_ft=$sql_ft."limit 20 ;";
-		}
-		else
-		{
-			$sql_ft=$sql_ft.";";
-		}
-		//print $sql_ft;
-		$result_ft = mysql_query($sql_ft);
-		while($row_ft = mysql_fetch_array($result_ft))
-		{
-			echo "<bookmark id=\"".$row_ft['id']."\" parentId=\"".$row_ft['parentId']."\" title=\"".$row_ft['title']."\" url=\"".$row_ft['url']."\" />";
-			echo "</bookmark>\n";
-			folderTree($row_ft['id']);
-    	}
 	}
 ?>
 
