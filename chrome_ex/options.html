@@ -2,10 +2,10 @@
 <head>
 <meta charset="utf-8" />
 <link type="text/css" rel="stylesheet" href="style.css" /> 
+<script type="text/javascript" src="jquery.min.js"></script> 
 <script>
 
-function loadOptions() 
-{	
+function loadOptions() {
 	var id = localStorage["id"];
 	var password =localStorage["password"];
 	if (id == undefined && password == undefined )
@@ -13,25 +13,22 @@ function loadOptions()
 		id="";
 		password="";
 	}
-	
-	var idIndex=document.getElementById("id");
-	var passwordIndex = document.getElementById("password");
-	idIndex.value=id;
-	passwordIndex.value=password;	
+	document.getElementById("id").value=id;
+	document.getElementById("password").value=password;
 }
 
 function saveOptions() {
-	var idIndex=document.getElementById("id");
-	var passwordIndex = document.getElementById("password");
-	var newId = idIndex.value;
-	var newPassword = passwordIndex.value;
-		
+	
+	var newId = document.getElementById("id").value;
+	var newPassword = document.getElementById("password").value;
+	
 	if(localStorage["id"] != newId || localStorage["password"] != newPassword)
     {
 		localStorage["id"] = newId;
 		localStorage["password"] = newPassword;
-        chrome.extension.getBackgroundPage().getBookmarks();	
+        chrome.extension.getBackgroundPage().getBookmarks();
 	}
+	$("#status").html("Save Complete<a href='javascript:window.close();'>Close</a>");
 }
 
 function eraseOptions() {
@@ -39,17 +36,20 @@ function eraseOptions() {
 	localStorage.removeItem("password");
 	chrome.extension.getBackgroundPage().getBookmarks();
 	location.reload();
+	window.close();
 }
 </script>
 </head>
+
 <body onload="loadOptions();">
 ID:<input type="text" name="id" id="id">
 <br>
 PASSWORD:<input type="password" name="password" id="password">
 <br>
-<button onclick="saveOptions();">SAVE</button>
-<button onclick="eraseOptions();">DELETE</button>
+<button onclick="saveOptions();">Save</button>
+<button onclick="eraseOptions();">Logout</button>
 <br>
 <div id="status"></div>
+<a href="http://jason3e7.no-ip.org/linkslight/" target="_blank">Register</a>
 </body> 
 </html>

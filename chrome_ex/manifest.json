@@ -1,6 +1,6 @@
 {
   "name": "LinksLight",
-  "version": "0.1",
+  "version": "0.2",
   "description": "Bookmarks Management",
   "icons": {
 	    "16": "images/icon_16.png",
@@ -11,12 +11,12 @@
   "background_page": "background.html",
   "options_page": "options.html",
   "permissions": [
-    "tabs","http://localhost/linkslight/*",
-	"bookmarks"
+    "tabs",
+	"bookmarks",
+	"http://jason3e7.no-ip.org/linkslight/cgi/*"
   ],
   "browser_action": {
 	  "default_icon": "images/loading.png",
       "default_title": "Disconnect"
-  }
-	
+  }	
 }

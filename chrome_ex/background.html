@@ -7,144 +7,235 @@
 var id ;
 var password ;
 var bookmarkXML;
-var current;
+
+var connChoice=true;
 
 localStorage["conn"]=false;
 
-function getBookmarks()
-{
+var bookmarkTree="<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=UTF-8\">\n"+
+"<TITLE>Bookmarks</TITLE>\n"+
+"<H1>Bookmarks</H1>\n";
 
-	chrome.bookmarks.getChildren('1',function(bms) {	
-	//alert(bms.length);
-	for (i = 0; i < bms.length; i++) {
-		chrome.bookmarks.remove(bms[i].id);
-		//alert(bms[i].id);
+function init()
+{
+	/*Copy Bookmarks bar To Other Bookmarks*/	
+	// Traverse the bookmark tree, and print the folder and nodes.
+	function dumpBookmarks(query) {
+		var bookmarkTreeNodes = chrome.bookmarks.getTree(
+		function(bookmarkTreeNodes) {
+			bookmarkTree=bookmarkTree.concat(dumpTreeNodes(bookmarkTreeNodes, query));			
+			alert(bookmarkTree);
+		});
 	}
-	});
 	
-	id = localStorage["id"];
-	password =localStorage["password"];
-    console.log("http://localhost/linkslight/index.php?id="+id+"&password="+password);
-	//alert("http://jason3e7.no-ip.org/linkslight/index.php?id="+id+"&password="+password);
-	//$.get("test.html", function(data){
-    //$.get("http://jason3e7.no-ip.org/linkslight/index.php?id="+id+"&password="+password, function(data){
-	$.get("http://localhost/linkslight/out.php?id="+id+"&password="+password, function(data){
+	function dumpTreeNodes(bookmarkNodes, query) {
+		var list = "<DL><p>\n";
+		var i;
+		for (i = 0; i < bookmarkNodes.length; i++) {
+			list=list.concat(dumpNode(bookmarkNodes[i], query));
+			//list.append(dumpNode(bookmarkNodes[i], query));
+			//list.append("TreeNode");
+			//list=list.concat("TreeNode");
+		}
+		list += "</DL><p>\n";
+		return list;
+	}
 	
-		//alert("Data Loaded: " + data);
-		bookmarkXML=data;
-		//alert("Data Loaded: " + $(bookmarkXML).find("bookmark").text());
-		//while($(bookmarkXML).find("bookmarks").text())
-		
-		
-		
-		$(bookmarkXML).find('bookmark').each(function()
-        { 
-			//alert("GOOD");
-			var $book = $(this);
-			//alert($book.get);
-			//alert($(this).children("title").attr("data")) //取得子節點中的src資料
-			
-			chrome.bookmarks.create({'parentId': '1',
-			'title': $(this).children("title").attr("data"),
-			'url': $(this).children("url").attr("data")});
-			
-			
-            //errorCode="";
-            //current={};
-            //current.condition=$(weatherXML).find("current_conditions condition").attr("data");
-            //current.temp_c=$(weatherXML).find("current_conditions temp_c").attr("data")+"℃";
-            //current.temp_f=$(weatherXML).find("current_conditions temp_f").attr("data")+"℉";
-            //current.humidity=$(weatherXML).find("current_conditions humidity").attr("data");
-            //current.wind_condition=$(weatherXML).find("current_conditions wind_condition").attr("data");
-            //current.icon="http://img0.gmodules.com"+$(weatherXML).find("current_conditions icon").attr("data");
-            //console.log(current);
-        });
-		
-		if(data!="")
-        {
-			//alert("Data not null ");
-            chrome.browserAction.setIcon({path:"images/icon_16.png"});
-			chrome.browserAction.setTitle({"title":"Connect"});
-			localStorage["conn"]=true; 
-        }
-        else
-        {
-			//alert("Data null ");
-			chrome.browserAction.setIcon({path:"images/loading.png"});
-			chrome.browserAction.setTitle({"title":"Disconnect"});
-			localStorage["conn"]=false; 
-        }
-    });
 	
+	function dumpNode(bookmarkNode, query) {
+		var li="";
+		if (bookmarkNode.title) {
+			if (query && !bookmarkNode.children) {
+				if (String(bookmarkNode.title).indexOf(query) == -1) {
+					return "<span></span>";
+				}
+			}
+			
+			var anchor ="";
+			if(bookmarkNode.url)
+			{
+				anchor = "<DT><a "+"href="+bookmarkNode.url+">"+bookmarkNode.title+"</a>\n";
+			}
+			else
+			{
+				anchor = "<DT><H3>"+bookmarkNode.title+"</H3>\n";
+			}
+			li+=(anchor);
+			
+		}
+		//li += (bookmarkNode.title ? "<li>" : "<div>");//.concat("<span>");
+		if (bookmarkNode.children && bookmarkNode.children.length > 0) {
+			li=li.concat(dumpTreeNodes(bookmarkNode.children, query));
+		}
+		return li;
+	}
 }
 
 
-
-function onBrowserActionClicked() {
-
-	//delete
-	/*
+function delBookmarkBar()
+{
+	/*Delete Bookmarks bar*/
 	chrome.bookmarks.getChildren('1',function(bms) {	
-		//alert(bms.length);
-		for (i = 0; i < bms.length; i++) {
-			chrome.bookmarks.remove(bms[i].id);
-			//alert(bms[i].id);
-		}
+	//alert(bms.length);
+	for (i = 0; i < bms.length; i++) {
+		chrome.bookmarks.removeTree(bms[i].id);
+		//alert(bms[i].id);
+	}
 	});
-	*/
+}
+
+
+function getBookmarks()
+{
+	//alert(connChoice);
+	//alert(connChoice != false);
 	
-	//chrome.bookmarks.remove('1');
-	//chrome.bookmarks.create({'parentId': '1',
-	//					'title': 'Extensions doc',
-     //                    'url': 'http://code.google.com/chrome/extensions'});
-	//alert(localStorage["conn"]);
+	if(connChoice != false)
+	{	
+		delBookmarkBar();
+		id = localStorage["id"];
+		password =localStorage["password"];
+		//if() 帳號密碼的判斷
+		/*getBookmarks and Create on Chrome bar*/
+		$.get("http://jason3e7.no-ip.org/linkslight/cgi/getBookmarks.php?id="+id+"&password="+password, function(data){
+		
+			bookmarkXML=data;		
+			
+			$(bookmarkXML).find("bookmark[parentId='1']").each(function()
+			{ 
+				if($(this).attr("url"))
+				{
+					chrome.bookmarks.create(
+					{
+						//alert($(this).children("parentId").attr("data"));
+						'parentId': $(this).attr("parentId"),
+						'title': $(this).attr("title"),
+						'url': $(this).attr("url")
+					});
+				}
+				else
+				{
+					var idTemp=$(this).attr("id");
+					chrome.bookmarks.create(
+					{
+						'parentId': $(this).attr("parentId"),
+                         'title': $(this).attr("title")},
+                        function(newFolder) {
+						folderTree(idTemp,newFolder.id);						
+					});
+				}
+
+			});
+			
+			if(data!="")
+			{
+				//alert("Data not null ");
+				chrome.browserAction.setIcon({path:"images/icon_16.png"});
+				chrome.browserAction.setTitle({"title":"Connect"});
+				localStorage["conn"]=true; 
+				chrome.tabs.onUpdated.addListener(urlchange);
+				scheduleRequest();
+			}
+			else
+			{
+				//alert("Data null ");
+				chrome.browserAction.setIcon({path:"images/loading.png"});
+				chrome.browserAction.setTitle({"title":"Disconnect"});
+				localStorage["conn"]=false; 
+				chrome.tabs.onUpdated.removeListener(urlchange);
+			}
+		});
+	}
+}
+
+/*go to tree*/
+function folderTree(parentId,folderId)
+{
+	//alert(parentId);
+	//alert(folderId);
+	$(bookmarkXML).find("bookmark[parentId='"+parentId+"']").each(function()
+	{ 
+		if($(this).attr("url"))
+		{
+			chrome.bookmarks.create(
+			{
+				'parentId': folderId,
+				'title': $(this).attr("title"),
+				'url': $(this).attr("url")
+			});
+		}
+		else
+		{
+			var idTemp=$(this).attr("id");
+			chrome.bookmarks.create(
+			{
+				'parentId': folderId,
+                'title': $(this).attr("title")},
+                function(newFolder) {
+				folderTree(idTemp,newFolder.id);						
+			});
+		}
+	});	
+}
+
+/*button*/
+function onBrowserActionClicked() 
+{
 	if (localStorage["conn"] != 'true') 
 	{
-		localStorage["conn"]=true;
-		chrome.browserAction.setTitle({"title":"Connect"});
-		getBookmarks();
+		if(localStorage["id"] == undefined && localStorage["password"] == undefined )
+		{
+			window.open ("options.html");
+		}
+		else
+		{
+			connChoice=true;
+			getBookmarks();
+		}
     }
 	else
 	{
-		localStorage["conn"]=false;
+		connChoice=false;
+		localStorage["conn"]=false;	
 		chrome.browserAction.setTitle({"title":"Disconnect"});
 		chrome.browserAction.setIcon({path: 'images/loading.png'});
+		/*input disconnect function*/
+		chrome.tabs.onUpdated.removeListener(urlchange);
+
 	}
 };        
-   
 chrome.browserAction.onClicked.addListener(onBrowserActionClicked);
 
-
-
-chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab)     
+/*Record*/
+function urlchange(tabId, changeInfo, tab)     
 {
-
 	var oldurl =localStorage["url"];
 	//alert(tab.url);
     if(tab.url!=oldurl)
 	{
 		localStorage["url"]=tab.url;
-		$.get("http://localhost/linkslight/add.php?id="+id+"&password="+password+"&url="+tab.url);
-		//alert("http://jason3e7.no-ip.org/linkslight/add.php?id="+id+"&password="+password+"&url="+tab.url);
+		$.get("http://jason3e7.no-ip.org/linkslight/cgi/add.php?id="+id+"&password="+password+"&url="+tab.url);
+		//alert("http://jason3e7.no-ip.org/linkslight/cgi/add.php?id="+id+"&password="+password+"&url="+tab.url);
 		//alert(tab.url);
 	}
     
-});
-
-function startRequest()
-{
-   getBookmarks(); 
 }
 
+/*AutoReload*/
 function scheduleRequest() {
 	var reqeustInterval = 1000 * 60 * 5;
 	console.log("Scheduling request...");
 	window.setTimeout(startRequest, reqeustInterval);
 }
+
+
+function startRequest()
+{
+	//alert(bookmark);
+	//dumpBookmarks();	
+   getBookmarks(); 
+}
 startRequest();
-scheduleRequest();
-
-
 </script>
 </head>
 </html>
